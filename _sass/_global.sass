@@ -1,0 +1,13 @@
+$unit: 2mm
+$unit-by-four: $unit * 4
+
+$colour-accent: #1000ff
+
+$colour-shade-light: #f0f0f0
+$colour-off-black: #121212
+
+// @author Hugo Giraudel
+@mixin prefix($property, $value, $prefixes: ())
+    @each $prefix in $prefixes
+        #{'-' + $prefix + '-' + $property}: $value
+    #{$property}: $value

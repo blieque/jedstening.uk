@@ -2,9 +2,11 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="description" content="{{ site.description }}">
+        <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
         <title>{% if page.title.size > 0 %}{{ page.title }} &ndash; {% endif %}{{ site.title }}</title>
         <link rel="stylesheet" href="{{ site.address }}{{ site.baseurl }}/styles/main.css">
     </head>
     <body>
-        <section>
+        <header>
+            <a href="{{ site.address }}{{ site.baseurl }}/"><h1>{{ site.artist }}</h1></a>
+        </header>

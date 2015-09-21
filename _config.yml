@@ -1,11 +1,13 @@
 # site settings
-title: Site Title
-#email:
-description: A longer site description that should be used by search engines.
+title: Jed Stening
+artist: Jed Stening
+email: jed@stening.uk
+description: The digital portfolio of Jed Stening, a graphic designer and artist from the UK.
 address: "https://omni.dev"
 baseurl: "/uk.stening"
 
 # build settings
+exclude: ["type/README.md"]
 markdown: kramdown
 destination: /srv/hosts/dev.omni/www/uk.stening
 sass:
@@ -15,4 +17,5 @@ compress_html:
     clippings: all
 
 # non-standard options include
+# - artist
 # - email

@@ -1,0 +1,28 @@
+body
+    margin: 0
+    font-family: sans-serif
+    background: $colour-shade-light
+
+header
+    padding: $unit * 4
+    font-family: $font-argent
+    font-weight: 700
+    text-align: center
+    background: #fff
+
+    a
+        color: $colour-off-black
+        text-decoration: none
+
+        h1
+            margin: 0
+            font-size: 40pt
+
+section
+    margin: 0 auto
+    padding: $unit * 2 0 0 $unit * 2
+    width: 100%
+    max-width: 1440px + $unit * 10
+    // this is just wrong; no idea why this seems to be the only solution
+    //font-size: 0
+    @include prefix(box-sizing, border-box, webkit moz)

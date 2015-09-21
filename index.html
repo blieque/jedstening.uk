@@ -1,0 +1,29 @@
+---
+title:  Home
+layout: main
+---
+
+{% if site.data.projects %}
+<section>
+{% for project in site.data.projects %}
+
+    {% assign project_title = project.title %}
+    {% unless project.title.size > 0 %}
+        {% assign project_title = "Untitled" %}
+    {% endunless %}
+
+    {% assign project_id =  %}
+    {% if 10 > project.id %}
+        {% capture project_id %}0{{ project.id }}{% endcapture %}
+    {% else %}
+        {% capture project_id %}{{ project.id }}{% endcapture %}
+    {% endif %}
+
+    <div id="project-{{ project_id }}">
+        <img src="{{ site.address }}{{ site.baseurl }}/images/preview/{{ project_id }}.jpg" alt="{{ project.title }}">
+        <div><h3>{{ project.title }}</h3>{{ project.descriptionShort }}</div>
+    </div>
+
+{% endfor %}
+</section>
+{% endif %}

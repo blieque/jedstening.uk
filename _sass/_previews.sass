@@ -1,0 +1,20 @@
+section
+
+    &>div
+        float: left
+        margin: 0 $unit * 2 $unit * 2 0
+        width: calc(25% - #{$unit * 2})
+        position: relative
+        overflow: hidden
+
+        img
+            display: block
+            width: 100%
+
+        div
+            position: absolute
+            top: 0
+            bottom: 0
+
+            &:hover
+                background: $colour-accent
