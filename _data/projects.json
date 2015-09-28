@@ -158,5 +158,15 @@
             "This description can have multiple paragraphs, which is pretty swag."
         ],
         galleryCount: 3
+    },
+    {
+        id: 17,
+        title: "Deep Weekdays",
+        descriptionShort: "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        descriptionFull: [
+            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
+            "This description can have multiple paragraphs, which is pretty swag."
+        ],
+        galleryCount: 2
     }
 ]
