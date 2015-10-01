@@ -9,7 +9,6 @@ baseurl: ""
 # build settings
 exclude: ["type/README.md"]
 markdown: kramdown
-destination: /srv/hosts/dev.omni/www/uk.stening
 sass:
     style: compressed
 
