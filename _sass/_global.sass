@@ -1,12 +1,16 @@
-$unit: 2mm
-$unit-by-four: $unit * 4
+// global variables
 
-$colour-accent: rgb(16, 0, 255)
-$colour-accent-tint: rgba(16, 0, 255, .85)
+$unit: 2mm
+
+$colour-accent: rgb(18, 18, 22)
+$colour-accent-tint: rgba(18, 18, 22, .8)
 
 $colour-shade-light: #f0f0f0
-$colour-off-black: #121212
+$colour-off-black: #121216
 
+$preview-width: 360px
+
+// browser prefixing mixin
 // @author Hugo Giraudel
 @mixin prefix($property, $value, $prefixes: ())
     @each $prefix in $prefixes
