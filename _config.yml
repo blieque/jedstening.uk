@@ -1,13 +1,13 @@
 # site settings
 title: Jed Stening
 artist: Jed Stening
-email: jed@stening.uk
+email: contact@jedstening.uk
 description: The digital portfolio of Jed Stening, a graphic designer and artist from the UK.
-address: "http://jedstening.blieque.co.uk"
+address: "https://jedstening.blieque.co.uk"
 baseurl: ""
 
 # build settings
-exclude: ["type/README.md"]
+exclude: ["Gemfile", "Gemfile.lock", "README.md", "LICENSE.md", "type/README.md"]
 markdown: kramdown
 sass:
     style: compressed
@@ -18,3 +18,4 @@ compress_html:
 # non-standard options include
 # - artist
 # - email
+# - address

@@ -1,44 +1,94 @@
-section
+// project preview containers
+section > a
+    float: left
+    margin: 0 $unit * 2 $unit * 2 0
+    width: calc(25% - #{$unit * 2})
+    position: relative
+    overflow: hidden
+    color: #fff
+    border: none
 
-    &>a
-        float: left
-        margin: 0 $unit * 2 $unit * 2 0
-        width: calc(25% - #{$unit * 2})
-        position: relative
-        overflow: hidden
-        color: #fff
+    // preview images
+    img
+        display: block
+        width: 100%
 
-        img
-            display: block
-            width: 100%
+    // all the text effect <div>s
+    div
+        @include prefix(transition, all ease-in-out .4s, webkit moz)
 
-        div
-            position: absolute
-            top: 0
-            right: 0
-            bottom: 0
-            left: 0
-            @include prefix(transition, all ease-in-out .2s, webkit moz)
+    // colour <div>
+    & > div
+        // 3.6 should really be 4, but there are imperfections in digital
+        // typography
+        padding: $unit * 3.6 $unit * 4
+        position: absolute
+        top: 0
+        right: 0
+        bottom: 0
+        left: 0
 
+        // scale <div>
+        & > div
+            position: relative
+            height: 100%
+            @include prefix(box-sizing, border-box, webkit moz)
+            @include prefix(transform, scale(.90, .90), webkit ms)
+
+            // wipe/reveal <div>
             div
-                padding: 0 $unit * 2
-                position: absolute
-                bottom: 100%
                 overflow: hidden
-                @include prefix(box-sizing, border-box, webkit moz)
-                @include prefix(transform, scale(.90, .90), webkit ms)
+                position: absolute
+                top: 0
+                bottom: 100%
 
-        h3
-            margin: $unit * 6 0 $unit
+    // lovely little preview headings/names
+    h2
+        margin: 0 0 $unit * 1.6
 
-        p
-            margin: 0 0 $unit * 6
+    // not an <hr> because left-aligning an <hr> is rocket science
+    span
+        display: block
+        height: $unit * .4
+        width: 0
+        background: #fff
+        @include prefix(transition, all cubic-bezier(.17,.84,.44,1) .6s .2s, webkit moz)
 
-        &:hover
+    // short project description
+    p
+        margin: $unit * 2.4 0 $unit * 4
+        font-size: 11pt
+        line-height: 1.4
 
-            &>div
-                background: $colour-accent-tint
+    // preview image hover styles
+    &:hover
 
+        span
+            width: 40%
+
+        // fade in colour overlay
+        & > div
+            background: $colour-accent-tint
+
+            // scale text up a bit
+            & > div
+                @include prefix(transform, scale(1, 1), webkit ms)
+
+                // perform fancy reveal of text
                 div
                     bottom: 0
-                    @include prefix(transform, scale(1, 1), webkit ms)
+
+@media (max-width: 1120px)
+
+    section > a
+        width: calc(33.33% - #{$unit * 2})
+
+@media (max-width: 750px)
+
+    section > a
+        width: calc(50% - #{$unit * 2})
+
+@media (max-width: 380px)
+
+    section > a
+        width: calc(100% - #{$unit * 2})
