@@ -78,17 +78,30 @@ section > a
                 div
                     bottom: 0
 
+#css-to-js
+    display: none
+    z-index: 4
+
 @media (max-width: 1120px)
 
     section > a
         width: calc(33.33% - #{$unit * 2})
+
+    #css-to-js
+        z-index: 3
 
 @media (max-width: 750px)
 
     section > a
         width: calc(50% - #{$unit * 2})
 
+    #css-to-js
+        z-index: 2
+
 @media (max-width: 380px)
 
     section > a
         width: calc(100% - #{$unit * 2})
+
+    #css-to-js
+        z-index: 1

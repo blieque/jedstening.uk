@@ -11,6 +11,7 @@ exclude: ["Gemfile", "Gemfile.lock", "README.md", "LICENSE.md", "type/README.md"
 markdown: kramdown
 destination: /srv/hosts/dev.omni/www/uk.jedstening
 sass:
+    sass_dir: styles
     style: compressed
 
 compress_html:
