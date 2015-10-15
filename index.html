@@ -8,7 +8,7 @@ layout: main
 
 {% if site.data.projects %}
 <section>
-{% for project in site.data.projects %}
+    {% for project in site.data.projects %}
 
     {% assign project_id = project.id %}
     {% if 10 > project.id %}
@@ -43,6 +43,28 @@ layout: main
         </div>
     </a>
 
-{% endfor %}
+    {% endfor %}
+
+    <div class="gallery">
+        <section>
+            <img alt="" class="stretch" src="{{ site.address }}{{ site.baseurl }}/images/ratio.svg">
+            <img alt="Image of project" src="{{ site.address }}{{ site.baseurl }}/images/full/01.01.png">
+            <img alt="Image of project" src="{{ site.address }}{{ site.baseurl }}/images/full/01.02.png">
+            <img alt="Image of project" src="{{ site.address }}{{ site.baseurl }}/images/full/01.03.png">
+            <div class="cover l"></div>
+            <div class="cover r"></div>
+            <div class="content">
+                <nav>
+                    <a id="prev" href="">Previous Project</a>
+                    <a id="next" href="">Next Project</a>
+                </nav>
+                <h2>Project Title</h2>
+                <p>Description</p>
+                <p>Even more description; like I need some copy, copy, some copy is what I need.</p>
+            </div>
+            <span></span>
+        </section>
+    </div>
 </section>
+<span id="css-to-js"></span>
 {% endif %}
