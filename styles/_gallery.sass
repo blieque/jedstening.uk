@@ -1,9 +1,9 @@
-.gallery
+#gallery
     margin: 0 0 $unit * 2
     clear: both
     position: relative
 
-    section
+    & > div
         position: relative
 
         &:after
@@ -11,34 +11,71 @@
             display: block
             clear: both
 
-    img
-        width: calc(75% - #{$unit * 2})
+        img
+            width: calc(75% - #{$unit * 2})
 
-        &:not(.stretch)
+            &:not(.stretch)
 
-            &:nth-of-type(2)
-                right: 100%
+                &:nth-of-type(2)
+                    right: 100%
 
-            &:nth-of-type(3)
-                left: 0
+                &:nth-of-type(3)
+                    left: 0
 
-            &:nth-of-type(4)
-                left: calc(75% - #{$unit * 2})
+                &:nth-of-type(4)
+                    left: calc(75% - #{$unit * 2})
 
-.stretch
+                &:nth-of-type(5)
+                    left: calc(150% - #{$unit * 4})
+
+#stretch
     float: left
 
-.gallery img:not(.stretch), .content, .cover
+#stretch ~ img, #content, .cover
     position: absolute
     top: 0
 
-.content
+#content
     padding: $unit * 4
     right: $unit * 2
     width: 25%
     height: 100%
     background: $colour-white
     @include prefix(box-sizing, border-box, webkit moz)
+
+    nav
+        width: calc(100% + #{$unit * 2})
+
+        a
+            display: inline-block
+            margin: 0 $unit * 2 $unit * 2 0
+            width: calc(25% - #{$unit * 2})
+            position: relative
+
+            &:before, &:after
+                content: ''
+                display: block
+
+            &:before
+                position: absolute
+                top: 0
+                right: 0
+                bottom: 0
+                left: 0
+                @include prefix(transition, all ease-in-out .2s, webkit moz)
+
+            &:after
+                clear: both
+
+            &:hover:before, &.current:before
+                background: $colour-accent-tint
+
+            &.current:before
+                @include prefix(box-shadow, inset 0 0 0 $unit $colour-accent, webkit)
+
+            img
+                float: left
+                width: 100%
 
     h2
         font-size: 150%

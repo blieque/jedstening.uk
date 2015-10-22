@@ -5,6 +5,7 @@
 elCssToJs = null
 elGallery = null
 elPreviews = null
+this.jsondata = null
 
 # kinda global variables
 columns = 4
@@ -19,5 +20,16 @@ getColumns = ->
         columns = columnsInt
 
 $ ->
-    $(window).resize(getColumns)
     elCssToJs = $('#css-to-js')
+    getColumns
+    $(window).resize(getColumns)
+
+    $.ajax
+        url: 'data.json'
+        dataType: 'json'
+        error: (jqXHR, textStatus, errorThrown) ->
+            console.log 'i gaat un errr: ' + textStatus
+
+        success: (data, textStatus, jqXHR) ->
+            console.log 'parsing'
+            window.jsondata = data

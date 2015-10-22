@@ -45,25 +45,38 @@ layout: main
 
     {% endfor %}
 
-    <div class="gallery">
-        <section>
-            <img alt="" class="stretch" src="{{ site.address }}{{ site.baseurl }}/images/ratio.svg">
-            <img alt="Image of project" src="{{ site.address }}{{ site.baseurl }}/images/full/01.01.png">
-            <img alt="Image of project" src="{{ site.address }}{{ site.baseurl }}/images/full/01.02.png">
-            <img alt="Image of project" src="{{ site.address }}{{ site.baseurl }}/images/full/01.03.png">
+    <div id="gallery">
+        <div>
+            <img alt="" id="stretch" src="{{ site.address }}{{ site.baseurl }}/images/ratio.svg">
+            {% for image in (1..site.data.projects[0].galleryCount) %}
+                {% capture image_pad %}{{ image }}{% endcapture %}
+                {% if 10 > image %}
+                    {% capture image_pad %}0{{ image }}{% endcapture %}
+                {% endif %}
+                <img alt="Image of project" src="{{ site.address }}{{ site.baseurl }}/images/full/01.{{ image_pad }}.png">
+            {% endfor %}
             <div class="cover l"></div>
             <div class="cover r"></div>
-            <div class="content">
+            <div id="content">
                 <nav>
-                    <a id="prev" href="">Previous Project</a>
-                    <a id="next" href="">Next Project</a>
+                    <!--<a id="proj-prev" href="">Previous Project</a>-->
+                    {% for image in (1..site.data.projects[0].galleryCount) %}
+                        {% capture image_pad %}{{ image }}{% endcapture %}
+                        {% if 10 > image %}
+                            {% capture image_pad %}0{{ image }}{% endcapture %}
+                        {% endif %}
+                        <a href="#"><img src="{{ site.address }}{{ site.baseurl }}/images/thumb/01.{{ image_pad }}.png" alt=""></a>
+                    {% endfor %}
+                    <!--<a id="proj-next" href="">Next Project</a>-->
                 </nav>
-                <h2>Project Title</h2>
-                <p>Description</p>
-                <p>Even more description; like I need some copy, copy, some copy is what I need.</p>
+                <article>
+                    <h2>Project Title</h2>
+                    <p>Description</p>
+                    <p>Even more description; like I need some copy, copy, some copy is what I need.</p>
+                </article>
             </div>
             <span></span>
-        </section>
+        </div>
     </div>
 </section>
 <span id="css-to-js"></span>
