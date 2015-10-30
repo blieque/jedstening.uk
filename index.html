@@ -46,8 +46,8 @@ layout: main
     {% endfor %}
 
     <div id="gallery">
-        <div>
-            <img alt="" id="stretch" src="{{ site.address }}{{ site.baseurl }}/images/ratio.svg">
+        <img alt="" id="stretch" src="{{ site.address }}{{ site.baseurl }}/images/ratio.svg">
+        <div id="conveyor">
             {% for image in (1..site.data.projects[0].galleryCount) %}
                 {% capture image_pad %}{{ image }}{% endcapture %}
                 {% if 10 > image %}
@@ -55,29 +55,44 @@ layout: main
                 {% endif %}
                 <img alt="Image of project" src="{{ site.address }}{{ site.baseurl }}/images/full/01.{{ image_pad }}.png">
             {% endfor %}
-            <div class="cover l"></div>
-            <div class="cover r"></div>
-            <div id="content">
-                <nav>
-                    <!--<a id="proj-prev" href="">Previous Project</a>-->
-                    {% for image in (1..site.data.projects[0].galleryCount) %}
-                        {% capture image_pad %}{{ image }}{% endcapture %}
-                        {% if 10 > image %}
-                            {% capture image_pad %}0{{ image }}{% endcapture %}
-                        {% endif %}
-                        <a href="#"><img src="{{ site.address }}{{ site.baseurl }}/images/thumb/01.{{ image_pad }}.png" alt=""></a>
-                    {% endfor %}
-                    <!--<a id="proj-next" href="">Next Project</a>-->
-                </nav>
-                <article>
-                    <h2>Project Title</h2>
-                    <p>Description</p>
-                    <p>Even more description; like I need some copy, copy, some copy is what I need.</p>
-                </article>
-            </div>
-            <span></span>
         </div>
+        <div class="cover l"></div>
+        <div class="cover r"></div>
+        <div id="content">
+            <nav>
+                <!--<a id="proj-prev" href="">Previous Project</a>-->
+                {% for image in (1..site.data.projects[0].galleryCount) %}
+                    {% capture image_pad %}{{ image }}{% endcapture %}
+                    {% if 10 > image %}
+                        {% capture image_pad %}0{{ image }}{% endcapture %}
+                    {% endif %}
+                    <a href="#"><img src="{{ site.address }}{{ site.baseurl }}/images/thumb/01.{{ image_pad }}.png" alt=""></a>
+                {% endfor %}
+                <!--<a id="proj-next" href="">Next Project</a>-->
+            </nav>
+            <article>
+                <h2>Project Title</h2>
+                <p>Description</p>
+                <p>Even more description; like I need some copy, copy, some copy is what I need.</p>
+            </article>
+        </div>
+        <span></span>
     </div>
+
+    {% comment %}
+    <div id="contact">
+        <h1>Contact Jed</h1>
+        <form>
+            <div class="l">
+                <input type="text" name="name" placeholder="Full name">
+                <input type="text" name="name" placeholder="Contact email address">
+            </div>
+            <div class="l">
+                <textarea name="message"></textarea>
+            </div>
+        </form>
+    </div>
+    {% endcomment %}
 </section>
 <span id="css-to-js"></span>
 {% endif %}

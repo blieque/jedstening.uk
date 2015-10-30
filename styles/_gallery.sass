@@ -2,36 +2,35 @@
     margin: 0 0 $unit * 2
     clear: both
     position: relative
+    //@include prefix(transition, all ease .4s, webkit moz)
 
-    & > div
-        position: relative
+    &:after
+        content: ''
+        display: block
+        clear: both
 
-        &:after
-            content: ''
-            display: block
-            clear: both
+    &.transition .cover
+        background: $colour-shade-light
+        @include prefix(transition, all ease .2s, webkit moz)
 
-        img
-            width: calc(75% - #{$unit * 2})
+    img
+        width: calc(75% - #{$unit * 2})
 
-            &:not(.stretch)
+        &:not(.stretch)
 
-                &:nth-of-type(2)
-                    right: 100%
+            &:nth-of-type(1)
+                left: 0
 
-                &:nth-of-type(3)
-                    left: 0
+            &:nth-of-type(2)
+                left: calc(75% - #{$unit * 2})
 
-                &:nth-of-type(4)
-                    left: calc(75% - #{$unit * 2})
-
-                &:nth-of-type(5)
-                    left: calc(150% - #{$unit * 4})
+            &:nth-of-type(3)
+                left: calc(150% - #{$unit * 4})
 
 #stretch
     float: left
 
-#stretch ~ img, #content, .cover
+#stretch + div img, #content, .cover
     position: absolute
     top: 0
 
@@ -62,7 +61,7 @@
                 right: 0
                 bottom: 0
                 left: 0
-                @include prefix(transition, all ease-in-out .2s, webkit moz)
+                @include prefix(transition, all ease .2s, webkit moz)
 
             &:after
                 clear: both
@@ -84,6 +83,7 @@
     width: 100%
     height: 100%
     background: $colour-white-tint
+    @include prefix(transition, all ease .8s, webkit moz)
 
     &.l
         right: 100%
