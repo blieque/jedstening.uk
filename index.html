@@ -47,27 +47,13 @@ layout: main
 
     <div id="gallery">
         <img alt="" id="stretch" src="{{ site.address }}{{ site.baseurl }}/images/ratio.svg">
-        <div id="conveyor">
-            {% for image in (1..site.data.projects[0].galleryCount) %}
-                {% capture image_pad %}{{ image }}{% endcapture %}
-                {% if 10 > image %}
-                    {% capture image_pad %}0{{ image }}{% endcapture %}
-                {% endif %}
-                <img alt="Image of project" src="{{ site.address }}{{ site.baseurl }}/images/full/01.{{ image_pad }}.png">
-            {% endfor %}
-        </div>
+        <div id="conveyor">{% comment %} This contains the full size images. {% endcomment %}</div>
         <div class="cover l"></div>
         <div class="cover r"></div>
         <div id="content">
             <nav>
                 <!--<a id="proj-prev" href="">Previous Project</a>-->
-                {% for image in (1..site.data.projects[0].galleryCount) %}
-                    {% capture image_pad %}{{ image }}{% endcapture %}
-                    {% if 10 > image %}
-                        {% capture image_pad %}0{{ image }}{% endcapture %}
-                    {% endif %}
-                    <a href="#"><img src="{{ site.address }}{{ site.baseurl }}/images/thumb/01.{{ image_pad }}.png" alt=""></a>
-                {% endfor %}
+                {% comment %} This contains the thumbnail images and anchors. {% endcomment %}
                 <!--<a id="proj-next" href="">Next Project</a>-->
             </nav>
             <article>
@@ -94,5 +80,9 @@ layout: main
     </div>
     {% endcomment %}
 </section>
-<span id="css-to-js"></span>
+<div id="hide">
+    <span class="css-to-js"></span>
+    <img src="" alt="Full size project image">
+    <a href=""><img src="" alt="Link to full size image"></a>
+</div>
 {% endif %}

@@ -1,0 +1,50 @@
+@media (max-width: 1120px)
+
+    section > a
+        width: calc(33.33% - #{$unit * 2})
+
+    #content
+        width: 33.33%
+
+    #gallery img
+        width: calc(66.66% - #{$unit * 2})
+
+        &.leftx2
+            left: calc(-133.33% + #{$unit * 4})
+        &.left
+            left: calc(-66.66% + #{$unit * 2})
+        &.right
+            left: calc(66.66% - #{$unit * 2})
+        &.rightx2
+            left: calc(133.33% - #{$unit * 4})
+
+    #css-to-js
+        z-index: 3
+
+@media (max-width: 750px)
+
+    section > a
+        width: calc(50% - #{$unit * 2})
+
+    #gallery img
+        width: 100%
+
+        &.leftx2
+            left: -200%
+        &.left
+            left: -100%
+        &.right
+            left: 100%
+        &.rightx2
+            left: 200%
+
+    #css-to-js
+        z-index: 2
+
+@media (max-width: 380px)
+
+    section > a
+        width: calc(100% - #{$unit * 2})
+
+    #css-to-js
+        z-index: 1

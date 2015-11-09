@@ -2,7 +2,6 @@
     margin: 0 0 $unit * 2
     clear: both
     position: relative
-    //@include prefix(transition, all ease .4s, webkit moz)
 
     &:after
         content: ''
@@ -16,16 +15,16 @@
     img
         width: calc(75% - #{$unit * 2})
 
-        &:not(.stretch)
-
-            &:nth-of-type(1)
-                left: 0
-
-            &:nth-of-type(2)
-                left: calc(75% - #{$unit * 2})
-
-            &:nth-of-type(3)
-                left: calc(150% - #{$unit * 4})
+        &.leftx2
+            left: calc(-150% + #{$unit * 4})
+        &.left
+            left: calc(-75% + #{$unit * 2})
+        &.current
+            left: 0
+        &.right
+            left: calc(75% - #{$unit * 2})
+        &.rightx2
+            left: calc(150% - #{$unit * 4})
 
 #stretch
     float: left
@@ -40,6 +39,7 @@
     width: 25%
     height: 100%
     background: $colour-white
+    overflow: hidden
     @include prefix(box-sizing, border-box, webkit moz)
 
     nav
