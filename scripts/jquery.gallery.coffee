@@ -25,11 +25,16 @@ getColumns = ->
        columnsInt < 5 and
        columnsInt != columns
         columns = columnsInt
+        do positionGalleryElement
 
+updateGalleryHeight = ->
+
+    galleryHeight = do elGallery.height
+    console.log galleryHeight
 
 previewClick = (event) ->
 
-    event.preventDefault()
+    do event.preventDefault
 
     elPreview = $ this
     projectIsOpen = elPreview.hasClass 'open'
@@ -44,16 +49,12 @@ previewClick = (event) ->
         # change appearance of and locate clicked preview
         elPreview.addClass 'open'
         projectIndex = elPreviews.index elPreview
+        positionGalleryElement projectIndex
 
-        # move the gallery into place in the dom
-        lastOnRow = projectIndex + columns
-        lastOnRow -= lastOnRow % columns
-        lastOnRow = Math.min lastOnRow, elPreviews.length
-        elGallery.insertAfter elPreviews[lastOnRow - 1]
-
+        # change images and text of the project
         changeGalleryProject projectIndex
 
-    toggleGallery()
+    do toggleGallery
 
     if !projectIsOpen
 
@@ -64,6 +65,18 @@ previewClick = (event) ->
             .animate
                 scrollTop: elGallery.offset().top - gapAboveGallery
             , 400
+
+positionGalleryElement = (projectIndex) ->
+
+    if projectIndex == undefined or projectIndex == null
+        projectIndex = elPreviews.index $ '.open'
+
+    # move the gallery into place in the dom
+    if projectIndex >= 0
+        lastOnRow = projectIndex + columns
+        lastOnRow -= lastOnRow % columns
+        lastOnRow = Math.min lastOnRow, elPreviews.length
+        elGallery.insertAfter elPreviews[lastOnRow - 1]
 
 changeGalleryProject = (projectIndex) ->
 
@@ -80,7 +93,6 @@ changeGalleryProject = (projectIndex) ->
 
     # remove/add image and thumbnail elements as needed
     requiredChange = projectData.galleryCount - elConveyor.children().length
-    requiredChange = Math.abs requiredChange
     removeOrAdd = null
 
     if requiredChange > 0
@@ -95,16 +107,11 @@ changeGalleryProject = (projectIndex) ->
             elConveyor.children().last().remove()
             elNav.children().last().remove()
 
-    for i in [0...requiredChange]
-        removeOrAdd()
+    for i in [0...Math.abs requiredChange]
+        do removeOrAdd
 
-    # change element attributes and contents for the new project
+    # change element attributes (href, src) for the new project
     for i in [0...projectData.galleryCount]
-
-        # update image element classes
-        classArray = ['current', 'right', 'rightx2']
-        classIndex = Math.min(2, i)
-        elConveyor.children().eq(i).addClass classArray[classIndex]
 
         # function to return interpolated urls with scheme, domain, etc.
         imageUrl = (parts) ->
@@ -121,18 +128,41 @@ changeGalleryProject = (projectIndex) ->
                 "#{parts[1]}.#{parts[2]}.png"
 
         # actually change the src and href attributes
-        elConveyor.children().eq(i).attr 'src',
-            imageUrl ['full', projectData.id, i + 1]
-        elNav.children().eq(i).attr 'href', imageUrl ['', projectData.id, i + 1]
+        elConveyor.children().eq(i)
+            .attr 'src', imageUrl ['full', projectData.id, i + 1]
+        elNav.children().eq(i)
+            .attr 'href', imageUrl ['', projectData.id, i + 1]
             .children().attr 'src', imageUrl ['thumb', projectData.id, i + 1]
+
+    # change element content for the new project
+    elGallery.find 'h2'
+        .text projectData.title
+
+    # remove/add image and thumbnail elements as needed
+    requiredChange = projectData.galleryCount - elConveyor.children().length
+    removeOrAdd = null
+
+    if requiredChange > 0
+        removeOrAdd = ->
+            elArticle.append document.createElement 'p'
+    else if requiredChange < 0
+        removeOrAdd = ->
+            elArticle.children('p').last().remove()
+
+    for i in [0...Math.abs requiredChange]
+        do removeOrAdd
+
+    elArticle = elGallery.find 'article'
+    for i in [0...projectData.galleryCount]
+        elArticle.children('p').eq(i).text projectData.descriptionFull[i]
 
 toggleGallery = (time) ->
 
-    if time == null
-        time = 400
-
     elPreviewOpen = $ '.open'
     galleryIsOpening = elPreviewOpen.length > 0
+
+    if time == undefined or time == null
+        time = 400
 
     if galleryIsOpening
         # open the gallery
@@ -140,9 +170,8 @@ toggleGallery = (time) ->
             elGallery.removeClass 'transition'
     else
         # update gallery height variable
-        setTimeout ->
-            galleryHeight = elGallery.height()
-        , 20
+        do updateGalleryHeight
+
         # close the gallery
         elGallery.addClass 'transition'
         setTimeout ->
@@ -177,5 +206,7 @@ $ ->
     elPreviews.click previewClick
 
     # initialisation things
-    getColumns()
+    do updateGalleryHeight
+    do getColumns
     toggleGallery 0
+    do $('canvas').remove

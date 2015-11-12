@@ -46,8 +46,10 @@ layout: main
     {% endfor %}
 
     <div id="gallery">
-        <img alt="" id="stretch" src="{{ site.address }}{{ site.baseurl }}/images/ratio.svg">
-        <div id="conveyor">{% comment %} This contains the full size images. {% endcomment %}</div>
+        <div id="conveyor">
+            {% comment %} This contains the full size images. {% endcomment %}
+            <canvas width="16" height="9"></canvas>
+        </div>
         <div class="cover l"></div>
         <div class="cover r"></div>
         <div id="content">
@@ -62,7 +64,6 @@ layout: main
                 <p>Even more description; like I need some copy, copy, some copy is what I need.</p>
             </article>
         </div>
-        <span></span>
     </div>
 
     {% comment %}
@@ -81,7 +82,7 @@ layout: main
     {% endcomment %}
 </section>
 <div id="hide">
-    <span class="css-to-js"></span>
+    <span id="css-to-js"></span>
     <img src="" alt="Full size project image">
     <a href=""><img src="" alt="Link to full size image"></a>
 </div>

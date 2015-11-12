@@ -25,16 +25,13 @@ header
 
 // main container
 body > section
-    padding: $unit * 2 0 0 $unit * 2
+    padding: $unit 0 $unit $unit * 2
+    margin: 0 auto
+    // cap at ~1480 px wide -- at this size all of the preview images are
+    // displayed at their actual, ideal size
+    width: 100%
+    max-width: calc(1440px + #{$unit * 10})
     @include prefix(box-sizing, border-box, webkit moz)
-
-    // main container and gallery inner container
-    &
-        margin: 0 auto
-        // cap at ~1480 px wide -- at this size all of the preview images are
-        // displayed at their actual, ideal size
-        width: 100%
-        max-width: calc(1440px + #{$unit * 10})
 
 // make headings edgy
 h1, h2, h3, h4, h5, h6

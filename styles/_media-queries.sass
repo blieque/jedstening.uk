@@ -6,17 +6,8 @@
     #content
         width: 33.33%
 
-    #gallery img
+    #gallery img, gallery
         width: calc(66.66% - #{$unit * 2})
-
-        &.leftx2
-            left: calc(-133.33% + #{$unit * 4})
-        &.left
-            left: calc(-66.66% + #{$unit * 2})
-        &.right
-            left: calc(66.66% - #{$unit * 2})
-        &.rightx2
-            left: calc(133.33% - #{$unit * 4})
 
     #css-to-js
         z-index: 3
@@ -26,17 +17,8 @@
     section > a
         width: calc(50% - #{$unit * 2})
 
-    #gallery img
+    #gallery img, gallery
         width: 100%
-
-        &.leftx2
-            left: -200%
-        &.left
-            left: -100%
-        &.right
-            left: 100%
-        &.rightx2
-            left: 200%
 
     #css-to-js
         z-index: 2
