@@ -8,12 +8,12 @@ $colour-white: rgb(255, 255, 255)
 $colour-white-tint: rgba(255, 255, 255, .8)
 $colour-shade-light: #f0f0f0
 $colour-off-black: #121216
+$colour-shadow: rgba(0, 0, 0, .2)
 
 $preview-width: 360px
 
 // browser prefixing mixin
-// @author Hugo Giraudel
-@mixin prefix($property, $value, $prefixes: ())
+@mixin prefix($prefixes, $property, $values...)
     @each $prefix in $prefixes
-        #{'-' + $prefix + '-' + $property}: $value
-    #{$property}: $value
+        #{'-' + $prefix + '-' + $property}: $values
+    #{$property}: $values

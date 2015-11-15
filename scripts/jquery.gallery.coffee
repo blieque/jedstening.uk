@@ -30,7 +30,6 @@ getColumns = ->
 updateGalleryHeight = ->
 
     galleryHeight = do elGallery.height
-    console.log galleryHeight
 
 previewClick = (event) ->
 
@@ -42,6 +41,13 @@ previewClick = (event) ->
     # remove the open class from the last clicked preview
     $ '.open'
         .removeClass 'open'
+        .addClass 'delay-transition'
+
+    # becuase jquery's .delay() is bork
+    setTimeout ->
+        $ '.delay-transition'
+            .removeClass 'delay-transition'
+    , 600
 
     # user has clicked the preview for a project that is not already open
     if !projectIsOpen
@@ -209,4 +215,3 @@ $ ->
     do updateGalleryHeight
     do getColumns
     toggleGallery 0
-    do $('canvas').remove
