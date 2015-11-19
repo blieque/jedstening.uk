@@ -8,13 +8,15 @@ lastOpenedProject = null
 galleryHeight = 0
 
 # elements
+elWindow = null
 elCssToJs = null
 elGallery = null
 elConveyor = null
 elNav = null
 elPreviews = null
 elHide = null
-elWindow = null
+elTemplateImage = null
+elTemplateThumbnail = null
 
 getColumns = ->
 
@@ -38,7 +40,7 @@ previewClick = (event) ->
     elPreview = $ this
     projectIsOpen = elPreview.hasClass 'open'
 
-    # remove the open class from the last clicked preview
+    # remove the 'open' class from the last clicked preview
     $ '.open'
         .removeClass 'open'
         .addClass 'delay-transition'
@@ -102,12 +104,9 @@ changeGalleryProject = (projectIndex) ->
     removeOrAdd = null
 
     if requiredChange > 0
-        removeOrAdd = do ->
-            elImgTemplate = elHide.children 'img'
-            elThumbnailTemplate = elHide.children 'a'
-            ->
-                elImgTemplate.clone().appendTo elConveyor
-                elThumbnailTemplate.clone().appendTo elNav
+        removeOrAdd = ->
+            elTemplateImage.clone().appendTo elConveyor
+            elTemplateThumbnail.clone(true).appendTo elNav
     else if requiredChange < 0
         removeOrAdd = ->
             elConveyor.children().last().remove()
@@ -162,6 +161,9 @@ changeGalleryProject = (projectIndex) ->
     for i in [0...projectData.galleryCount]
         elArticle.children('p').eq(i).text projectData.descriptionFull[i]
 
+    # scroll back to the first image
+    do elNav.children().first().click
+
 toggleGallery = (time) ->
 
     elPreviewOpen = $ '.open'
@@ -184,6 +186,29 @@ toggleGallery = (time) ->
             elGallery.slideUp time
         , 200
 
+thumbnailClick = (event) ->
+
+    do event.preventDefault
+
+    elThumbnail = $ this
+    imageIsCurrent = elThumbnail.hasClass 'current'
+
+    # user has clicked the thumbnail for an image that is not the current one
+    if !imageIsCurrent
+
+        elCurrentThumbnail = $ '.current'
+
+        if !elThumbnail.is elCurrentThumbnail
+
+            # place the 'current' class on the right thumbnail
+            elCurrentThumbnail.removeClass 'current'
+            elThumbnail.addClass 'current'
+
+        imageIndex = elNav.children().index elThumbnail
+        rightValue = "#{imageIndex * 100}%"
+
+        elConveyor.css 'right', rightValue
+
 $ ->
 
     # kick off async stuff right away
@@ -199,17 +224,20 @@ $ ->
                   'most likely not work fully.\n\nError: ' + textStatus
 
     # find elements in the dom
+    elWindow = $ window
     elCssToJs = $ '#css-to-js'
     elGallery = $ '#gallery'
-    elConveyor = $ '#conveyor'
+    elConveyor = $ '#conveyor div'
     elNav = $ '#content > nav'
     elPreviews = $ 'section > a'
     elHide = $ '#hide'
-    elWindow = $ window
+    elTemplateImage = elHide.children 'img'
+    elTemplateThumbnail = elHide.children 'a'
 
     # events and bindings
     elWindow.resize getColumns
     elPreviews.click previewClick
+    elTemplateThumbnail.click thumbnailClick
 
     # initialisation things
     do updateGalleryHeight

@@ -12,16 +12,25 @@
         #content
             overflow: hidden
 
-#gallery img, canvas
-    vertical-align: bottom
+#conveyor, canvas
     width: calc(75% - #{$unit * 2})
 
-#conveyor, #content, .cover
+#conveyor, #conveyor div, #content, .cover
     position: absolute
     top: 0
 
+#conveyor img, canvas
+    vertical-align: bottom
+
 #conveyor
+
     white-space: nowrap
+
+    div
+        @include prefix(webkit moz, transition, all ease-out .2s)
+
+    div, img
+        width: 100%
 
 #content
     padding: $unit * 4
