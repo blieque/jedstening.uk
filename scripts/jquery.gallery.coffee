@@ -4,13 +4,16 @@
 # pseudo-globals
 columns = 4
 siteData = []
-lastOpenedProject = null
 galleryHeight = 0
+lastOpenedProject = null
+projectData = {}
 
 # elements
 elWindow = null
 elCssToJs = null
 elGallery = null
+elGalleryPrev = null
+elGalleryNext = null
 elConveyor = null
 elNav = null
 elPreviews = null
@@ -28,6 +31,7 @@ getColumns = ->
        columnsInt != columns
         columns = columnsInt
         do positionGalleryElement
+        do scrollToGallery
 
 updateGalleryHeight = ->
 
@@ -65,14 +69,17 @@ previewClick = (event) ->
     do toggleGallery
 
     if !projectIsOpen
+        do scrollToGallery
 
-        # scroll to the gallery
-        gapAboveGallery = (elWindow.height() - galleryHeight) / 2
-        gapAboveGallery = Math.max 0, gapAboveGallery
-        $ document.body
-            .animate
-                scrollTop: elGallery.offset().top - gapAboveGallery
-            , 400
+scrollToGallery = ->
+
+    # scroll to the gallery
+    gapAboveGallery = (elWindow.height() - galleryHeight) / 2
+    gapAboveGallery = Math.max 0, gapAboveGallery
+    $ 'body,html'
+        .animate
+            scrollTop: elGallery.offset().top - gapAboveGallery
+        , 400
 
 positionGalleryElement = (projectIndex) ->
 
@@ -91,7 +98,6 @@ changeGalleryProject = (projectIndex) ->
     projectId = projectIndex + 1
 
     # find the selected project's data object
-    projectData = null
     if siteData.projects[projectIndex].id == projectId
         projectData = siteData.projects[projectIndex]
     else
@@ -161,8 +167,11 @@ changeGalleryProject = (projectIndex) ->
     for i in [0...projectData.galleryCount]
         elArticle.children('p').eq(i).text projectData.descriptionFull[i]
 
-    # scroll back to the first image
-    do elNav.children().first().click
+    # scroll back to the first image unless we're reopening the same project
+    if projectId != lastOpenedProject
+        slideToImage 0
+
+    lastOpenedProject = projectId
 
 toggleGallery = (time) ->
 
@@ -192,22 +201,48 @@ thumbnailClick = (event) ->
 
     elThumbnail = $ this
     imageIsCurrent = elThumbnail.hasClass 'current'
+    imageIndex = elNav.children().index elThumbnail
 
     # user has clicked the thumbnail for an image that is not the current one
     if !imageIsCurrent
+        slideToImage imageIndex
 
-        elCurrentThumbnail = $ '.current'
+slideToImage = (imageIndex) ->
 
-        if !elThumbnail.is elCurrentThumbnail
+    imageIndex = Math.max imageIndex, 0
+    imageIndex = Math.min imageIndex, projectData.galleryCount - 1
 
-            # place the 'current' class on the right thumbnail
-            elCurrentThumbnail.removeClass 'current'
-            elThumbnail.addClass 'current'
+    # place the 'current' class on the right thumbnail
+    $ '.current'
+        .removeClass 'current'
+    elNav
+        .children()
+        .eq imageIndex
+        .addClass 'current'
 
-        imageIndex = elNav.children().index elThumbnail
-        rightValue = "#{imageIndex * 100}%"
+    if imageIndex == 0
+        elGalleryPrev.addClass 'unavailable'
+    else
+        elGalleryPrev.removeClass 'unavailable'
 
-        elConveyor.css 'right', rightValue
+    if imageIndex + 1 == projectData.galleryCount
+        elGalleryNext.addClass 'unavailable'
+    else
+        elGalleryNext.removeClass 'unavailable'
+
+    rightValue = "#{imageIndex * 100}%"
+    elConveyor.css 'right', rightValue
+
+slideToImageRelative = (changeInIndex) ->
+
+    elThumbnail = $ '.current'
+    currentIndex = elNav.children().index elThumbnail
+
+    newIndex = currentIndex + changeInIndex
+    newIndex = Math.max newIndex, 0
+    newIndex = Math.min newIndex, projectData.galleryCount - 1
+
+    slideToImage newIndex
 
 $ ->
 
@@ -227,7 +262,9 @@ $ ->
     elWindow = $ window
     elCssToJs = $ '#css-to-js'
     elGallery = $ '#gallery'
-    elConveyor = $ '#conveyor div'
+    elGalleryPrev = $ '.img-nav.l'
+    elGalleryNext = $ '.img-nav.r'
+    elConveyor = $ '#conveyor > :last-child'
     elNav = $ '#content > nav'
     elPreviews = $ 'section > a'
     elHide = $ '#hide'
@@ -238,6 +275,10 @@ $ ->
     elWindow.resize getColumns
     elPreviews.click previewClick
     elTemplateThumbnail.click thumbnailClick
+    elGalleryPrev.click ->
+        slideToImageRelative -1
+    elGalleryNext.click ->
+        slideToImageRelative 1
 
     # initialisation things
     do updateGalleryHeight
