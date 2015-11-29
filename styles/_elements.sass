@@ -11,3 +11,14 @@ article a
     // darker underline when hovered
     &:hover
         border-color: $colour-accent
+
+img
+    color: transparent
+
+// hide user-agent outlines/borders on various element states
+a:active, a:focus, input:active, input:focus
+    outline: none
+
+// ffs firefox
+::-moz-focus-inner
+    border: none

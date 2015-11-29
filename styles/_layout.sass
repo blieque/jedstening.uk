@@ -2,29 +2,72 @@
 body
     margin: 0
     font-family: $font-source-sans
-    background: $colour-shade-light
+    background: $colour-off-white
     color: $colour-off-black
     overflow-x: hidden
+    font-size: 10.5pt
 
 // white horizontal bar at the top
 header
-    padding: $unit * 4
+    padding: $unit * 4 0
     font-weight: 700
     text-align: center
-    background: #fff
+    background: $colour-white
+    position: relative
+
+    & > div
+        padding: 0 $unit * 2 !important
+        position: relative
+
+    // behance and email, and profession
+    div div, span
+        letter-spacing: $unit * .4
+        text-transform: uppercase
+
+    // behance and email
+    div div
+        position: absolute
+        top: calc(50% - #{$unit * 4.5})
+        width: calc(50% - #{$unit * 18})
+
+        &:first-child
+            left: 0
+
+        &:last-child
+            right: 0
+
+        a
+            display: inline-block
+            position: relative
+            padding: 4pt 0
+            // pixels shan't be mentioned!
+            text-indent: 2pt
+            line-height: 150%
+
+            &:after
+                content: ''
+                display: block
+                margin: 0 auto
+                width: 0
+                height: $unit * .4
+                background: $colour-accent
+                @include prefix(webkit moz, transition, all ease .2s)
+
+            &:hover:after
+                width: calc(100% - 4pt)
 
     // big title heading
     h1
         margin: 0
         font-size: 40pt
 
-        // link back to home page
-        a
-            border: none
-            text-decoration: none
+    // behance and email, and link back to home page
+    a
+        border: none
+        text-decoration: none
 
-// main container
-body > section
+// main container, and part of the header
+section, header > div
     padding: $unit 0 $unit $unit * 2
     margin: 0 auto
     // cap at ~1480 px wide -- at this size all of the preview images are
