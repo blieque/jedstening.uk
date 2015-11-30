@@ -5,6 +5,24 @@
         <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
         <title>{% if page.title.size > 0 %}{{ page.title }} &ndash; {% endif %}{{ site.title }}</title>
         <link rel="stylesheet" href="{{ site.address }}{{ site.baseurl }}/styles/main.css">
+        {% assign sizes = "192,180,96,48,32,16" %}
+        {% assign sizes_array = sizes | split: "," %}
+        {% for size in sizes_array %}
+
+            {% if size != "180" %}
+                {% assign rel = "icon" %}
+            {% else %}
+                {% assign rel = "apple-touch-icon-precomposed" %}
+            {% endif %}
+
+            {% if size.size > 2 %}
+                {% capture size_padded %}{{ size }}{% endcapture %}
+            {% else %}
+                {% capture size_padded %}0{{ size }}{% endcapture %}
+            {% endif %}
+
+            <link rel="{{ rel }}" type="image/png" href="{{ site.address }}{{ site.baseurl }}/images/icon/{{ size_padded }}.png" sizes="{{ size }}x{{ size }}">
+        {% endfor %}
     </head>
     <body>
         <header>
