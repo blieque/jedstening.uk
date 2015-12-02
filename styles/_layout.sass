@@ -15,6 +15,7 @@ header
     background: $colour-white
     position: relative
 
+    // keeps header content in a sesible place on large displays
     & > div
         padding: 0 $unit * 2 !important
         position: relative
@@ -27,13 +28,13 @@ header
     // behance and email
     div div
         position: absolute
-        top: calc(50% - #{$unit * 4.5})
-        width: calc(50% - #{$unit * 18})
+        top: calc(50% - #{$unit * 3.5})
+        width: calc(50% - #{$unit * 19})
 
-        &:first-child
+        &:first-of-type
             left: 0
 
-        &:last-child
+        &:last-of-type
             right: 0
 
         a
@@ -55,6 +56,11 @@ header
 
             &:hover:after
                 width: calc(100% - 4pt)
+
+    // slogan-y thing under title
+    span
+        display: block
+        margin-top: $unit * -2
 
     // big title heading
     h1

@@ -12,10 +12,10 @@
         #content
             overflow: hidden
 
-#conveyor, canvas
-    width: calc(75% - #{$unit * 2})
+canvas
+    width: 100%
 
-#conveyor, #conveyor div, #content, .cover
+#conveyor div, #content, .cover
     height: 100%
     position: absolute
     top: 0
@@ -24,6 +24,8 @@
     vertical-align: bottom
 
 #conveyor
+    position: relative
+    width: calc(75% - #{$unit * 2})
     white-space: nowrap
 
     &:hover .img-nav div
@@ -98,8 +100,9 @@
         a
             display: inline-block
             margin: 0 $unit * 2 $unit * 2 0
-            width: calc(25% - #{$unit * 2})
             position: relative
+            width: calc(25% - #{$unit * 2})
+            line-height: 0
 
             &:before, &:after
                 content: ''
