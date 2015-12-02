@@ -1,0 +1,118 @@
+// project preview containers
+section > a
+    display: inline-block
+    margin: $unit $unit * 2 $unit 0
+    width: calc(25% - #{$unit * 2})
+    position: relative
+    color: $colour-white
+    border: none
+    vertical-align: bottom
+
+    // preview image hover styles
+    &:hover, &.open
+
+        span
+            width: 40%
+
+        // fade in colour overlay
+        & > div
+            background: $colour-accent-tint
+
+            // scale text up a bit
+            & > div
+                @include prefix(webkit ms, transform, scale(1, 1))
+
+                // perform fancy reveal of text
+                div
+                    bottom: 0
+
+    &.open
+        //@include prefix(webkit moz, box-shadow, 0 0 0 $unit $colour-accent)
+
+        // the text and little line that shows on an open project's preview
+        & > div > div > div
+            opacity: 0
+            @include prefix(webkit moz, transition, all ease .4s .4s)
+
+        // fade in the 'x' button with delay
+        &:before, &:after
+            opacity: 1
+            @include prefix(webkit moz, transition, all ease .4s .4s)
+
+        // animate lines into 'x' button
+        &:before
+            @include prefix(webkit ms, transform, rotate(-45deg))
+        &:after
+            @include prefix(webkit ms, transform, rotate(45deg))
+
+    // the lines that form the 'x' over an open project's preview
+    &:before, &:after
+        content: ''
+        position: absolute
+        top: calc(50% - #{$unit * .2})
+        left: 30%
+        opacity: 0
+        z-index: 1
+        @include prefix(webkit moz, transition, all ease .4s)
+
+    // all neat little lines
+    span, &:before, &:after
+        display: block
+        width: 40%
+        height: $unit * .4
+        background: $colour-white
+
+    // not an <hr> because left-aligning an <hr> is rocket science
+    span
+        width: 0
+        @include prefix(webkit moz, transition, all cubic-bezier(.17,.84,.44,1) .6s .2s)
+
+    // preview images
+    img
+        display: block
+        width: 100%
+
+    // all the text effect <div>s
+    div
+        //@include prefix(webkit moz, transition, all ease .4s)
+        @include prefix(webkit moz, transition, all ease .4s)
+
+    &.delay-transition div
+
+        div > div
+            @include prefix(webkit moz, transition, opacity ease .4s .6s)
+
+    // colour <div>
+    & > div
+        // 3.6 should really be 4, but there are imperfections in digital
+        // typography
+        padding: $unit * 3.6 $unit * 4
+        position: absolute
+        top: 0
+        right: 0
+        bottom: 0
+        left: 0
+
+        // scale <div>
+        & > div
+            position: relative
+            height: 100%
+            @include prefix(webkit moz, box-sizing, border-box)
+            @include prefix(webkit ms, transform, scale(.90, .90))
+
+            // wipe/reveal <div>
+            div
+                overflow: hidden
+                position: absolute
+                top: 0
+                bottom: 100%
+
+    // lovely little preview headings/names
+    h2
+        margin: 0 0 $unit * 1.6
+
+    // short project description
+    p
+        margin: $unit * 2.4 0 $unit * 4
+        font-size: 11pt
+        line-height: 1.4

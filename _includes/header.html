@@ -5,8 +5,37 @@
         <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
         <title>{% if page.title.size > 0 %}{{ page.title }} &ndash; {% endif %}{{ site.title }}</title>
         <link rel="stylesheet" href="{{ site.address }}{{ site.baseurl }}/styles/main.css">
+        {% assign sizes = "192,180,96,48,32,16" %}
+        {% assign sizes_array = sizes | split: "," %}
+        {% for size in sizes_array %}
+
+            {% if size != "180" %}
+                {% assign rel = "icon" %}
+            {% else %}
+                {% assign rel = "apple-touch-icon-precomposed" %}
+            {% endif %}
+
+            {% if size.size > 2 %}
+                {% capture size_padded %}{{ size }}{% endcapture %}
+            {% else %}
+                {% capture size_padded %}0{{ size }}{% endcapture %}
+            {% endif %}
+
+            <link rel="{{ rel }}" type="image/png" href="{{ site.address }}{{ site.baseurl }}/images/icon/{{ size_padded }}.png" sizes="{{ size }}x{{ size }}">
+        {% endfor %}
     </head>
     <body>
         <header>
-            <h1><a href="{{ site.address }}{{ site.baseurl }}/">{{ site.artist }}</a></h1>
+            <div>
+                <h1><a href="{{ site.address }}{{ site.baseurl }}/">{{ site.title }}</a></h1><br>
+                <span>{{ site.profession }}</span>
+                <div><a href="https://www.behance.net/jedstening">B&#275;hance</a></div>
+                <div><a href="mailto:{{ site.email }}">Email me</a></div>
+            </div>
         </header>
+        <div id="email">
+            <div>
+                <input readonly value="{{ site.email }}">
+                <input type="submit" value="Copy to clipboard">
+            </div>
+        </div>

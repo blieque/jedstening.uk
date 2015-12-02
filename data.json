@@ -1,0 +1,11 @@
+---
+---
+
+{
+    "title": "{{ site.title }}",
+    "artist": "{{ site.artist }}",
+    "email": "{{ site.email }}",
+    "description": "{{ site.description }}",
+    "hrefPrefix": "{{ site.address }}{{ site.baseurl }}",
+    "projects": {% include projects.json %}
+}

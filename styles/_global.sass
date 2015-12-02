@@ -1,0 +1,21 @@
+// global variables
+
+$unit: 2mm
+
+$colour-accent: rgb(18, 18, 22)
+$colour-accent-tint: rgba(18, 18, 22, .8)
+$colour-accent-disabled: rgba(18, 18, 22, .4)
+$colour-white: rgb(255, 255, 255)
+$colour-white-tint: rgba(255, 255, 255, .8)
+$colour-white-tint-slight: rgba(255, 255, 255, .6)
+$colour-off-white: rgb(240, 240, 240)
+$colour-off-black: rgb(18, 18, 22)
+$colour-shadow: rgba(0, 0, 0, .2)
+
+$preview-width: 360px
+
+// browser prefixing mixin
+@mixin prefix($prefixes, $property, $values...)
+    @each $prefix in $prefixes
+        #{'-' + $prefix + '-' + $property}: $values
+    #{$property}: $values

@@ -1,0 +1,58 @@
+@media (max-width: 1120px)
+
+    section > a
+        width: calc(33.33% - #{$unit * 2})
+
+    #content
+        width: 33.33%
+
+    #conveyor
+        width: calc(66.66% - #{$unit * 2})
+
+    #css-to-js
+        z-index: 3
+
+@media (max-width: 750px)
+
+    section > a
+        width: calc(50% - #{$unit * 2})
+
+    header div div
+        display: inline-block
+        margin-top: $unit * 2
+        position: static
+        width: calc(50% + #{$unit})
+
+        &:first-of-type
+            margin-left: $unit * -1
+
+        &:last-of-type
+            margin-right: $unit * -1
+
+    #content
+        position: static
+        width: calc(100% - #{$unit * 2})
+        @include prefix(webkit moz, box-shadow, none)
+
+        nav a
+            width: calc(16.66% - #{$unit * 2})
+
+    #conveyor
+        width: calc(100% - #{$unit * 2})
+
+        .img-nav
+            width: 35%
+
+    #css-to-js
+        z-index: 2
+
+@media (max-width: 380px)
+
+    section > a
+        width: calc(100% - #{$unit * 2})
+
+    #content nav a
+        width: calc(25% - #{$unit * 2})
+
+    #css-to-js
+        z-index: 1

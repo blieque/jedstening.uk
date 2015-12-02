@@ -1,5 +1,4 @@
 ---
-title:  Home
 layout: main
 ---
 
@@ -8,7 +7,7 @@ layout: main
 
 {% if site.data.projects %}
 <section>
-{% for project in site.data.projects %}
+    {% for project in site.data.projects %}
 
     {% assign project_id = project.id %}
     {% if 10 > project.id %}
@@ -43,6 +42,51 @@ layout: main
         </div>
     </a>
 
-{% endfor %}
+    {% endfor %}
+
+    <div id="gallery">
+        <div id="conveyor">
+            <canvas width="16" height="9"></canvas>
+            <div class="img-nav l"><div></div></div>
+            <div class="img-nav r"><div></div></div>
+            <div>
+                {% comment %} This contains the full size images. {% endcomment %}
+            </div>
+        </div>
+        <div class="cover l"></div>
+        <div class="cover r"></div>
+        <div id="content">
+            <nav>
+                <!--<a id="proj-prev" href="">Previous Project</a>-->
+                {% comment %} This contains the thumbnail images and anchors. {% endcomment %}
+                <!--<a id="proj-next" href="">Next Project</a>-->
+            </nav>
+            <article>
+                <h2>Project Title</h2>
+                <p>Description</p>
+                <p>Even more description; like I need some copy, copy, some copy is what I need.</p>
+            </article>
+        </div>
+    </div>
+
+    {% comment %}
+    <div id="contact">
+        <h1>Contact Jed</h1>
+        <form>
+            <div class="l">
+                <input type="text" name="name" placeholder="Full name">
+                <input type="text" name="name" placeholder="Contact email address">
+            </div>
+            <div class="l">
+                <textarea name="message"></textarea>
+            </div>
+        </form>
+    </div>
+    {% endcomment %}
 </section>
+<div id="hide">
+    <span id="css-to-js"></span>
+    <img src="" alt="Full size project image">
+    <a href=""><img src="" alt="Link to full size image"></a>
+</div>
 {% endif %}

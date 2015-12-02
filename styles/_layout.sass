@@ -1,0 +1,96 @@
+// the ancestor
+body
+    margin: 0
+    font-family: $font-source-sans
+    background: $colour-off-white
+    color: $colour-off-black
+    overflow-x: hidden
+    font-size: 10.5pt
+
+// white horizontal bar at the top
+header
+    padding: $unit * 4 0
+    font-weight: 700
+    text-align: center
+    background: $colour-white
+    position: relative
+
+    // keeps header content in a sesible place on large displays
+    & > div
+        padding: 0 $unit * 2 !important
+        position: relative
+
+    // behance and email, and profession
+    div div, span
+        letter-spacing: $unit * .4
+        text-transform: uppercase
+
+    // behance and email
+    div div
+        position: absolute
+        top: calc(50% - #{$unit * 3.5})
+        width: calc(50% - #{$unit * 19})
+
+        &:first-of-type
+            left: 0
+
+        &:last-of-type
+            right: 0
+
+        a
+            display: inline-block
+            position: relative
+            padding: 4pt 0
+            // pixels shan't be mentioned!
+            text-indent: 2pt
+            line-height: 150%
+
+            &:after
+                content: ''
+                display: block
+                margin: 0 auto
+                width: 0
+                height: $unit * .4
+                background: $colour-accent
+                @include prefix(webkit moz, transition, all ease .2s)
+
+            &:hover:after
+                width: calc(100% - 4pt)
+
+    // slogan-y thing under title
+    span
+        display: block
+        margin-top: $unit * -2
+
+    // big title heading
+    h1
+        margin: 0
+        font-size: 40pt
+
+    // behance and email, and link back to home page
+    a
+        border: none
+        text-decoration: none
+
+// main container, and part of the header
+section, header > div
+    padding: $unit 0 $unit $unit * 2
+    margin: 0 auto
+    // cap at ~1480 px wide -- at this size all of the preview images are
+    // displayed at their actual, ideal size
+    width: 100%
+    max-width: calc(1440px + #{$unit * 10})
+    @include prefix(webkit moz, box-sizing, border-box)
+
+// make headings edgy
+h1, h2, h3, h4, h5, h6
+    font-family: $font-argent
+
+// container of template elements and other script stuff
+#hide
+    display: none
+
+// facility for javascript to acquire viewport/media query information
+#css-to-js
+    position: fixed
+    z-index: 4

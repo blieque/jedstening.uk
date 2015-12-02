@@ -1,0 +1,145 @@
+#gallery
+    margin: $unit 0 $unit 0
+    clear: both
+    position: relative
+
+    &.transition
+
+        .cover
+            background: $colour-off-white
+            @include prefix(webkit moz, transition, all ease .2s)
+
+        #content
+            overflow: hidden
+
+canvas
+    width: 100%
+
+#conveyor div, #content, .cover
+    height: 100%
+    position: absolute
+    top: 0
+
+#conveyor img, canvas
+    vertical-align: bottom
+
+#conveyor
+    position: relative
+    width: calc(75% - #{$unit * 2})
+    white-space: nowrap
+
+    &:hover .img-nav div
+        opacity: 1
+
+    div
+        @include prefix(webkit moz, transition, all ease-out .2s)
+
+    div, img
+        width: 100%
+
+    .img-nav
+        width: 20%
+        cursor: pointer
+        z-index: 1
+
+        &.unavailable
+            cursor: default
+
+            div:before
+                border-color: $colour-accent-disabled
+
+        &:not(.unavailable):hover div
+            margin-top: $unit * -6
+            height: $unit * 12
+
+        &.l div:before
+            left: $unit * 2.25
+            @include prefix(webkit ms, transform, rotate(225deg))
+
+        &.r div:before
+            left: $unit * 1.2
+
+        &.r, &.r div
+            right: 0
+
+        & div
+            margin-top: $unit * -4
+            top: 50%
+            width: $unit * 6
+            height: $unit * 8
+            background: $colour-white
+            opacity: 0
+            @include prefix(webkit moz, transition, all ease .4s)
+
+            &:before
+                content: ''
+                display: block
+                position: absolute
+                top: 50%
+                // shhh
+                margin-top: $unit * -1.25
+                width: $unit * 2
+                height: $unit * 2
+                border: solid $colour-accent
+                border-width: $unit * .5 $unit * .5 0 0
+                @include prefix(webkit moz, transition, all ease .4s)
+                @include prefix(webkit ms, transform, rotate(45deg))
+
+#content
+    padding: $unit * 4
+    right: $unit * 2
+    width: 25%
+    background: $colour-white
+    overflow-x: hidden
+    @include prefix(webkit moz, box-sizing, border-box)
+    @include prefix(webkit moz, box-shadow, -1mm 0 0mm 0mm $colour-shadow)
+
+    nav
+        width: calc(100% + #{$unit * 2})
+
+        a
+            display: inline-block
+            margin: 0 $unit * 2 $unit * 2 0
+            position: relative
+            width: calc(25% - #{$unit * 2})
+            line-height: 0
+
+            &:before, &:after
+                content: ''
+                display: block
+
+            &:before
+                position: absolute
+                top: 0
+                right: 0
+                bottom: 0
+                left: 0
+                @include prefix(webkit moz, transition, all ease .2s)
+
+            &:after
+                clear: both
+
+            &:hover:before, &.current:before
+                background: $colour-accent-tint
+
+            img
+                vertical-align: bottom
+                width: 100%
+
+    h2
+        margin-top: $unit * 2
+        font-size: 150%
+
+    p:last-child
+        margin-bottom: 0
+
+.cover
+    width: 200%
+    background: $colour-white-tint
+    @include prefix(webkit moz, transition, all ease .8s)
+
+    &.l
+        right: 100%
+
+    &.r
+        left: calc(100% - #{$unit * 2})
