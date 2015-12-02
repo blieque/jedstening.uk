@@ -8,7 +8,6 @@ address: "http://stening.blieque.co.uk"
 baseurl: ""
 
 # build settings
-destination: /srv/hosts/uk.stening/www
 exclude: ["Gemfile", "Gemfile.lock", "README.md", "LICENSE.md", "type/README.md"]
 markdown: kramdown
 sass:
