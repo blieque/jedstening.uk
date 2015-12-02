@@ -2,13 +2,13 @@
 title: Jed Stening
 artist: Jed Stening
 profession: Art & design
-email: contact@jedstening.uk
+email: jed@stening.uk
 description: The digital portfolio of Jed Stening, a graphic designer and artist from the UK.
-address: "https://jedstening.blieque.co.uk"
+address: "https://stening.uk"
 baseurl: ""
 
 # build settings
-destination: /srv/hosts/dev.omni/www/uk.jedstening
+destination: /srv/hosts/uk.stening/www
 exclude: ["Gemfile", "Gemfile.lock", "README.md", "LICENSE.md", "type/README.md"]
 markdown: kramdown
 sass:

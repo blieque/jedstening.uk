@@ -169,7 +169,7 @@ changeGalleryProject = (projectIndex) ->
             else
                 # return normal interpolated string
                 "#{siteData.hrefPrefix}/images/#{parts[0]}/" +
-                "#{parts[1]}.#{parts[2]}.png"
+                "#{parts[1]}.#{parts[2]}.jpg"
 
         # actually change the src and href attributes
         el.conveyor.children().eq(i)
