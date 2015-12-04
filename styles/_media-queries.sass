@@ -1,4 +1,6 @@
-@media (max-width: 1120px)
+@media (max-width: $media-query-unit * 3 - $media-query-constant)
+
+    // #{} this comment helps syntax highlighting not go bork
 
     section > a
         width: calc(33.33% - #{$unit * 2})
@@ -12,7 +14,9 @@
     #css-to-js
         z-index: 3
 
-@media (max-width: 750px)
+@media (max-width: $media-query-unit * 2 - $media-query-constant)
+
+    // #{} this comment helps syntax highlighting not go bork
 
     section > a
         width: calc(50% - #{$unit * 2})
@@ -46,13 +50,53 @@
     #css-to-js
         z-index: 2
 
-@media (max-width: 380px)
+@media (max-width: $media-query-unit - $media-query-constant)
+
+    // #{} this comment helps syntax highlighting not go bork
+
+    header
+        padding: $unit * 2.5 0 $unit * 2
+
+        h1
+            font-size: 28pt
+
+    section
+        padding: $unit * .5 0 $unit * .5 $unit
 
     section > a
-        width: calc(100% - #{$unit * 2})
+        margin: $unit * .5 $unit $unit * .5 0
+        width: calc(50% - #{$unit})
+
+        & > div
+            padding: $unit * 2
+
+        h2
+            font-size: 12pt
+
+    #gallery
+        margin: $unit * .5 0
+
+    #conveyor, #content
+        width: calc(100% - #{$unit})
+
+    #content
+        padding: $unit * 3
 
     #content nav a
         width: calc(25% - #{$unit * 2})
 
-    #css-to-js
-        z-index: 1
+    .cover.r
+        left: calc(100% - #{$unit})
+
+    .img-nav
+
+        & > div
+            margin-top: $unit * -4
+            width: $unit * 4
+            height: $unit * 4
+
+        &.r > div:before
+            left: $unit * 1.25
+
+        &.l > div
+            left: $unit * .2
