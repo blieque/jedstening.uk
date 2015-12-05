@@ -11,23 +11,7 @@ galleryHeight = 0
 galleryIsOpen = true # kinda not true
 emailOverlayIsOpen = false
 commandSupportChecked = false
-
-getColumns = ->
-
-    columnsString = el.cssToJs.css 'z-index'
-    columnsInt = parseInt columnsString
-    if !isNaN(columnsInt) and # if there's a change, and it's valid
-       columnsInt > 0 and
-       columnsInt < 5 and
-       columnsInt != columns
-        columns = columnsInt
-        do positionGalleryElement
-        if galleryIsOpen
-            do scrollToGallery
-
-updateGalleryHeight = ->
-
-    galleryHeight = do el.gallery.height
+uaIsMobile = false
 
 emailClick = (event) ->
 
@@ -45,30 +29,6 @@ emailContentsClick = (event) ->
         copySuccessful = document.execCommand 'copy'
         if copySuccessful
             el.emailOverlay.addClass 'success'
-
-toggleEmailOverlay = ->
-
-    if !commandSupportChecked and
-       !document.queryCommandSupported 'copy'
-        commandSupportChecked = true
-        do el.emailButton.remove
-        el.emailOverlay.addClass 'legacy'
-
-    if emailOverlayIsOpen
-        el.emailOverlay.css 'opacity', 0
-        setTimeout ->
-            el.emailOverlay.css 'display', 'none'
-            el.emailOverlay.removeClass 'success'
-        , 400
-    else
-        el.emailOverlay.css 'display', 'block'
-        # don't ask
-        setTimeout ->
-            el.emailOverlay.css 'opacity', 1
-        , 0
-        do el.emailBox.select
-
-    emailOverlayIsOpen = !emailOverlayIsOpen
 
 previewClick = (event) ->
 
@@ -103,6 +63,42 @@ previewClick = (event) ->
 
     if !projectIsOpen
         do scrollToGallery
+
+thumbnailClick = (event) ->
+
+    do event.preventDefault
+
+    elThumbnail = $ this
+    imageIsCurrent = elThumbnail.hasClass 'current'
+    imageIndex = el.nav.children().index elThumbnail
+
+    # user has clicked the thumbnail for an image that is not the current one
+    if !imageIsCurrent
+        slideToImage imageIndex
+
+toggleEmailOverlay = ->
+
+    if !commandSupportChecked and
+       !document.queryCommandSupported 'copy'
+        commandSupportChecked = true
+        do el.emailButton.remove
+        el.emailOverlay.addClass 'legacy'
+
+    if emailOverlayIsOpen
+        el.emailOverlay.css 'opacity', 0
+        setTimeout ->
+            el.emailOverlay.css 'display', 'none'
+            el.emailOverlay.removeClass 'success'
+        , 400
+    else
+        el.emailOverlay.css 'display', 'block'
+        # don't ask
+        setTimeout ->
+            el.emailOverlay.css 'opacity', 1
+        , 0
+        do el.emailBox.select
+
+    emailOverlayIsOpen = !emailOverlayIsOpen
 
 scrollToGallery = ->
 
@@ -230,18 +226,6 @@ toggleGallery = (time) ->
 
     galleryIsOpen = !galleryIsOpen
 
-thumbnailClick = (event) ->
-
-    do event.preventDefault
-
-    elThumbnail = $ this
-    imageIsCurrent = elThumbnail.hasClass 'current'
-    imageIndex = el.nav.children().index elThumbnail
-
-    # user has clicked the thumbnail for an image that is not the current one
-    if !imageIsCurrent
-        slideToImage imageIndex
-
 slideToImage = (imageIndex) ->
 
     imageIndex = Math.max imageIndex, 0
@@ -278,6 +262,44 @@ slideToImageRelative = (changeInIndex) ->
     newIndex = Math.min newIndex, projectData.galleryCount - 1
 
     slideToImage newIndex
+
+getColumns = ->
+
+    columnsString = el.cssToJs.css 'z-index'
+    columnsInt = parseInt columnsString
+    if !isNaN(columnsInt) and # if there's a change, and it's valid
+       columnsInt > 0 and
+       columnsInt < 5 and
+       columnsInt != columns
+        columns = columnsInt
+        do positionGalleryElement
+        if galleryIsOpen
+            do scrollToGallery
+
+updateGalleryHeight = ->
+
+    galleryHeight = do el.gallery.height
+
+detectMobile = ->
+
+    # People on mobile should be able to handle a mailto link as their email app
+    # is quite likely configured and will open. The email copying overlay
+    # business is only really important for desktop/laptop browsing, where most
+    # people just have a broken Outlook installation handling mailto links.
+
+    if navigator.userAgent.match /Android/i or
+       navigator.userAgent.match /webOS/i or
+       navigator.userAgent.match /iPhone/i or
+       navigator.userAgent.match /iPad/i or
+       navigator.userAgent.match /iPod/i or
+       navigator.userAgent.match /BlackBerry/i or
+       navigator.userAgent.match /Windows Phone/i
+        # remove email overlay
+        el.emailAnchor.off 'click'
+        # prevent borking with the gallery
+        $ 'section'
+            .css 'overflow', 'hidden'
+        uaIsMobile = true
 
 $ ->
 
@@ -333,3 +355,4 @@ $ ->
     toggleGallery 0
     do updateGalleryHeight
     do getColumns
+    do detectMobile
