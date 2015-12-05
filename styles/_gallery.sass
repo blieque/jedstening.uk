@@ -45,35 +45,61 @@ canvas
         &.unavailable
             cursor: default
 
-            div:before
-                border-color: $colour-accent-disabled
+            div:after
+                color: $colour-accent-disabled
+
+        &.proj-nav div
+            width: $unit * 15
+
+            &:before
+                border-color: $colour-white
+                @include prefix(webkit moz, transition, all ease .4s)
+
+            &:after
+                opacity: 1
+                @include prefix(webkit moz, transition, all ease .4s .2s)
 
         &:not(.unavailable):hover div
             margin-top: $unit * -6
             height: $unit * 12
 
-        &.l div:before
-            left: $unit * 2.25
-            @include prefix(webkit ms, transform, rotate(225deg))
+        &.l div
 
-        &.r div:before
-            left: $unit * 1.2
+            &:before
+                left: $unit * 2.25
+                @include prefix(webkit ms, transform, rotate(225deg))
+
+            &:after
+                content: 'Previous project'
+                left: 0
+
+        &.r div
+
+            &:before
+                right: $unit * 2.5
+                @include prefix(webkit ms, transform, rotate(45deg))
+
+            &:after
+                content: 'Next project'
+                right: 0
 
         &.r, &.r div
             right: 0
 
-        & div
+        div
             margin-top: $unit * -4
             top: 50%
             width: $unit * 6
             height: $unit * 8
             background: $colour-white
+            overflow: hidden
             opacity: 0
-            @include prefix(webkit moz, transition, all ease .4s)
+
+            &:before, &:after
+                display: block
 
             &:before
                 content: ''
-                display: block
                 position: absolute
                 top: 50%
                 // shhh
@@ -82,8 +108,20 @@ canvas
                 height: $unit * 2
                 border: solid $colour-accent
                 border-width: $unit * .5 $unit * .5 0 0
+                @include prefix(webkit moz, transition, all ease .4s .2s)
+
+            &:after
+                margin-top: $unit * -2.5
+                width: $unit * 15
+                position: absolute
+                top: 50%
+                text-align: center
+                font-weight: bold
+                text-transform: uppercase
+                letter-spacing: $unit * .4
+                white-space: normal
+                opacity: 0
                 @include prefix(webkit moz, transition, all ease .4s)
-                @include prefix(webkit ms, transform, rotate(45deg))
 
 #content
     padding: $unit * 4

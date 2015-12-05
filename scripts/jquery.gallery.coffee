@@ -6,6 +6,7 @@ el = {} # element object
 projectData = {}
 siteData = []
 columns = 4
+currentProject = null
 lastOpenedProject = null
 galleryHeight = 0
 galleryIsOpen = true # kinda not true
@@ -76,6 +77,17 @@ thumbnailClick = (event) ->
     if !imageIsCurrent
         slideToImage imageIndex
 
+imgNavsClick = ->
+
+    elPreview = $ this
+    difference = null
+    if elPreview.is '.l'
+        difference = -1
+    else
+        difference = 1
+
+    slideToImageRelative difference
+
 toggleEmailOverlay = ->
 
     if !commandSupportChecked and
@@ -125,6 +137,7 @@ positionGalleryElement = (projectIndex) ->
 changeGalleryProject = (projectIndex) ->
 
     projectId = projectIndex + 1
+    currentProject = projectId
 
     # find the selected project's data object
     if siteData.projects[projectIndex].id == projectId
@@ -228,8 +241,17 @@ toggleGallery = (time) ->
 
 slideToImage = (imageIndex) ->
 
+    galleryMaxIndex = projectData.galleryCount - 1
+
+    if imageIndex < 0 or imageIndex > galleryMaxIndex
+        direction = if imageIndex < 0 then -1 else 1
+        el.previews.eq currentProject + direction - 1
+            .trigger 'click'
+        return
+
+    # sanitise things a little
     imageIndex = Math.max imageIndex, 0
-    imageIndex = Math.min imageIndex, projectData.galleryCount - 1
+    imageIndex = Math.min imageIndex, galleryMaxIndex
 
     # place the 'current' class on the right thumbnail
     $ '.current'
@@ -239,16 +261,26 @@ slideToImage = (imageIndex) ->
         .eq imageIndex
         .addClass 'current'
 
+    # remove old alternate styles
+    el.imgNavs
+        .removeClass 'proj-nav'
+        .removeClass 'unavailable'
+
+    # sliding to first image
     if imageIndex == 0
-        el.galleryPrev.addClass 'unavailable'
-    else
-        el.galleryPrev.removeClass 'unavailable'
+        el.imgPrev.addClass 'proj-nav'
+        # if also the first project
+        if currentProject == 1
+            el.imgPrev.addClass 'unavailable'
 
-    if imageIndex + 1 == projectData.galleryCount
-        el.galleryNext.addClass 'unavailable'
-    else
-        el.galleryNext.removeClass 'unavailable'
+    # sliding to last image
+    if imageIndex == galleryMaxIndex
+        el.imgNext.addClass 'proj-nav'
+        # if also the last project
+        if currentProject == siteData.projects.length
+            el.imgNext.addClass 'unavailable'
 
+    # slide the image conveyor into place
     rightValue = "#{imageIndex * 100}%"
     el.conveyor.css 'right', rightValue
 
@@ -256,10 +288,7 @@ slideToImageRelative = (changeInIndex) ->
 
     elThumbnail = $ '.current'
     currentIndex = el.nav.children().index elThumbnail
-
     newIndex = currentIndex + changeInIndex
-    newIndex = Math.max newIndex, 0
-    newIndex = Math.min newIndex, projectData.galleryCount - 1
 
     slideToImage newIndex
 
@@ -327,8 +356,9 @@ $ ->
     el.emailButton = $ '#email [type="submit"]'
 
     el.gallery = $ '#gallery'
-    el.galleryPrev = $ '.img-nav.l'
-    el.galleryNext = $ '.img-nav.r'
+    el.imgNavs = $ '.img-nav'
+    el.imgPrev = el.imgNavs.filter '.l'
+    el.imgNext = el.imgNavs.filter '.r'
 
     el.conveyor = $ '#conveyor > :last-child'
     el.nav = $ '#content > nav'
@@ -346,10 +376,7 @@ $ ->
 
     el.previews.click previewClick
     el.templateThumbnail.click thumbnailClick
-    el.galleryPrev.click ->
-        slideToImageRelative -1
-    el.galleryNext.click ->
-        slideToImageRelative 1
+    el.imgNavs.click imgNavsClick
 
     # initialisation things
     toggleGallery 0
