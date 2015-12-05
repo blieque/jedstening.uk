@@ -6,28 +6,13 @@ el = {} # element object
 projectData = {}
 siteData = []
 columns = 4
+currentProject = null
 lastOpenedProject = null
 galleryHeight = 0
 galleryIsOpen = true # kinda not true
 emailOverlayIsOpen = false
 commandSupportChecked = false
-
-getColumns = ->
-
-    columnsString = el.cssToJs.css 'z-index'
-    columnsInt = parseInt columnsString
-    if !isNaN(columnsInt) and # if there's a change, and it's valid
-       columnsInt > 0 and
-       columnsInt < 5 and
-       columnsInt != columns
-        columns = columnsInt
-        do positionGalleryElement
-        if galleryIsOpen
-            do scrollToGallery
-
-updateGalleryHeight = ->
-
-    galleryHeight = do el.gallery.height
+uaIsMobile = false
 
 emailClick = (event) ->
 
@@ -45,30 +30,6 @@ emailContentsClick = (event) ->
         copySuccessful = document.execCommand 'copy'
         if copySuccessful
             el.emailOverlay.addClass 'success'
-
-toggleEmailOverlay = ->
-
-    if !commandSupportChecked and
-       !document.queryCommandSupported 'copy'
-        commandSupportChecked = true
-        do el.emailButton.remove
-        el.emailOverlay.addClass 'legacy'
-
-    if emailOverlayIsOpen
-        el.emailOverlay.css 'opacity', 0
-        setTimeout ->
-            el.emailOverlay.css 'display', 'none'
-            el.emailOverlay.removeClass 'success'
-        , 400
-    else
-        el.emailOverlay.css 'display', 'block'
-        # don't ask
-        setTimeout ->
-            el.emailOverlay.css 'opacity', 1
-        , 0
-        do el.emailBox.select
-
-    emailOverlayIsOpen = !emailOverlayIsOpen
 
 previewClick = (event) ->
 
@@ -104,6 +65,53 @@ previewClick = (event) ->
     if !projectIsOpen
         do scrollToGallery
 
+thumbnailClick = (event) ->
+
+    do event.preventDefault
+
+    elThumbnail = $ this
+    imageIsCurrent = elThumbnail.hasClass 'current'
+    imageIndex = el.nav.children().index elThumbnail
+
+    # user has clicked the thumbnail for an image that is not the current one
+    if !imageIsCurrent
+        slideToImage imageIndex
+
+imgNavsClick = ->
+
+    elPreview = $ this
+    difference = null
+    if elPreview.is '.l'
+        difference = -1
+    else
+        difference = 1
+
+    slideToImageRelative difference
+
+toggleEmailOverlay = ->
+
+    if !commandSupportChecked and
+       !document.queryCommandSupported 'copy'
+        commandSupportChecked = true
+        do el.emailButton.remove
+        el.emailOverlay.addClass 'legacy'
+
+    if emailOverlayIsOpen
+        el.emailOverlay.css 'opacity', 0
+        setTimeout ->
+            el.emailOverlay.css 'display', 'none'
+            el.emailOverlay.removeClass 'success'
+        , 400
+    else
+        el.emailOverlay.css 'display', 'block'
+        # don't ask
+        setTimeout ->
+            el.emailOverlay.css 'opacity', 1
+        , 0
+        do el.emailBox.select
+
+    emailOverlayIsOpen = !emailOverlayIsOpen
+
 scrollToGallery = ->
 
     # scroll to the gallery
@@ -129,6 +137,7 @@ positionGalleryElement = (projectIndex) ->
 changeGalleryProject = (projectIndex) ->
 
     projectId = projectIndex + 1
+    currentProject = projectId
 
     # find the selected project's data object
     if siteData.projects[projectIndex].id == projectId
@@ -230,22 +239,19 @@ toggleGallery = (time) ->
 
     galleryIsOpen = !galleryIsOpen
 
-thumbnailClick = (event) ->
-
-    do event.preventDefault
-
-    elThumbnail = $ this
-    imageIsCurrent = elThumbnail.hasClass 'current'
-    imageIndex = el.nav.children().index elThumbnail
-
-    # user has clicked the thumbnail for an image that is not the current one
-    if !imageIsCurrent
-        slideToImage imageIndex
-
 slideToImage = (imageIndex) ->
 
+    galleryMaxIndex = projectData.galleryCount - 1
+
+    if imageIndex < 0 or imageIndex > galleryMaxIndex
+        direction = if imageIndex < 0 then -1 else 1
+        el.previews.eq currentProject + direction - 1
+            .trigger 'click'
+        return
+
+    # sanitise things a little
     imageIndex = Math.max imageIndex, 0
-    imageIndex = Math.min imageIndex, projectData.galleryCount - 1
+    imageIndex = Math.min imageIndex, galleryMaxIndex
 
     # place the 'current' class on the right thumbnail
     $ '.current'
@@ -255,16 +261,26 @@ slideToImage = (imageIndex) ->
         .eq imageIndex
         .addClass 'current'
 
+    # remove old alternate styles
+    el.imgNavs
+        .removeClass 'proj-nav'
+        .removeClass 'unavailable'
+
+    # sliding to first image
     if imageIndex == 0
-        el.galleryPrev.addClass 'unavailable'
-    else
-        el.galleryPrev.removeClass 'unavailable'
+        el.imgPrev.addClass 'proj-nav'
+        # if also the first project
+        if currentProject == 1
+            el.imgPrev.addClass 'unavailable'
 
-    if imageIndex + 1 == projectData.galleryCount
-        el.galleryNext.addClass 'unavailable'
-    else
-        el.galleryNext.removeClass 'unavailable'
+    # sliding to last image
+    if imageIndex == galleryMaxIndex
+        el.imgNext.addClass 'proj-nav'
+        # if also the last project
+        if currentProject == siteData.projects.length
+            el.imgNext.addClass 'unavailable'
 
+    # slide the image conveyor into place
     rightValue = "#{imageIndex * 100}%"
     el.conveyor.css 'right', rightValue
 
@@ -272,12 +288,47 @@ slideToImageRelative = (changeInIndex) ->
 
     elThumbnail = $ '.current'
     currentIndex = el.nav.children().index elThumbnail
-
     newIndex = currentIndex + changeInIndex
-    newIndex = Math.max newIndex, 0
-    newIndex = Math.min newIndex, projectData.galleryCount - 1
 
     slideToImage newIndex
+
+getColumns = ->
+
+    columnsString = el.cssToJs.css 'z-index'
+    columnsInt = parseInt columnsString
+    if !isNaN(columnsInt) and # if there's a change, and it's valid
+       columnsInt > 0 and
+       columnsInt < 5 and
+       columnsInt != columns
+        columns = columnsInt
+        do positionGalleryElement
+        if galleryIsOpen
+            do scrollToGallery
+
+updateGalleryHeight = ->
+
+    galleryHeight = do el.gallery.height
+
+detectMobile = ->
+
+    # People on mobile should be able to handle a mailto link as their email app
+    # is quite likely configured and will open. The email copying overlay
+    # business is only really important for desktop/laptop browsing, where most
+    # people just have a broken Outlook installation handling mailto links.
+
+    if navigator.userAgent.match /Android/i or
+       navigator.userAgent.match /webOS/i or
+       navigator.userAgent.match /iPhone/i or
+       navigator.userAgent.match /iPad/i or
+       navigator.userAgent.match /iPod/i or
+       navigator.userAgent.match /BlackBerry/i or
+       navigator.userAgent.match /Windows Phone/i
+        # remove email overlay
+        el.emailAnchor.off 'click'
+        # prevent borking with the gallery
+        $ 'section'
+            .css 'overflow', 'hidden'
+        uaIsMobile = true
 
 $ ->
 
@@ -305,8 +356,9 @@ $ ->
     el.emailButton = $ '#email [type="submit"]'
 
     el.gallery = $ '#gallery'
-    el.galleryPrev = $ '.img-nav.l'
-    el.galleryNext = $ '.img-nav.r'
+    el.imgNavs = $ '.img-nav'
+    el.imgPrev = el.imgNavs.filter '.l'
+    el.imgNext = el.imgNavs.filter '.r'
 
     el.conveyor = $ '#conveyor > :last-child'
     el.nav = $ '#content > nav'
@@ -324,12 +376,10 @@ $ ->
 
     el.previews.click previewClick
     el.templateThumbnail.click thumbnailClick
-    el.galleryPrev.click ->
-        slideToImageRelative -1
-    el.galleryNext.click ->
-        slideToImageRelative 1
+    el.imgNavs.click imgNavsClick
 
     # initialisation things
     toggleGallery 0
     do updateGalleryHeight
     do getColumns
+    do detectMobile
