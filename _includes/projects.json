@@ -1,1 +1,65 @@
-../_data/projects.json
+[
+    {
+        "id": 1,
+        "title": "The Kiwi Shop",
+        "descriptionShort": "Logo design; digital use; fabric printing",
+        "descriptionFull": [],
+        "galleryCount": 4
+    },
+    {
+        "id": 2,
+        "title": "Griffinwood",
+        "descriptionShort": "Logo, poster, and business card design; digital use",
+        "descriptionFull": [],
+        "galleryCount": 6
+    },
+    {
+        "id": 3,
+        "title": "TGI Fridays",
+        "descriptionShort": "Logo and poster design; digital use; campaign branding",
+        "descriptionFull": [],
+        "galleryCount": 2
+    },
+    {
+        "id": 4,
+        "title": "Future Film Festival",
+        "descriptionShort": "Poster design",
+        "descriptionFull": [],
+        "galleryCount": 3
+    },
+    {
+        "id": 5,
+        "title": "Corn on the Cob",
+        "descriptionShort": "Illustration",
+        "descriptionFull": [],
+        "galleryCount": 3
+    },
+    {
+        "id": 6,
+        "title": "Grace Network",
+        "descriptionShort": "Logo design; digital and print use",
+        "descriptionFull": [],
+        "galleryCount": 2
+    },
+    {
+        "id": 7,
+        "title": "Glebe Alive",
+        "descriptionShort": "Logo design; digital and print use",
+        "descriptionFull": [],
+        "galleryCount": 1
+    },
+    {
+        "id": 8,
+        "title": "Kick Off Stroud",
+        "descriptionShort": "Logo design; digital and print use",
+        "descriptionFull": [],
+        "galleryCount": 2
+    },
+    {
+        "id": 9,
+        "title": "Photograph Reproduction",
+        "descriptionShort": "Pen, pencil, watercolour paint",
+        "descriptionFull": [],
+        "galleryCount": 3
+    }
+]
