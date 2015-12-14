@@ -1,35 +1,4 @@
----
----
-
-# pseudo-globals
-el = {} # element object
-projectData = {}
-siteData = []
-columns = 4
-currentProject = null
-lastOpenedProject = null
-galleryHeight = 0
-galleryIsOpen = true # kinda not true
-emailOverlayIsOpen = false
-commandSupportChecked = false
-uaIsMobile = false
-
-emailClick = (event) ->
-
-    do event.preventDefault
-    do toggleEmailOverlay
-
-emailContentsClick = (event) ->
-
-    do event.preventDefault
-    do event.stopPropagation
-
-    do el.emailBox.select
-    elClickedInput = $ this
-    if elClickedInput.is el.emailButton
-        copySuccessful = document.execCommand 'copy'
-        if copySuccessful
-            el.emailOverlay.addClass 'success'
+# event handlers
 
 previewClick = (event) ->
 
@@ -43,7 +12,7 @@ previewClick = (event) ->
         .removeClass 'open'
         .addClass 'delay-transition'
 
-    # becuase jquery's .delay() is bork
+    # because jquery's .delay() is bork
     setTimeout ->
         $ '.delay-transition'
             .removeClass 'delay-transition'
@@ -73,11 +42,9 @@ thumbnailClick = (event) ->
     imageIsCurrent = elThumbnail.hasClass 'current'
     imageIndex = el.nav.children().index elThumbnail
 
-    # user has clicked the thumbnail for an image that is not the current one
-    if !imageIsCurrent
-        slideToImage imageIndex
+    slideToImage imageIndex
 
-imgNavsClick = ->
+imgNavClick = ->
 
     elPreview = $ this
     difference = null
@@ -88,29 +55,24 @@ imgNavsClick = ->
 
     slideToImageRelative difference
 
-toggleEmailOverlay = ->
+# procedures
 
-    if !commandSupportChecked and
-       !document.queryCommandSupported 'copy'
-        commandSupportChecked = true
-        do el.emailButton.remove
-        el.emailOverlay.addClass 'legacy'
+getColumns = ->
 
-    if emailOverlayIsOpen
-        el.emailOverlay.css 'opacity', 0
-        setTimeout ->
-            el.emailOverlay.css 'display', 'none'
-            el.emailOverlay.removeClass 'success'
-        , 400
-    else
-        el.emailOverlay.css 'display', 'block'
-        # don't ask
-        setTimeout ->
-            el.emailOverlay.css 'opacity', 1
-        , 0
-        do el.emailBox.select
+    columnsString = el.cssToJs.css 'z-index'
+    columnsInt = parseInt columnsString
+    if !isNaN(columnsInt) and # if there's a change, and it's valid
+       columnsInt > 0 and
+       columnsInt < 5 and
+       columnsInt != columns
+        columns = columnsInt
+        do positionGalleryElement
+        if galleryIsOpen
+            do scrollToGallery
 
-    emailOverlayIsOpen = !emailOverlayIsOpen
+updateGalleryHeight = ->
+
+    galleryHeight = do el.gallery.height
 
 scrollToGallery = ->
 
@@ -136,8 +98,8 @@ positionGalleryElement = (projectIndex) ->
 
 changeGalleryProject = (projectIndex) ->
 
+    currentProjectIndex = projectIndex
     projectId = projectIndex + 1
-    currentProject = projectId
 
     # find the selected project's data object
     if siteData.projects[projectIndex].id == projectId
@@ -243,11 +205,18 @@ slideToImage = (imageIndex) ->
 
     galleryMaxIndex = projectData.galleryCount - 1
 
-    if imageIndex < 0 or imageIndex > galleryMaxIndex
+    # if we need to instead move to another project
+    if imageIndex < 0 or
+       imageIndex > galleryMaxIndex
+
         direction = if imageIndex < 0 then -1 else 1
-        el.previews.eq currentProject + direction - 1
-            .trigger 'click'
-        return
+        targetProject = currentProjectIndex + direction
+        if targetProject >= 0 and
+           targetProject < siteData.projects.length
+            el.previews.eq targetProject
+                .trigger 'click'
+
+        return # great flow, bro
 
     # sanitise things a little
     imageIndex = Math.max imageIndex, 0
@@ -260,6 +229,7 @@ slideToImage = (imageIndex) ->
         .children()
         .eq imageIndex
         .addClass 'current'
+        .focus()
 
     # remove old alternate styles
     el.imgNavs
@@ -270,19 +240,22 @@ slideToImage = (imageIndex) ->
     if imageIndex == 0
         el.imgPrev.addClass 'proj-nav'
         # if also the first project
-        if currentProject == 1
+        if currentProjectIndex == 0
             el.imgPrev.addClass 'unavailable'
 
     # sliding to last image
     if imageIndex == galleryMaxIndex
         el.imgNext.addClass 'proj-nav'
         # if also the last project
-        if currentProject == siteData.projects.length
+        if currentProjectIndex == siteData.projects.length - 1
             el.imgNext.addClass 'unavailable'
 
+    # update gallery properties object
+    conveyorProps.rightValRound = conveyorProps.rightVal = imageIndex
+    do conveyorProps.update
+
     # slide the image conveyor into place
-    rightValue = "#{imageIndex * 100}%"
-    el.conveyor.css 'right', rightValue
+    conveyorProps.setCssRightVal imageIndex
 
 slideToImageRelative = (changeInIndex) ->
 
@@ -291,95 +264,3 @@ slideToImageRelative = (changeInIndex) ->
     newIndex = currentIndex + changeInIndex
 
     slideToImage newIndex
-
-getColumns = ->
-
-    columnsString = el.cssToJs.css 'z-index'
-    columnsInt = parseInt columnsString
-    if !isNaN(columnsInt) and # if there's a change, and it's valid
-       columnsInt > 0 and
-       columnsInt < 5 and
-       columnsInt != columns
-        columns = columnsInt
-        do positionGalleryElement
-        if galleryIsOpen
-            do scrollToGallery
-
-updateGalleryHeight = ->
-
-    galleryHeight = do el.gallery.height
-
-detectMobile = ->
-
-    # People on mobile should be able to handle a mailto link as their email app
-    # is quite likely configured and will open. The email copying overlay
-    # business is only really important for desktop/laptop browsing, where most
-    # people just have a broken Outlook installation handling mailto links.
-
-    if navigator.userAgent.match /Android/i or
-       navigator.userAgent.match /webOS/i or
-       navigator.userAgent.match /iPhone/i or
-       navigator.userAgent.match /iPad/i or
-       navigator.userAgent.match /iPod/i or
-       navigator.userAgent.match /BlackBerry/i or
-       navigator.userAgent.match /Windows Phone/i
-        # remove email overlay
-        el.emailAnchor.off 'click'
-        # prevent borking with the gallery
-        $ 'section'
-            .css 'overflow', 'hidden'
-        uaIsMobile = true
-
-$ ->
-
-    # kick off async stuff right away
-    $.ajax
-        url: 'data.json'
-        dataType: 'json'
-
-        success: (data, textStatus, jqXHR) ->
-            siteData = data
-
-        error: (jqXHR, textStatus, errorThrown) ->
-            alert 'Error occurred while fetching site-data. The website will ' +
-                  'most likely not work fully.\n\nError: ' + textStatus
-
-    # find elements in the dom
-    el.window = $ window
-
-    el.hide = $ '#hide'
-    el.cssToJs = $ '#css-to-js'
-
-    el.emailAnchor = $ 'header div:last-child > a'
-    el.emailOverlay = $ '#email'
-    el.emailBox = $ '#email [readonly]'
-    el.emailButton = $ '#email [type="submit"]'
-
-    el.gallery = $ '#gallery'
-    el.imgNavs = $ '.img-nav'
-    el.imgPrev = el.imgNavs.filter '.l'
-    el.imgNext = el.imgNavs.filter '.r'
-
-    el.conveyor = $ '#conveyor > :last-child'
-    el.nav = $ '#content > nav'
-    el.previews = $ 'section > a'
-    el.templateImage = el.hide.children 'img'
-    el.templateThumbnail = el.hide.children 'a'
-
-    # events and bindings
-    el.window.resize getColumns
-
-    el.emailAnchor.click emailClick
-    el.emailBox.click emailContentsClick
-    el.emailButton.click emailContentsClick
-    el.emailOverlay.click toggleEmailOverlay
-
-    el.previews.click previewClick
-    el.templateThumbnail.click thumbnailClick
-    el.imgNavs.click imgNavsClick
-
-    # initialisation things
-    toggleGallery 0
-    do updateGalleryHeight
-    do getColumns
-    do detectMobile

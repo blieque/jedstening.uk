@@ -19,6 +19,10 @@ img
 a:active, a:focus, input:active, input:focus
     outline: none
 
+// no transitions
+.nt
+    @include prefix(webkit moz, transition, none !important)
+
 // ffs firefox
 ::-moz-focus-inner
     border: none

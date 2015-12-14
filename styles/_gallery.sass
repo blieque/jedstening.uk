@@ -15,18 +15,20 @@
 canvas
     width: 100%
 
-#conveyor div, #content, .cover
+#frame div, #content, .cover, .img-nav
     height: 100%
     position: absolute
     top: 0
 
-#conveyor img, canvas
+#conveyor
+    white-space: nowrap
+
+#frame img, canvas
     vertical-align: bottom
 
-#conveyor
+#frame
     position: relative
     width: calc(75% - #{$unit * 2})
-    white-space: nowrap
 
     &:hover .img-nav div
         opacity: 1
@@ -157,7 +159,7 @@ canvas
             &:after
                 clear: both
 
-            &:hover:before, &.current:before
+            &.current:before
                 background: $colour-accent-tint
 
             img
@@ -170,6 +172,12 @@ canvas
 
     p:last-child
         margin-bottom: 0
+
+body:not(.mobile) #content nav a
+
+    // these rules bork up mobile stuff
+    &:hover:before, &:focus:before
+        background: $colour-accent-tint
 
 .cover
     width: 200%
