@@ -3,63 +3,63 @@
         "id": 1,
         "title": "The Kiwi Shop",
         "descriptionShort": "Logo design; digital use; fabric printing",
-        "descriptionFull": [],
+        "descriptionFull": ["I developed a logo for a fictional exotic fruit store, and created a screen-printed canvas bag prototype using it."],
         "galleryCount": 4
     },
     {
         "id": 2,
         "title": "Griffinwood",
         "descriptionShort": "Logo, poster, and business card design; digital use",
-        "descriptionFull": [],
+        "descriptionFull": ["This is the logo designed for Griffinwood, a company specialising in traditional woodwork and heavy timber frame buildings."],
         "galleryCount": 6
     },
     {
         "id": 3,
         "title": "TGI Fridays",
         "descriptionShort": "Logo and poster design; digital use; campaign branding",
-        "descriptionFull": [],
+        "descriptionFull": ["A local community outreach program that provides sports and games for low-income families seeked new branding material. I created a t-shirt prototype and promotional poster."],
         "galleryCount": 2
     },
     {
         "id": 4,
         "title": "Future Film Festival",
         "descriptionShort": "Poster design",
-        "descriptionFull": [],
+        "descriptionFull": ["Shown are three versions of a poster that I designed, forming part of a series promoting fictional film festivals. Illustrator CC primarily was used during the design process."],
         "galleryCount": 3
     },
     {
         "id": 5,
         "title": "Corn on the Cob",
         "descriptionShort": "Illustration",
-        "descriptionFull": [],
+        "descriptionFull": [""],
         "galleryCount": 3
     },
     {
         "id": 6,
         "title": "Grace Network",
         "descriptionShort": "Logo design; digital and print use",
-        "descriptionFull": [],
-        "galleryCount": 2
+        "descriptionFull": [""],
+        "galleryCount": 5
     },
     {
         "id": 7,
         "title": "Glebe Alive",
         "descriptionShort": "Logo design; digital and print use",
-        "descriptionFull": [],
-        "galleryCount": 1
+        "descriptionFull": ["I was asked to design the logo for a community outreach program operated by Minchinhampton Baptist Church. The program focuses on encouraging community in the Glebe housing estate by organising and promoting public social and sporting events. Both Illustrator CC and Photoshop CC were essential tools in the process."],
+        "galleryCount": 4
     },
     {
         "id": 8,
         "title": "Kick Off Stroud",
         "descriptionShort": "Logo design; digital and print use",
-        "descriptionFull": [],
+        "descriptionFull": [""],
         "galleryCount": 2
     },
     {
         "id": 9,
         "title": "Photograph Reproduction",
         "descriptionShort": "Pen, pencil, watercolour paint",
-        "descriptionFull": [],
-        "galleryCount": 3
+        "descriptionFull": ["Having photographed an old radio mast station and railway track, I created a set of three collograph prints. Each collograph measures 352 mm &times; 292 mm."],
+        "galleryCount": 6
     }
 ]
