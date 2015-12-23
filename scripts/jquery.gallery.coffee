@@ -191,8 +191,9 @@ changeGalleryProject = (projectIndex) ->
     el.gallery.find 'h2'
         .text projectData.title
 
-    # remove/add image and thumbnail elements as needed
-    requiredChange = projectData.galleryCount - el.conveyor.children().length
+    # remove/add paragraph elements as needed
+    requiredChange = projectData.descriptionFull.length -
+                     el.article.children('p').length
     removeOrAdd = null
 
     if requiredChange > 0
@@ -205,8 +206,7 @@ changeGalleryProject = (projectIndex) ->
     for i in [0...Math.abs requiredChange]
         do removeOrAdd
 
-    el.article = el.gallery.find 'article'
-    for i in [0...projectData.galleryCount]
+    for i in [0...projectData.descriptionFull.length]
         el.article.children('p').eq(i).text projectData.descriptionFull[i]
 
     # scroll back to the first image unless we're reopening the same project
@@ -359,6 +359,7 @@ $ ->
     el.imgNavs = $ '.img-nav'
     el.imgPrev = el.imgNavs.filter '.l'
     el.imgNext = el.imgNavs.filter '.r'
+    el.article = el.gallery.find 'article'
 
     el.conveyor = $ '#conveyor > :last-child'
     el.nav = $ '#content > nav'
