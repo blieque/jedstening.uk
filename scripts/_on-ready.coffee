@@ -33,6 +33,7 @@ $ ->
     el.imgNext = el.imgNavs.filter '.r'
     el.imgPrevArrow = el.imgPrev.children 'div'
     el.imgNextArrow = el.imgPrev.children 'div'
+    el.article = el.gallery.find 'article'
 
     el.frame = $ '#frame'
     el.conveyor = $ '#conveyor'
