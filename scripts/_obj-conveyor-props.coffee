@@ -1,44 +1,83 @@
-conveyorProps =
+class ConveyorProps
 
-    rightVal: 0
-    rightValRound: 0
-    width: 0
-    projectNavWidth: 0
-    dragThreshold: 0
+    # private
 
-    setCssRightVal: (rightVal) ->
+    rightValRound = 0
+    projectNavWidth = 0.3 # as long as this isn't zero, all will be well
 
-        this.rightVal = rightVal
+    updateCss = ->
+
+        rightValStr = "#{conveyorProps.rightVal * 100}%"
+        el.conveyor.css 'right', rightValStr
+
+    clipRightValToLimits = (rightVal, includeNavigation) ->
+
+        # establish limits
+        limitMinimum = 0
+        limitMaximum = projectData.galleryCount - 1
+        if includeNavigation
+            limitMinimum -= projectNavWidth
+            limitMaximum += projectNavWidth
 
         # clip right value to within limits
-        limitMinimum = -this.projectNavWidth
-        limitMaximum = projectData.galleryCount + this.projectNavWidth - 1
-        this.rightVal = Math.max this.rightVal, limitMinimum
-        this.rightVal = Math.min this.rightVal, limitMaximum
+        rightVal = Math.max rightVal, limitMinimum
+        rightVal = Math.min rightVal, limitMaximum
 
-        rightValStr = "#{this.rightVal * 100}%"
-        el.conveyor.css 'right', rightValStr
+    # public
+
+    rightVal: 0
+    width: 0
+    dragThreshold: 0
 
     roundRightVal: ->
 
-        console.log this.rightVal, this.rightValRound
-        goingRight = this.rightVal > this.rightValRound
+        # makes it easier to swipe through gallery
+        goingRight = this.rightVal > rightValRound
+        leeway = 0.25
+        if !goingRight
+            leeway *= -1
+        this.rightVal += leeway
 
-        offset = if goingRight then 0.25 else -0.25
-        this.rightVal += offset
-        this.rightValRound = Math.round this.rightVal
+        # round to integer (which is also the index of the current image)
+        tempRound = Math.round this.rightVal
 
-        deltaIndex = if goingRight then 1 else -1
-        slideToImageRelative deltaIndex
+        # *appear* to ignore the leeway when navigating between projects
+        tempRoundClipped = clipRightValToLimits tempRound
+        # although the value is rounded we don't tell `setRightVal' that it is
+        this.setRightVal tempRoundClipped
 
-    update: ->
+        # properly move
+        if tempRound > rightValRound
+            slideToImageRelative 1, true
+        else if tempRound < rightValRound
+            slideToImageRelative -1, true
 
-        this.width = do el.conveyor.width
-        this.dragThreshold = do el.conveyor.height * 0.02
+    setRightVal: (rightVal, rounded, relative) ->
+
+        if relative
+            rightVal += rightValRound
+
+        rightVal = clipRightValToLimits rightVal, true
+
+        this.rightVal = rightVal
+        if rounded and rightVal % 1 == 0
+            rightValRound = rightVal
+
+        do updateCss
+
+    updateWidth: ->
+
+        this.width = do el.frame.width
+        this.dragThreshold = this.width * 0.012
+
+    updateProjectNavWidth: ->
 
         projectNavWidthPx = 0
-        if this.rightValRound == 0
+
+        if rightValRound == 0
             projectNavWidthPx = do el.imgPrevArrow.width
-        else if this.rightValRound == projectData.galleryCount - 1
+        else if rightValRound == projectData.galleryCount - 1
             projectNavWidthPx = do el.imgNextArrow.width
-        this.projectNavWidth = projectNavWidthPx / this.width
+
+        # if `this.width' is used all hell breaks loose
+        projectNavWidth = projectNavWidthPx / conveyorProps.width

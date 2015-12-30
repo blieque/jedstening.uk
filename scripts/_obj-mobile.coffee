@@ -1,26 +1,11 @@
-# new mobile object
-mobile =
+class Mobile
 
-    dragOrigin: { x:0, y:0 }
-    dragging: false
+    # private
 
-    detect: ->
+    dragOrigin = { x:0, y:0 }
+    dragging = false
 
-        if navigator.userAgent.match /Android/i or
-           navigator.userAgent.match /webOS/i or
-           navigator.userAgent.match /iPhone/i or
-           navigator.userAgent.match /iPad/i or
-           navigator.userAgent.match /iPod/i or
-           navigator.userAgent.match /BlackBerry/i or
-           navigator.userAgent.match /Windows Phone/i
-
-            do this.changeDom
-            do this.setListeners
-
-            # attach initial mobile navigation event
-            el.frame.on 'touchstart', this.conveyorTouchstart
-
-    changeDom: ->
+    changeDom = ->
 
         # People on mobile should be able to handle a mailto link as their email
         # app is quite likely configured and will open. The email copying
@@ -33,64 +18,84 @@ mobile =
         # move gallery arrow controls behind the gallery
         el.body.addClass 'mobile'
 
-    attachListeners: (removing) ->
+    manageListeners = (detatch) ->
 
-        action = if removing then 'off' else 'on'
-        el.document[action] 'touchmove', mobile.conveyorTouchmove
-        el.window[action] 'resize', conveyorProps.update
-        el.window[action] 'touchend', mobile.conveyorTouchend
-        el.window[action] 'touchcancel', mobile.conveyorTouchend
+        # The listeners that handle the movement of touch points on the screen
+        # when the gallery is open needn't be attached when not needed. They are
+        # attached when a touchpoint is created over the gallery conveyor, and
+        # their are removed when the touch point is removed from the screen.
 
-    setListeners: ->
+        action = if detatch then 'off' else 'on'
+        el.document[action] 'touchmove', conveyorTouchmove
+        el.window[action] 'touchcancel', conveyorTouchend
+        el.window[action] 'touchend', conveyorTouchend
+        el.window[action] 'resize', conveyorProps.updateWidth
 
-        this.conveyorTouchmove = (event) ->
+    conveyorTouchmove = (event) ->
 
-            do event.preventDefault
-            touchEvent = event.originalEvent.touches[0]
+        do event.preventDefault
+        touchEvent = event.originalEvent.touches[0]
 
-            delta =
-                x: mobile.dragOrigin.x - touchEvent.clientX
-                y: mobile.dragOrigin.y - touchEvent.clientY
+        delta =
+            x: dragOrigin.x - touchEvent.clientX
+            y: dragOrigin.y - touchEvent.clientY
 
-            if mobile.dragging
-                deltaXDecimal = delta.x / conveyorProps.width
-                conveyorProps.setCssRightVal currentProjectIndex + deltaXDecimal
-            else
-                deltaSquared =
-                    x: Math.pow delta.x, 2
-                    y: Math.pow delta.y, 2
-                distance = Math.sqrt deltaSquared.x + deltaSquared.y
-                if distance > conveyorProps.dragThreshold
+        if dragging
+            deltaXDecimal = delta.x / conveyorProps.width
+            conveyorProps.setRightVal deltaXDecimal, false, true
+        else
+            deltaSquared =
+                x: Math.pow delta.x, 2
+                y: Math.pow delta.y, 2
+            distance = Math.sqrt deltaSquared.x + deltaSquared.y
+            if distance > conveyorProps.dragThreshold
 
-                    # I use the squared deltas to avoid having to find the
-                    # absolute values of the deltas.
+                # I use the squared deltas to avoid having to find the
+                # absolute values of the deltas.
 
-                    if deltaSquared.x > deltaSquared.y
-                        mobile.dragging = true
-                    else
-                        do mobile.conveyorTouchend
+                if deltaSquared.x > deltaSquared.y
+                    dragging = true
+                    el.conveyor.addClass 'nt'
+                else
+                    do conveyorTouchend
 
-        this.conveyorTouchstart = (event) ->
+    conveyorTouchstart = (event) ->
 
-            touchEvent = event.originalEvent.touches[0]
+        touchEvent = event.originalEvent.touches[0]
 
-            # These events are only attached here as they shouldn't be fired
-            # frequently when the gallery isn't open and the user isn't
-            # scrolling over gallery images.
+        # These events are only attached here as they shouldn't be fired
+        # frequently when the gallery isn't open and the user isn't
+        # scrolling over gallery images.
 
-            mobile.attachListeners false
+        manageListeners false
 
-            el.conveyor.addClass 'nt'
+        dragOrigin.x = touchEvent.clientX
+        dragOrigin.y = touchEvent.clientY
 
-            mobile.dragOrigin.x = touchEvent.clientX
-            mobile.dragOrigin.y = touchEvent.clientY
-            currentProjectIndex = conveyorProps.rightVal
+    conveyorTouchend = ->
 
-        this.conveyorTouchend = ->
+        manageListeners true
 
-            mobile.attachListeners true
+        if dragging
 
-            mobile.dragging = false
+            dragging = false
             el.conveyor.removeClass 'nt'
 
             do conveyorProps.roundRightVal
+
+    # public
+
+    constructor: ->
+
+        if navigator.userAgent.match /Android/i or
+           navigator.userAgent.match /webOS/i or
+           navigator.userAgent.match /iPhone/i or
+           navigator.userAgent.match /iPad/i or
+           navigator.userAgent.match /iPod/i or
+           navigator.userAgent.match /BlackBerry/i or
+           navigator.userAgent.match /Windows Phone/i
+
+            do changeDom
+
+            # attach initial mobile navigation event
+            el.frame.on 'touchstart', conveyorTouchstart

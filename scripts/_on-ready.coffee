@@ -32,7 +32,7 @@ $ ->
     el.imgPrev = el.imgNavs.filter '.l'
     el.imgNext = el.imgNavs.filter '.r'
     el.imgPrevArrow = el.imgPrev.children 'div'
-    el.imgNextArrow = el.imgPrev.children 'div'
+    el.imgNextArrow = el.imgNext.children 'div'
     el.article = el.gallery.find 'article'
 
     el.frame = $ '#frame'
@@ -57,8 +57,7 @@ $ ->
 
     # initialisation
 
-    do updateGalleryHeight
-    do conveyorProps.update
-    toggleGallery 0
+    do conveyorProps.updateWidth
     do getColumns
-    do mobile.detect
+    toggleGallery 0
+    mobile = new Mobile
