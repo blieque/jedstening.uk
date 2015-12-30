@@ -1,3 +1,15 @@
+.mobile
+
+    #gallery
+        overflow: hidden
+
+    #frame .img-nav
+        background: $colour-white-tint
+        z-index: 0
+
+        div
+            opacity: 1
+
 @media (max-width: $media-query-unit * 3 - $media-query-constant)
 
     // #{} this comment helps syntax highlighting not go bork
@@ -8,7 +20,7 @@
     #content
         width: 33.33%
 
-    #conveyor
+    #frame
         width: calc(66.66% - #{$unit * 2})
 
     #css-to-js
@@ -41,7 +53,7 @@
         nav a
             width: calc(16.66% - #{$unit * 2})
 
-    #conveyor
+    #frame
         width: calc(100% - #{$unit * 2})
 
         .img-nav
@@ -74,9 +86,9 @@
             font-size: 12pt
 
     #gallery
-        margin: $unit * .5 0
+        margin: $unit * .5 0 $unit * .5 $unit
 
-    #conveyor, #content
+    #frame, #content
         width: calc(100% - #{$unit})
 
     #content
@@ -85,8 +97,13 @@
     #content nav a
         width: calc(25% - #{$unit * 2})
 
-    .cover.r
-        left: calc(100% - #{$unit})
+    .cover
+
+        &.r
+            left: calc(100% - #{$unit})
+
+        &.l
+            right: calc(100% - #{$unit})
 
     .img-nav
 
