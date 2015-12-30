@@ -1,2 +1,5 @@
 _site
 .sass-cache
+type/*
+!type/README.md
+scripts/jquery.min.js
