@@ -38,7 +38,7 @@ layout: main
     <a id="project-{{ project_id }}" href="{{ site.address }}{{ site.baseurl }}/{{ project_slug }}">
         <img src="{{ site.address }}{{ site.baseurl }}/images/preview/{{ project_id }}.jpg" alt="{{ project.title }}">
         <div>
-            <div><div><h2>{{ project.title }}</h2><span></span><p>{{ project.descriptionShort }}</p></div></div>
+            <div><div><h2>{{ project.title }}</h2><span></span><p>{{ project.basicInfo }}</p></div></div>
         </div>
     </a>
 
@@ -61,8 +61,6 @@ layout: main
             </nav>
             <article>
                 <h2>Project Title</h2>
-                <p>Description</p>
-                <p>Even more description; like I need some copy, copy, some copy is what I need.</p>
             </article>
         </div>
     </div>

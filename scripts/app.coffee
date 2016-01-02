@@ -1,8 +1,8 @@
 ---
 ---
 
-{% include_relative _obj-conveyor-props.coffee %}
-{% include_relative _obj-mobile.coffee %}
+{% include_relative _class.conveyor-props.coffee %}
+{% include_relative _class.mobile.coffee %}
 
 {% include_relative _global.coffee %}
 

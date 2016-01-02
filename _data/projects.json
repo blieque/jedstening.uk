@@ -2,18 +2,18 @@
     {
         "id": 1,
         "title": "Deep Weekdays",
-        "descriptionShort": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "descriptionFull": [
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
             "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
+            "This description can have multiple paragraphs, which is pretty swag. It also has fancy Unicode business: ×, \u0394."
         ],
         "galleryCount": 3
     },
     {
         "id": 2,
         "title": "Deep Weekdays",
-        "descriptionShort": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "descriptionFull": [
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
             "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
             "This description can have multiple paragraphs, which is pretty swag."
         ],
@@ -22,8 +22,8 @@
     {
         "id": 3,
         "title": "Deep Weekdays",
-        "descriptionShort": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "descriptionFull": [
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
             "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
             "This description can have multiple paragraphs, which is pretty swag."
         ],
@@ -32,8 +32,8 @@
     {
         "id": 4,
         "title": "Deep Weekdays",
-        "descriptionShort": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "descriptionFull": [
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
             "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
             "This description can have multiple paragraphs, which is pretty swag."
         ],
@@ -42,8 +42,8 @@
     {
         "id": 5,
         "title": "Deep Weekdays",
-        "descriptionShort": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "descriptionFull": [
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
             "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
             "This description can have multiple paragraphs, which is pretty swag."
         ],
@@ -52,8 +52,8 @@
     {
         "id": 6,
         "title": "Deep Weekdays",
-        "descriptionShort": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "descriptionFull": [
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
             "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
             "This description can have multiple paragraphs, which is pretty swag."
         ],
@@ -62,8 +62,8 @@
     {
         "id": 7,
         "title": "Deep Weekdays",
-        "descriptionShort": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "descriptionFull": [
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
             "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
             "This description can have multiple paragraphs, which is pretty swag."
         ],
@@ -72,8 +72,8 @@
     {
         "id": 8,
         "title": "Deep Weekdays",
-        "descriptionShort": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "descriptionFull": [
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
             "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
             "This description can have multiple paragraphs, which is pretty swag."
         ],
@@ -82,8 +82,8 @@
     {
         "id": 9,
         "title": "Deep Weekdays",
-        "descriptionShort": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "descriptionFull": [
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
             "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
             "This description can have multiple paragraphs, which is pretty swag."
         ],
@@ -92,8 +92,8 @@
     {
         "id": 10,
         "title": "Deep Weekdays",
-        "descriptionShort": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "descriptionFull": [
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
             "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
             "This description can have multiple paragraphs, which is pretty swag."
         ],
@@ -102,8 +102,8 @@
     {
         "id": 11,
         "title": "Deep Weekdays",
-        "descriptionShort": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "descriptionFull": [
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
             "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
             "This description can have multiple paragraphs, which is pretty swag."
         ],
@@ -112,8 +112,8 @@
     {
         "id": 12,
         "title": "Deep Weekdays",
-        "descriptionShort": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "descriptionFull": [
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
             "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
             "This description can have multiple paragraphs, which is pretty swag."
         ],
@@ -122,8 +122,8 @@
     {
         "id": 13,
         "title": "Deep Weekdays",
-        "descriptionShort": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "descriptionFull": [
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
             "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
             "This description can have multiple paragraphs, which is pretty swag."
         ],
@@ -132,8 +132,8 @@
     {
         "id": 14,
         "title": "Deep Weekdays",
-        "descriptionShort": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "descriptionFull": [
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
             "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
             "This description can have multiple paragraphs, which is pretty swag."
         ],
@@ -142,8 +142,8 @@
     {
         "id": 15,
         "title": "Deep Weekdays",
-        "descriptionShort": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "descriptionFull": [
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
             "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
             "This description can have multiple paragraphs, which is pretty swag."
         ],
@@ -152,8 +152,8 @@
     {
         "id": 16,
         "title": "Deep Weekdays",
-        "descriptionShort": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "descriptionFull": [
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
             "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
             "This description can have multiple paragraphs, which is pretty swag."
         ],
@@ -162,8 +162,8 @@
     {
         "id": 17,
         "title": "Deep Weekdays",
-        "descriptionShort": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "descriptionFull": [
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
             "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
             "This description can have multiple paragraphs, which is pretty swag."
         ],

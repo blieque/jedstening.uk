@@ -152,7 +152,7 @@ changeGalleryText = (projectIndex) ->
         .text projectData.title
 
     # remove/add paragraph elements as needed
-    requiredChange = projectData.descriptionFull.length -
+    requiredChange = projectData.description.length -
                      el.article.children('p').length
     removeOrAdd = null
 
@@ -166,8 +166,8 @@ changeGalleryText = (projectIndex) ->
     for i in [0...Math.abs requiredChange]
         do removeOrAdd
 
-    for i in [0...projectData.descriptionFull.length]
-        el.article.children('p').eq(i).text projectData.descriptionFull[i]
+    for i in [0...projectData.description.length]
+        el.article.children('p').eq(i).text projectData.description[i]
 
 changeGalleryProject = (projectIndex) ->
 
@@ -215,7 +215,6 @@ slideToImage = (imageIndex) ->
     imageIndex = Math.min imageIndex, galleryMaxIndex
 
     # get sliding a.s.a.p.
-    console.log 'sliding to ' + imageIndex
     conveyorProps.setRightVal imageIndex, true
 
     # place the 'current' class on the right thumbnail
