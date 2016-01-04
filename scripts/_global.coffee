@@ -1,15 +1,20 @@
 # pseudo-globals
+
+# objects
 el = {} # element object
 mobile = null
 window.conveyorProps = new ConveyorProps
 
-projectData = {}
+# site
 siteData = []
-columns = 4
 
+# gallery
+projectData = {}
+columns = 4
 currentProjectIndex = null
 lastOpenedProject = null
-
 galleryIsOpen = true # kinda not true
+
+# email address overlay
 emailOverlayIsOpen = false
 commandSupportChecked = false

@@ -14,7 +14,9 @@ layout: main
         {% capture project_id %}0{{ project_id }}{% endcapture %}
     {% endif %}
 
-    {% assign project_title = project.title %}
+    {% assign project_title = project.title | replace: "'","" %}
+    {% assign project_title = project_title | replace: ".","" %}
+
     {% unless project.title.size > 0 %}
         {% assign project_title = "Untitled" %}
     {% endunless %}
