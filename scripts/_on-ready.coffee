@@ -8,6 +8,8 @@ $ ->
 
         success: (data, textStatus, jqXHR) ->
             siteData = data
+            do slugifyTitles
+            do openFromUrlWhenReady
 
         error: (jqXHR, textStatus, errorThrown) ->
             alert 'Error occurred while fetching site-data. The website will ' +
@@ -58,6 +60,7 @@ $ ->
     # initialisation
 
     do conveyorProps.updateWidth
-    do getColumns
     toggleGallery 0
+    do getColumns
+    do openFromUrlWhenReady
     mobile = new Mobile
