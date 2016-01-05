@@ -3,19 +3,10 @@
     clear: both
     position: relative
 
-    &.transition
-
-        .cover
-            background: $colour-off-white
-            @include prefix(webkit moz, transition, all ease .2s)
-
-        #content
-            overflow: hidden
-
 canvas
     width: 100%
 
-#frame div, #content, .cover, .img-nav
+#frame div, #content, .img-nav
     height: 100%
     position: absolute
     top: 0
@@ -27,6 +18,7 @@ canvas
     vertical-align: bottom
 
 #frame
+    overflow: hidden
     position: relative
     width: calc(75% - #{$unit * 2})
 
@@ -142,7 +134,6 @@ canvas
             margin: 0 $unit * 2 $unit * 2 0
             position: relative
             width: calc(25% - #{$unit * 2})
-            line-height: 0
 
             &:before, &:after
                 content: ''
@@ -178,14 +169,3 @@ body:not(.mobile) #content nav a
     // these rules bork up mobile stuff otherwise
     &:hover:before, &:focus:before
         background: $colour-accent-tint
-
-.cover
-    width: 200%
-    background: $colour-white-tint
-    @include prefix(webkit moz, transition, all ease .8s)
-
-    &.l
-        right: 100%
-
-    &.r
-        left: calc(100% - #{$unit * 2})

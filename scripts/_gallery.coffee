@@ -1,6 +1,9 @@
 # event handlers
 
-previewClick = (event) ->
+previewClick = (event, toggleTime) ->
+
+    if event.ctrlKey
+        return
 
     do event.preventDefault
 
@@ -32,7 +35,7 @@ previewClick = (event) ->
         changeGalleryProject projectIndex
 
     # animate the gallery open or closed
-    do toggleGallery
+    toggleGallery toggleTime
 
 thumbnailClick = (event) ->
 
@@ -70,16 +73,19 @@ getColumns = ->
         columns = columnsInt
         do positionGalleryElement
         if galleryIsOpen
-            do scrollToGallery
+            scrollToGallery 0
 
-scrollToGallery = ->
+scrollToGallery = (time) ->
+
+    if time == undefined
+        time = 400
 
     # scroll to the gallery
     gapAboveGallery = (el.window.height() - el.gallery.height()) / 2
     gapAboveGallery = Math.max 0, gapAboveGallery
     el.body.animate
         scrollTop: el.gallery.offset().top - gapAboveGallery
-    , 400
+    , time
 
 positionGalleryElement = (projectIndex) ->
 
@@ -177,6 +183,7 @@ changeGalleryProject = (projectIndex) ->
 
     do changeGalleryImages
     do changeGalleryText
+    do changeWindowAddress
 
     # slide back to the first image unless we're reopening the same project
     if projectId != lastOpenedProject
@@ -189,25 +196,24 @@ toggleGallery = (time) ->
     elPreviewOpen = $ '.open'
     galleryIsOpening = elPreviewOpen.length > 0
 
-    if time == undefined or time == null
+    if time == undefined
         time = 400
 
     if galleryIsOpening
         # open the gallery
         el.gallery.slideDown time, ->
-            el.gallery.removeClass 'transition'
-            do scrollToGallery
+            scrollToGallery time
     else
         # close the gallery
-        el.gallery.addClass 'transition'
-        setTimeout ->
+        # setTimeout is daft
+        timeoutFunction = if time > 0 then setTimeout else (f) -> do f
+        timeoutFunction ->
             el.gallery.slideUp time
         , 200
 
     galleryIsOpen = !galleryIsOpen
 
 slideToImage = (imageIndex) ->
-
 
     # sanitise things a little
     galleryMaxIndex = projectData.galleryCount - 1
