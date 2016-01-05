@@ -202,11 +202,9 @@ toggleGallery = (time) ->
     if galleryIsOpening
         # open the gallery
         el.gallery.slideDown time, ->
-            el.gallery.removeClass 'transition'
             scrollToGallery time
     else
         # close the gallery
-        el.gallery.addClass 'transition'
         # setTimeout is daft
         timeoutFunction = if time > 0 then setTimeout else (f) -> do f
         timeoutFunction ->
