@@ -10,7 +10,8 @@ baseurl: "/co.stening"
 # build settings
 destination: /srv/hosts/dev.omni/www/co.stening
 exclude: ["Gemfile", "Gemfile.lock", "README.md", "LICENSE.md", "type/README.md"]
-markdown: kramdown
+gems: ["jekyll-coffeescript"]
+
 sass:
     sass_dir: styles
     style: compressed
