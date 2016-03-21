@@ -5,10 +5,10 @@ profession: Art & design
 email: jed@stening.co
 description: The digital portfolio of Jed Stening, a graphic designer and artist from the UK.
 address: ""
-baseurl: "/co.stening"
+baseurl: "/stening.co"
 
 # build settings
-destination: /srv/hosts/dev.omni/www/co.stening
+destination: /srv/hosts/dev.omni/www/stening.co
 exclude: ["Gemfile", "Gemfile.lock", "README.md", "LICENSE.md", "type/README.md"]
 gems: ["jekyll-coffeescript"]
 

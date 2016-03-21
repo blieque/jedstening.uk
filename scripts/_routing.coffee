@@ -54,12 +54,15 @@ findProject = (slug) ->
 
 openFromUrlWhenReady = do ->
 
-    counter = 0
+    # This function will only perform its task the second time it is called. The
+    # function requires two different async tasks to be complete in order to
+    # work.
+
+    calledBefore = false
     ->
-        counter++
-        # if `openFromUrlWhenReady' has been called before
-        if counter > 1
+        if calledBefore
             do openFromUrl
+        calledBefore = true
 
 openFromUrl = ->
 
