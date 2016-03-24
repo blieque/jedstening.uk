@@ -1,0 +1,86 @@
+{% comment %} The variable `project_category' must be set before this file is included. {% endcomment %}
+
+{% assign split_string = "|" %}
+{% assign title_slugs = "" %}
+
+{% if site.data.projects %}
+<section>
+    {% for project in site.data.projects %}
+
+    {% assign project_id = project.id %}
+    {% if 10 > project.id %}
+        {% capture project_id %}0{{ project_id }}{% endcapture %}
+    {% endif %}
+
+    {% assign project_title = project.title | replace: "'","" %}
+    {% assign project_title = project_title | replace: ".","" %}
+
+    {% unless project.title.size > 0 %}
+        {% assign project_title = "Untitled" %}
+    {% endunless %}
+
+    {% assign project_slug = project_title | slugify %}
+    {% if title_slugs.size > 0 %}
+        {% capture title_slugs %}{{ title_slugs }}{{ split_string }}{% endcapture %}
+    {% endif %}
+    {% capture title_slugs %}{{ title_slugs }}{{ project_slug }}{% endcapture %}
+    {% assign slug_array = title_slugs | split: split_string %}
+    {% assign count = 0 %}
+    {% for slug in slug_array %}
+        {% if slug == project_slug %}
+            {% assign count = count | plus: 1 %}
+        {% endif %}
+    {% endfor %}
+    {% if count > 1 %}
+        {% assign project_slug = project_slug | append: "-" | append: count %}
+    {% endif %}
+
+    <a id="project-{{ project_id }}" href="{{ site.address }}{{ site.baseurl }}/{{ project_slug }}">
+        <img src="{{ site.address }}{{ site.baseurl }}/images/preview/{{ project_id }}.jpg" alt="{{ project.title }}">
+        <div>
+            <div><div><h2>{{ project.title }}</h2><span></span><p>{{ project.basicInfo }}</p></div></div>
+        </div>
+    </a>
+
+    {% endfor %}
+
+    <div id="gallery">
+        <div id="frame">
+            <canvas width="16" height="9"></canvas>
+            <div class="img-nav l"><div></div></div>
+            <div class="img-nav r"><div></div></div>
+            <div id="conveyor">
+                {% comment %} This contains the full size images. {% endcomment %}
+            </div>
+        </div>
+        <div id="content">
+            <nav>
+                {% comment %} This contains the thumbnail images and anchors. {% endcomment %}
+            </nav>
+            <article>
+                <h2>Project Title</h2>
+            </article>
+        </div>
+    </div>
+
+    {% comment %}
+    <div id="contact">
+        <h1>Contact Me</h1>
+        <form>
+            <div class="l">
+                <input type="text" name="name" placeholder="Full name">
+                <input type="text" name="name" placeholder="Contact email address">
+            </div>
+            <div class="l">
+                <textarea name="message"></textarea>
+            </div>
+        </form>
+    </div>
+    {% endcomment %}
+</section>
+<div id="hide">
+    <span id="css-to-js"></span>
+    <img src="" alt="Full size project image">
+    <a href=""><img src="" alt="Link to full size image"></a>
+</div>
+{% endif %}
