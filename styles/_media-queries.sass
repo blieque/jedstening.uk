@@ -1,6 +1,9 @@
 // touchscreens of any size
 .mobile
 
+    #selector a:active
+        -webkit-tap-highlight-color: transparent
+
     // gallery navigation (`#frame' is required)
     #frame .img-nav
         background: $colour-white-tint
@@ -12,7 +15,10 @@
 @media (max-width: $media-query-unit * 3 - $media-query-constant)
 
     // {} this comment helps syntax highlighting not go bork
-    // netbooks, tablets, 3 columns
+
+    /* netbooks, tablets:
+     *  - three columns
+     */
 
     // previews
     section > a
@@ -33,26 +39,81 @@
 @media (max-width: $media-query-unit * 2 - $media-query-constant)
 
     // {} this comment helps syntax highlighting not go bork
-    // smartphones, two columns, gallery information below images
+
+    /* smartphones:
+     *  - two columns
+     *  - links below page title
+     *  - category selectors stacked rather than side-by-side
+     *  - gallery information below images
+     */
 
     // previews
     section > a
         width: calc(50% - #{$unit * 2})
 
-    // behance and email links in header
-    header div div
-        display: inline-block
-        margin-top: $unit * 2
-        position: static
-        width: calc(50% + #{$unit})
+    // header
+    header
+        height: $unit * 15
 
-        // behance
-        &:first-of-type
-            margin-left: $unit * -1
+        // behance and email links in header
+        div div
+            display: inline-block
+            margin-top: $unit * 2
+            position: static
+            width: calc(50% + #{$unit})
 
-        // email
-        &:last-of-type
-            margin-right: $unit * -1
+            // behance
+            &:first-of-type
+                margin-left: $unit * -1
+
+            // email
+            &:last-of-type
+                margin-right: $unit * -1
+
+    // work category selector
+    #selector
+        background-size: 160%
+
+        // shrink to header-size
+        &.selected
+
+            a, #and
+                padding: $unit * 3.5 0
+
+        // container
+        div
+            padding: 0
+
+        // category links
+        a
+            width: 100%
+            padding: calc(25vh - #{$unit *  8}) 0
+
+    // dividing line/ampersand between the two links
+    #and
+        padding: 0 !important
+        position: absolute
+        top: 50%
+        left: 0
+        height: 0
+        width: 100%
+        text-indent: 0
+        line-height: 0
+
+        // both lines
+        &:before, &:after
+            width: calc(50% - #{$unit * 5})
+            height: 0
+
+        // left line
+        &:before
+            top: initial
+            left: $unit * 2
+
+        // right line
+        &:after
+            bottom: initial
+            right: $unit * 2
 
     // probably the gallery
     #gallery
@@ -86,7 +147,10 @@
 @media (max-width: $media-query-unit - $media-query-constant)
 
     // {} this comment helps syntax highlighting not go bork
-    // really small smartphones, two columns
+
+    /* really small smartphones
+     *  - several measurments made smaller/tighter
+     */
 
     header
         padding: $unit * 2.5 0 $unit * 2

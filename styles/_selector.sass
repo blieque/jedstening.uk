@@ -1,26 +1,34 @@
 // work category selector
 #selector
-    text-transform: uppercase
+    color: $colour-white
     background: url('../images/cover.jpg')
     background-size: 100%
     background-position: bottom
-    color: $colour-white
+    text-transform: uppercase
+
+    // shrink to header-size
+    &.selected
+
+        a, #and
+            padding: $unit * 6.5 0
 
     // container (mostly to constrain width on bigger displays)
     div
-        padding: $unit * 2 $unit
+        padding: 0 $unit
         position: relative
 
     // links and the dividing line between
     a, #and
         display: inline-block
-        padding: $unit * 6 0
+        // this is all sorts of awful
+        padding: calc(50vh - #{$unit *  10.9}) 0
         text-align: center
         font-weight: 700
 
     // category links
     a
         width: 50%
+        height: $unit * 4.5
         color: inherit
         font-size: 20pt
         letter-spacing: $unit * 0.6
@@ -59,7 +67,7 @@
             padding: 0 $unit * 1.8 0 $unit * 2
 
         // alternate-colour text container
-        .active > span > span, &:hover > span > span
+        &.selected > span > span, &:hover > span > span
             left: $unit * -1.8
             width: calc(100% + #{$unit * 3.6})
             @include prefix(webkit moz, transition-timing-function, cubic-bezier(0,1.88,.27,1))
@@ -74,7 +82,7 @@
     position: absolute
     left: 50%
     width: 0
-    height: calc(100% - #{$unit * 4})
+    height: 100%
     font-size: 14pt
     text-indent: $unit * -0.8
     line-height: 1.7
@@ -85,13 +93,13 @@
         content: ''
         display: block
         position: absolute
-        height: calc(50% - #{$unit * 3})
+        height: calc(50% - #{$unit * 5})
         box-shadow: 0 0 0 1px $colour-white
 
     // upper line
     &:before
-        top: 0
+        top: $unit * 2
 
     // lower line
     &:after
-        bottom: 0
+        bottom: $unit * 2
