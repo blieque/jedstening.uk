@@ -24,10 +24,19 @@ $ ->
     el.hide = $ '#hide'
     el.cssToJs = $ '#css-to-js'
 
+    el.mainLoader = $ '.loader.main'
+
     el.emailAnchor = $ 'header div:last-child > a'
     el.emailOverlay = $ '#email'
-    el.emailBox = $ '#email [readonly]'
-    el.emailButton = $ '#email [type="submit"]'
+    el.emailBox = el.emailOverlay.children '[readonly]'
+    el.emailButton = el.emailOverlay.children '[type="submit"]'
+
+    el.selector = $ '#selector'
+    el.categoryAnchors = el.selector.find 'div a'
+
+    el.previews = $ 'section > a'
+    el.templateImage = el.hide.children 'img'
+    el.templateThumbnail = el.hide.children 'a'
 
     el.gallery = $ '#gallery'
     el.imgNavs = $ '.img-nav'
@@ -36,13 +45,9 @@ $ ->
     el.imgPrevArrow = el.imgPrev.children 'div'
     el.imgNextArrow = el.imgNext.children 'div'
     el.article = el.gallery.find 'article'
-
     el.frame = $ '#frame'
     el.conveyor = $ '#conveyor'
     el.nav = $ '#content > nav'
-    el.previews = $ 'section > a'
-    el.templateImage = el.hide.children 'img'
-    el.templateThumbnail = el.hide.children 'a'
 
     # events and bindings
 
@@ -53,6 +58,8 @@ $ ->
     el.emailButton.on 'click', emailContentsClick
     el.emailOverlay.on 'click', toggleEmailOverlay
 
+    el.categoryAnchors.on 'click', selectCategory
+
     el.previews.on 'click', previewClick
     el.templateThumbnail.on 'click', thumbnailClick
     el.imgNavs.on 'click', imgNavClick
@@ -60,6 +67,7 @@ $ ->
     # initialisation
 
     do conveyorProps.updateWidth
+    el.mainLoader.fadeOut 0
     toggleGallery 0
     do getColumns
     do openFromUrlWhenReady

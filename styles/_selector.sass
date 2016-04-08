@@ -20,10 +20,13 @@
     // links and the dividing line between
     a, #and
         display: inline-block
-        // this is all sorts of awful
-        padding: calc(50vh - #{$unit *  10.9}) 0
+        /* This is all sorts of awful. The 10.98 should really be 11, but this
+         * creates a single-pixel line on most devices.
+         */
+        padding: calc(50vh - #{$unit *  10.98}) 0
         text-align: center
         font-weight: 700
+        @include prefix(webkit moz, transition, all ease-in-out 1.2s)
 
     // category links
     a
