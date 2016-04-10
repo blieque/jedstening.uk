@@ -3,7 +3,7 @@
     color: $colour-white
     background: url('../images/cover.jpg')
     background-size: 100%
-    background-position: bottom
+    background-position: center
     text-transform: uppercase
 
     // shrink to header-size
@@ -65,9 +65,11 @@
         // alternate-colour text revealed by wipe
         [rel]:after
             content: attr(rel)
+            display: block
+            padding: 0 $unit * 1.8 0 $unit * 2
             position: relative
             left: -50%
-            padding: 0 $unit * 1.8 0 $unit * 2
+            height: $unit * 4.5
 
         // alternate-colour text container
         &.selected > span > span, &:hover > span > span

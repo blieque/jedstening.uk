@@ -28,10 +28,11 @@ previewClick = (event, toggleTime) ->
         elPreview.addClass 'open'
 
         # locate preview and move gallery into place in the dom
-        projectIndex = el.previews.index elPreview
-        positionGalleryElement projectIndex
+        elementIndex = el.previews.index elPreview
+        positionGalleryElement elementIndex
 
         # change images and text of the project
+        projectIndex = parseInt elPreview.attr('id').match(/[0-9]*/)[0]
         changeGalleryProject projectIndex
 
     # animate the gallery open or closed

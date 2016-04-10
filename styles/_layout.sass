@@ -69,8 +69,13 @@ header
         text-decoration: none
 
 // main container, and part of the header
-section, header > div, #selector > div
+.selected + section, header > div, #selector > div
     padding: $unit 0 $unit $unit * 2
+    // prevents an ugly scrollbar from rearing it's ugly head
+    @include prefix(webkit moz, transition, all ease 1s)
+
+// main container, and part of the header
+section, header > div, #selector > div
     margin: 0 auto
     // cap at ~1480 px wide -- at this size all of the preview images are
     // displayed at their actual, ideal size

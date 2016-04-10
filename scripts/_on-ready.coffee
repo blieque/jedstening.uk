@@ -20,11 +20,10 @@ $ ->
     el.window = $ window
     el.document = $ document
     el.body = $ 'body'
+    el.section = $ 'section'
 
     el.hide = $ '#hide'
     el.cssToJs = $ '#css-to-js'
-
-    el.mainLoader = $ '.loader.main'
 
     el.emailAnchor = $ 'header div:last-child > a'
     el.emailOverlay = $ '#email'
@@ -33,10 +32,6 @@ $ ->
 
     el.selector = $ '#selector'
     el.categoryAnchors = el.selector.find 'div a'
-
-    el.previews = $ 'section > a'
-    el.templateImage = el.hide.children 'img'
-    el.templateThumbnail = el.hide.children 'a'
 
     el.gallery = $ '#gallery'
     el.imgNavs = $ '.img-nav'
@@ -48,6 +43,11 @@ $ ->
     el.frame = $ '#frame'
     el.conveyor = $ '#conveyor'
     el.nav = $ '#content > nav'
+    el.galleryLoader = $ '.loader.gallery'
+
+    el.templateImage = el.hide.children 'img'
+    el.templateThumbnail = el.hide.children('a').eq 0
+    el.templatePreview = el.hide.children('a').eq 1
 
     # events and bindings
 
@@ -60,14 +60,13 @@ $ ->
 
     el.categoryAnchors.on 'click', selectCategory
 
-    el.previews.on 'click', previewClick
+    el.templatePreview.on 'click', previewClick
     el.templateThumbnail.on 'click', thumbnailClick
     el.imgNavs.on 'click', imgNavClick
 
     # initialisation
 
     do conveyorProps.updateWidth
-    el.mainLoader.fadeOut 0
     toggleGallery 0
     do getColumns
     do openFromUrlWhenReady
