@@ -32,7 +32,36 @@ categoriseProjects = (byCategory, category) ->
             if project.category == category
                 byCategory[category].push project
 
-switchToCategory = do ->
+fadeOutRemovePreviews = do ->
+
+    fadeOutTotalTime = 400
+    # the real business end
+    removeLastPreview = ->
+        el.previews.last().fadeOut 100, ->
+            el.previews.last().remove()
+
+    ->
+        # close the gallery before anything
+        $('.open').click()
+
+        # remove last preview without delay
+        removeLastPreview()
+
+        # iterate through the remaining previews and get rid of them
+        if el.previews.length > 1
+            i = el.previews.length - 1
+            intervalTime = (fadeOutTotalTime - 100) / i
+            intervalId = setInterval ->
+                console.log i
+                removeLastPreview()
+                i--
+                if i < 0 then clearInterval intervalId
+            , intervalTime
+            return fadeOutTotalTime
+        else
+            return 100
+
+addNewPreviews = do ->
 
     byCategory = {}
 
@@ -62,3 +91,12 @@ switchToCategory = do ->
             newPreview.find('p').text project.basicInfo
 
             newPreview.appendTo el.section
+
+        el.previews = $ el.previews.selector
+
+switchToCategory = (category, categoryName) ->
+
+    nextDelay = fadeOutRemovePreviews()
+    setTimeout ->
+        addNewPreviews category, categoryName
+    , nextDelay

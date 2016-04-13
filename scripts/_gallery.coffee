@@ -32,7 +32,7 @@ previewClick = (event, toggleTime) ->
         positionGalleryElement elementIndex
 
         # change images and text of the project
-        projectIndex = parseInt elPreview.attr('id').match(/[0-9]*/)[0]
+        projectIndex = parseInt elPreview.attr('id').match(/[0-9]+/)[0]
         changeGalleryProject projectIndex
 
     # animate the gallery open or closed
@@ -40,7 +40,7 @@ previewClick = (event, toggleTime) ->
 
 thumbnailClick = (event) ->
 
-    do event.preventDefault
+    event.preventDefault()
 
     elThumbnail = $ this
     imageIsCurrent = elThumbnail.hasClass 'current'
@@ -72,7 +72,7 @@ getColumns = ->
        columnsInt < 5 and
        columnsInt != columns
         columns = columnsInt
-        do positionGalleryElement
+        positionGalleryElement()
         if galleryIsOpen
             scrollToGallery 0
 
@@ -88,14 +88,14 @@ scrollToGallery = (time) ->
         scrollTop: el.gallery.offset().top - gapAboveGallery
     , time
 
-positionGalleryElement = (projectIndex) ->
+positionGalleryElement = (elementIndex) ->
 
-    if projectIndex == undefined or projectIndex == null
-        projectIndex = el.previews.index $ '.open'
+    if elementIndex == undefined or elementIndex == null
+        elementIndex = el.previews.index $ '.open'
 
     # move the gallery into place in the dom
-    if projectIndex >= 0
-        lastOnRow = projectIndex + columns
+    if elementIndex >= 0
+        lastOnRow = elementIndex + columns
         lastOnRow -= lastOnRow % columns
         lastOnRow = Math.min lastOnRow, el.previews.length
         el.gallery.insertAfter el.previews[lastOnRow - 1]

@@ -13,7 +13,8 @@ $ ->
 
         error: (jqXHR, textStatus, errorThrown) ->
             alert 'Error occurred while fetching site-data. The website will ' +
-                  'most likely not work fully.\n\nError: ' + textStatus
+                  'most likely not work fully. Try reloading the page in a ' +
+                  'few minutes.'
 
     # find elements in the dom
 
@@ -32,6 +33,8 @@ $ ->
 
     el.selector = $ '#selector'
     el.categoryAnchors = el.selector.find 'div a'
+
+    el.previews = $ 'section > a'
 
     el.gallery = $ '#gallery'
     el.imgNavs = $ '.img-nav'
