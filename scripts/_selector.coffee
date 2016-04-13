@@ -32,71 +32,83 @@ categoriseProjects = (byCategory, category) ->
             if project.category == category
                 byCategory[category].push project
 
-fadeOutRemovePreviews = do ->
+addNewPreviews = (category, categoryName) ->
 
-    fadeOutTotalTime = 400
-    # the real business end
-    removeLastPreview = ->
-        el.previews.last().fadeOut 100, ->
-            el.previews.last().remove()
-
-    ->
-        # close the gallery before anything
-        $('.open').click()
-
-        # remove last preview without delay
-        removeLastPreview()
-
-        # iterate through the remaining previews and get rid of them
-        if el.previews.length > 1
-            i = el.previews.length - 1
-            intervalTime = (fadeOutTotalTime - 100) / i
-            intervalId = setInterval ->
-                console.log i
-                removeLastPreview()
-                i--
-                if i < 0 then clearInterval intervalId
-            , intervalTime
-            return fadeOutTotalTime
-        else
-            return 100
-
-addNewPreviews = do ->
-
+    # categorise the project data before adding them
     byCategory = {}
+    categoriseProjects byCategory, category
 
-    (category, categoryName) ->
+    byCategory[category].forEach (project) ->
 
-        categoriseProjects byCategory, category
-        byCategory[category].forEach (project) ->
+        newPreview = el.templatePreview.clone true
 
-            newPreview = el.templatePreview.clone true
+        paddedId = if project.id < 10 then '0' else ''
+        paddedId += project.id
+        imgSrc = baseUrl + 'images/preview/' + paddedId + '.jpg'
+        $.ajax
+            url: imgSrc
 
-            paddedId = if project.id < 10 then '0' else ''
-            paddedId += project.id
-            imgSrc = baseUrl + 'images/preview/' + paddedId + '.jpg'
-            $.ajax
-                url: imgSrc
+            success: ->
+                newPreview.children('img').attr 'src', imgSrc
+                newPreview.children('.loader').remove()
 
-                success: ->
-                    newPreview.children('img').attr 'src', imgSrc
-                    newPreview.children('.loader').remove()
+        newPreview.attr
+            id: 'project-' + project.id
+            href: baseUrl + categoryName + '/' + project.slug
 
-            newPreview.attr
-                id: 'project-' + project.id
-                href: baseUrl + categoryName + '/' + project.slug
+        newPreview.children('img').attr 'alt', project.title
+        newPreview.find('h2').text project.title
+        newPreview.find('p').text project.basicInfo
 
-            newPreview.children('img').attr 'alt', project.title
-            newPreview.find('h2').text project.title
-            newPreview.find('p').text project.basicInfo
+        newPreview.appendTo el.section
+        newPreview.fadeOut 0
 
-            newPreview.appendTo el.section
+removePreview = (index, fadeTime, {previewCount}) ->
+    elementIndex = previewCount - index - 1
+    el.previews.eq(elementIndex).fadeOut fadeTime, ->
+        $(this).remove()
 
-        el.previews = $ el.previews.selector
+showPreview = (index, fadeTime) ->
+    el.previews.eq(index).fadeIn fadeTime
+
+intervalPreviewAction = do ->
+
+    transitionTotalTime = 600
+    fadeTime = 200
+
+    (fn, count, data) ->
+
+        if count > 0
+
+            # call the function the first time before any delay
+            i = 0
+            fn i, fadeTime, data
+
+            # iterate through the remaining previews and get rid of them
+            if count > 1
+                intervalTime = (transitionTotalTime - fadeTime) / (count - 1)
+                intervalId = setInterval ->
+                    i++
+                    fn i, fadeTime, data
+                    if i > count - 2 then clearInterval intervalId
+                , intervalTime
+                return transitionTotalTime
+            else
+                return fadeTime
 
 switchToCategory = (category, categoryName) ->
 
-    nextDelay = fadeOutRemovePreviews()
+    # close the gallery before anything
+    $('.open').click()
+
+    # fade the current previews out and remove them from the dom, one by one
+    delay = intervalPreviewAction removePreview, el.previews.length,
+        previewCount: el.previews.length
+    # add the new previews, keeping them invisible
+    addNewPreviews(category, categoryName)
+    # fade-in the new previews, one by one
     setTimeout ->
-        addNewPreviews category, categoryName
-    , nextDelay
+        # replace previews jquery object to hold the new previews
+        el.previews = $ el.previews.selector
+        delay = intervalPreviewAction showPreview, el.previews.length
+    , delay

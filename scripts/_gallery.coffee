@@ -258,21 +258,20 @@ slideToImage = (imageIndex) ->
         # (wait for button to stretch before measuring)
         setTimeout conveyorProps.updateProjectNavWidth, 300
 
-slideToImageRelative = (changeInIndex) ->
+slideToImageRelative = (deltaIndex) ->
 
     # determine which gallery image is currently displayed
     elThumbnail = $ '.current'
     currentIndex = el.nav.children().index elThumbnail
-    newIndex = currentIndex + changeInIndex
+    newIndex = currentIndex + deltaIndex
 
     # if we need to instead move to another project
-    if currentIndex == 0 and changeInIndex == -1 or
-       currentIndex == projectData.galleryCount - 1 and changeInIndex == 1
-        targetProject = currentProjectIndex + changeInIndex
+    if currentIndex == 0 and deltaIndex == -1 or
+       currentIndex == projectData.galleryCount - 1 and deltaIndex == 1
+        targetProject = deltaIndex + el.previews.index $ '.open'
         if targetProject >= 0 and
-           targetProject < siteData.projects.length
-            el.previews.eq targetProject
-                .trigger 'click'
+           targetProject < el.previews.length
+            el.previews.eq(targetProject).click()
     # slide to another image in the gallery
     else
         slideToImage newIndex
