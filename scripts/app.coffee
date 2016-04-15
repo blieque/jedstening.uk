@@ -11,4 +11,4 @@
 {% include_relative _selector.coffee %}
 {% include_relative _gallery.coffee %}
 
-{% include_relative _on-ready.coffee %}
+{% include_relative _main.coffee %}

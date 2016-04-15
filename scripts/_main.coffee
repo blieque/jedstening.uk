@@ -1,20 +1,23 @@
+# kick off async stuff right away
+
+$.ajax
+    url: (pathPrefix + '/data.json').slice 1
+    dataType: 'json'
+
+    success: (data, textStatus, jqXHR) ->
+        siteData = data
+        slugifyTitles()
+        categoriseProjects()
+        openFromUrlWhenReady()
+
+    error: (jqXHR, textStatus, errorThrown) ->
+        alert 'Error occurred while fetching site-data. The website will ' +
+              'most likely not work fully. Try reloading the page in a ' +
+              'few minutes.'
+
+# start poking at the dom, once we have one
+
 $ ->
-
-    # kick off async stuff right away
-
-    $.ajax
-        url: 'data.json'
-        dataType: 'json'
-
-        success: (data, textStatus, jqXHR) ->
-            siteData = data
-            do slugifyTitles
-            do openFromUrlWhenReady
-
-        error: (jqXHR, textStatus, errorThrown) ->
-            alert 'Error occurred while fetching site-data. The website will ' +
-                  'most likely not work fully. Try reloading the page in a ' +
-                  'few minutes.'
 
     # find elements in the dom
 
@@ -61,7 +64,7 @@ $ ->
     el.emailButton.on 'click', emailContentsClick
     el.emailOverlay.on 'click', toggleEmailOverlay
 
-    el.categoryAnchors.on 'click', selectCategory
+    el.categoryAnchors.on 'click', categoryAnchorClick
 
     el.templatePreview.on 'click', previewClick
     el.templateThumbnail.on 'click', thumbnailClick
@@ -69,8 +72,8 @@ $ ->
 
     # initialisation
 
-    do conveyorProps.updateWidth
+    conveyorProps.updateWidth()
     toggleGallery 0
-    do getColumns
-    do openFromUrlWhenReady
+    getColumns()
+    openFromUrlWhenReady()
     mobile = new Mobile

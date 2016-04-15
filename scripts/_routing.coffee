@@ -37,20 +37,32 @@ slugifyTitles = ->
 
         project.slug = newSlug
 
-findProject = (slug) ->
+findProject = (categoryName, slug) ->
 
-    property = 'slug'
-    if typeof slug == 'number'
-        property = 'id'
+    category = null
+    indexInCategory = null
 
-    index = undefined
+    idLookup = typeof categoryName == 'number'
 
-    siteData.projects.some (project, loopIndex) ->
-        if project[property] == slug
-            index = loopIndex
-            return true
+    if idLookup
+        siteData.projects.some (project, projectIndex) ->
+            if project.id == categoryName # categoryName is actually the id
+                category = project.category
+                indexInCategory = byCategory[project.category].indexOf project
+                true # stop the loop
+    else
+        if slug in categoryNames
+            category = categoryNames.indexOf slug
+        else
+            el.categoryAnchors.each (anchorIndex, anchor) ->
+                if $(anchor).attr('href') == categoryName
+                    category = anchorIndex
+            byCategory[category].some (project, projectIndex) ->
+                if project.slug == slug
+                    indexInCategory = projectIndex
+                    true # stop the loop
 
-    index
+    {category, indexInCategory}
 
 openFromUrlWhenReady = do ->
 
@@ -68,21 +80,38 @@ openFromUrl = ->
 
     # url will not end in a slash, unless no project is specified in it
     path = location.pathname.split '/'
+    categoryName = path[path.length - 2]
     slug = path[path.length - 1]
 
-    if slug != ''
+   # if slug != ''
 
-        index = findProject slug
+    project = null
+    if categoryName != ''
+        project = findProject categoryName, slug
+    else
+        # no slug was given, but rather an id
+        if !isNaN slugInt = parseInt slug
+            project = findProject slugInt
 
-        if index == undefined and !isNaN slugInt = parseInt slug
-            index = findProject slugInt
+    if project != undefined
+        onceCategoryIsSet = ->
+            if project.indexInCategory != null
+                el.previews.eq(project.indexInCategory).click()
 
-        if index != undefined
-            el.previews.eq index
-                .trigger 'click', [0]
+        if currentCategory != project.category
+            el.categoryAnchors.eq(project.category).trigger 'click', [0]
+            setTimeout onceCategoryIsSet, 0
+        else
+            onceCategoryIsSet()
 
 changeWindowAddress = ->
 
-    newHref = baseUrl + projectData.slug
-    if newHref != location.href
-        history.replaceState {}, '', baseUrl + projectData.slug
+    if siteData
+
+        newHref = siteData.hrefPrefix + '/' + \
+                  currentCategoryName
+        console.log newHref
+        if $('.open').length > 0
+            newHref += '/' + projectData.slug
+        if newHref != location.href
+            history.replaceState {}, '', newHref
