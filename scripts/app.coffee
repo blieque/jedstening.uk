@@ -10,5 +10,6 @@
 {% include_relative _email.coffee %}
 {% include_relative _selector.coffee %}
 {% include_relative _gallery.coffee %}
+{% include_relative _keybindings.coffee %}
 
 {% include_relative _main.coffee %}

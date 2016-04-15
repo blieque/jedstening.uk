@@ -70,6 +70,8 @@ $ ->
     el.templateThumbnail.on 'click', thumbnailClick
     el.imgNavs.on 'click', imgNavClick
 
+    el.document.on 'keydown', keyboardKeydown
+
     # initialisation
 
     conveyorProps.updateWidth()
