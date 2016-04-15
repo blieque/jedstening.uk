@@ -6,7 +6,7 @@
 canvas
     width: 100%
 
-#frame div, #content, .img-nav
+#frame .big, #content, .img-nav
     height: 100%
     position: absolute
     top: 0
@@ -17,6 +17,9 @@ canvas
 #frame img, canvas
     vertical-align: bottom
 
+#frame, #content > nav a
+    background: $colour-off-black
+
 #frame
     overflow: hidden
     position: relative
@@ -25,10 +28,10 @@ canvas
     &:hover .img-nav div
         opacity: 1
 
-    div
+    .big
         @include prefix(webkit moz, transition, all ease-out .2s)
 
-    div, img
+    .big, img
         width: 100%
 
     .img-nav
