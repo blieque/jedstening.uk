@@ -126,7 +126,7 @@ changeGalleryImages = do ->
         else
             # return normal interpolated string
             "#{siteData.hrefPrefix}/images/#{parts[0]}/" +
-            "#{parts[1]}.#{parts[2]}.png"
+            "#{parts[1]}.#{parts[2]}.jpg"
 
     ->
 

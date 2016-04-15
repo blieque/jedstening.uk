@@ -110,7 +110,6 @@ changeWindowAddress = ->
 
         newHref = siteData.hrefPrefix + '/' + \
                   currentCategoryName
-        console.log newHref
         if $('.open').length > 0
             newHref += '/' + projectData.slug
         if newHref != location.href
