@@ -7,28 +7,33 @@ body
     overflow-x: hidden
     font-size: 10.5pt
 
+    &.no-scroll
+        overflow: hidden
+        max-height: 100vh
+
 // white horizontal bar at the top
 header
+    position: relative
     padding: $unit * 4 0
+    height: $unit * 9.5
+    background: $colour-white
     font-weight: 700
     text-align: center
-    background: $colour-white
-    position: relative
 
-    // keeps header content in a sesible place on large displays
+    // keeps header content in a sensible place on large displays
     & > div
         padding: 0 $unit * 2 !important
         position: relative
 
-    // behance and email, and profession
-    div div, span
+    // behance and email
+    div div
         letter-spacing: $unit * .4
         text-transform: uppercase
 
     // behance and email
     div div
         position: absolute
-        top: calc(50% - #{$unit * 3.5})
+        top: calc(50% - #{$unit * 2})
         width: calc(50% - #{$unit * 19})
 
         &:first-of-type
@@ -57,11 +62,6 @@ header
             &:hover:after
                 width: calc(100% - 4pt)
 
-    // slogan-y thing under title
-    span
-        display: block
-        margin-top: $unit * -2
-
     // big title heading
     h1
         margin: 0
@@ -73,8 +73,13 @@ header
         text-decoration: none
 
 // main container, and part of the header
-section, header > div
+.selected + section, header > div, #selector > div
     padding: $unit 0 $unit $unit * 2
+    // prevents an ugly scrollbar from rearing it's ugly head
+    @include prefix(webkit moz, transition, all ease 1s)
+
+// main container, and part of the header
+section, header > div, #selector > div
     margin: 0 auto
     // cap at ~1480 px wide -- at this size all of the preview images are
     // displayed at their actual, ideal size

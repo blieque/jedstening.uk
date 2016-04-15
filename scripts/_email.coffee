@@ -1,14 +1,14 @@
 emailClick = (event) ->
 
-    do event.preventDefault
-    do toggleEmailOverlay
+    event.preventDefault()
+    toggleEmailOverlay()
 
 emailContentsClick = (event) ->
 
-    do event.preventDefault
-    do event.stopPropagation
+    event.preventDefault()
+    event.stopPropagation()
 
-    do el.emailBox.select
+    el.emailBox.select()
     elClickedInput = $ this
     if elClickedInput.is el.emailButton
         copySuccessful = document.execCommand 'copy'
@@ -20,7 +20,7 @@ toggleEmailOverlay = ->
     if !commandSupportChecked and
        !document.queryCommandSupported 'copy'
         commandSupportChecked = true
-        do el.emailButton.remove
+        el.emailButton.remove()
         el.emailOverlay.addClass 'legacy'
 
     if emailOverlayIsOpen
@@ -35,6 +35,6 @@ toggleEmailOverlay = ->
         setTimeout ->
             el.emailOverlay.css 'opacity', 1
         , 0
-        do el.emailBox.select
+        el.emailBox.select()
 
     emailOverlayIsOpen = !emailOverlayIsOpen
