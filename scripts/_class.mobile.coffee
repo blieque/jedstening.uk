@@ -33,7 +33,7 @@ class Mobile
 
     conveyorTouchmove = (event) ->
 
-        do event.preventDefault
+        event.preventDefault()
         touchEvent = event.originalEvent.touches[0]
 
         delta =
@@ -57,7 +57,7 @@ class Mobile
                     dragging = true
                     el.conveyor.addClass 'nt'
                 else
-                    do conveyorTouchend
+                    conveyorTouchend()
 
     conveyorTouchstart = (event) ->
 
@@ -81,7 +81,7 @@ class Mobile
             dragging = false
             el.conveyor.removeClass 'nt'
 
-            do conveyorProps.roundRightVal
+            conveyorProps.roundRightVal()
 
     # public
 
@@ -89,7 +89,7 @@ class Mobile
 
         if navigator.userAgent.match /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB[0-9]+|Windows Phone/i
 
-            do changeDom
+            changeDom()
 
             # attach initial mobile navigation event
             el.frame.on 'touchstart', conveyorTouchstart

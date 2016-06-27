@@ -8,7 +8,7 @@ address: ""
 baseurl: "/stening.co"
 
 # build settings
-destination: /srv/hosts/dev.omni/www/stening.co
+destination: /srv/hosts/dev.omni/stening.co
 exclude: ["Gemfile", "Gemfile.lock", "README.md", "LICENSE.md", "type/README.md"]
 gems: ["jekyll-coffeescript"]
 

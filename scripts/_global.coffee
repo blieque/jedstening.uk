@@ -2,18 +2,18 @@
 
 # objects
 el = {} # element object
-mobile = null
+mobile = undefined
 window.conveyorProps = new ConveyorProps
 
 # site
-siteData = null
+siteData = undefined
 
 # gallery
 byCategory = {}
 projectData = {}
 columns = 4
-projectElementIndex = null
-lastOpenedProject = null
+projectElementIndex = undefined
+lastOpenedProject = undefined
 galleryIsOpen = true # kinda not true
 
 # email address overlay
@@ -22,7 +22,7 @@ commandSupportChecked = false
 
 # category selection
 currentCategoryName = ''
-currentCategory = null
+currentCategory = undefined
 categoryNames = ['art', 'graphics']
 
 # url stuff
