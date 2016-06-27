@@ -5,7 +5,7 @@ previewClick = (event, toggleTime) ->
     if event.ctrlKey
         return
 
-    do event.preventDefault
+    event.preventDefault()
 
     elPreview = $ this
     projectIsOpen = elPreview.hasClass 'open'
@@ -52,7 +52,7 @@ thumbnailClick = (event) ->
 imgNavClick = ->
 
     elPreview = $ this
-    difference = null
+    difference = undefined
     if elPreview.is '.l'
         difference = -1
     else
@@ -91,7 +91,7 @@ scrollToGallery = (time) ->
 
 positionGalleryElement = (elementIndex) ->
 
-    if elementIndex == undefined or elementIndex == null
+    if elementIndex == undefined
         elementIndex = el.previews.index $ '.open'
 
     # move the gallery into place in the dom
@@ -132,7 +132,7 @@ changeGalleryImages = do ->
 
         # remove/add image and thumbnail elements as needed
         deltaImages = projectData.galleryCount - el.conveyor.children().length
-        removeOrAdd = null
+        removeOrAdd = undefined
 
         if deltaImages > 0
             removeOrAdd = ->
@@ -144,7 +144,7 @@ changeGalleryImages = do ->
                 el.nav.children().last().remove()
 
         for i in [0...Math.abs deltaImages]
-            do removeOrAdd
+            removeOrAdd()
 
         # change element attributes (href, src) for the new project
         for i in [0...projectData.galleryCount]
@@ -167,7 +167,7 @@ changeGalleryText = () ->
     # remove/add paragraph elements as needed
     deltaParagraphs = projectData.description.length -
                      el.article.children('p').length
-    removeOrAdd = null
+    removeOrAdd = undefined
 
     if deltaParagraphs > 0
         removeOrAdd = ->
@@ -177,7 +177,7 @@ changeGalleryText = () ->
             el.article.children('p').last().remove()
 
     for i in [0...Math.abs deltaParagraphs]
-        do removeOrAdd
+        removeOrAdd()
 
     for i in [0...projectData.description.length]
         el.article.children('p').eq(i).text projectData.description[i]
@@ -211,7 +211,7 @@ toggleGallery = (time) ->
     else
         # close the gallery
         # setTimeout is daft
-        timeoutFunction = if time > 0 then setTimeout else (f) -> do f
+        timeoutFunction = if time > 0 then setTimeout else (f) -> f()
         timeoutFunction ->
             el.gallery.slideUp time, changeWindowAddress
         , 200

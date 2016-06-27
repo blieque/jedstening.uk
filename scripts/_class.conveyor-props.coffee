@@ -63,11 +63,11 @@ class ConveyorProps
         if rounded and rightVal % 1 == 0
             rightValRound = rightVal
 
-        do updateCss
+        updateCss()
 
     updateWidth: ->
 
-        this.width = do el.frame.width
+        this.width = el.frame.width()
         this.dragThreshold = this.width * 0.012
 
     updateProjectNavWidth: ->
@@ -75,9 +75,9 @@ class ConveyorProps
         projectNavWidthPx = 0
 
         if rightValRound == 0
-            projectNavWidthPx = do el.imgPrevArrow.width
+            projectNavWidthPx = el.imgPrevArrow.width()
         else if rightValRound == projectData.galleryCount - 1
-            projectNavWidthPx = do el.imgNextArrow.width
+            projectNavWidthPx = el.imgNextArrow.width()
 
         # if `this.width' is used all hell breaks loose
         projectNavWidth = projectNavWidthPx / conveyorProps.width
