@@ -10,7 +10,7 @@ slugify = (name) ->
     #   This function: "Didn't Work" -> "didnt-work"
 
     # convert to lowercase
-    name = do name.toLowerCase
+    name = name.toLowerCase()
     # remove characters that shouldn't create a hyphen at the next step
     name = name.replace /[.']/g, ''
     # replace sequences of non-alphanumeric characters with a hyphen
@@ -39,8 +39,8 @@ slugifyTitles = ->
 
 findProject = (categoryName, slug) ->
 
-    category = null
-    indexInCategory = null
+    category = undefined
+    indexInCategory = undefined
 
     idLookup = typeof categoryName == 'number'
 
@@ -73,7 +73,7 @@ openFromUrlWhenReady = do ->
     calledBefore = false
     ->
         if calledBefore
-            do openFromUrl
+            openFromUrl()
         calledBefore = true
 
 openFromUrl = ->
@@ -83,19 +83,20 @@ openFromUrl = ->
     categoryName = path[path.length - 2]
     slug = path[path.length - 1]
 
-   # if slug != ''
-
-    project = null
-    if categoryName != ''
+    project = undefined
+    # the url contains two parts (i.e., category and project slug)
+    if categoryName in categoryNames
         project = findProject categoryName, slug
-    else
-        # no slug was given, but rather an id
-        if !isNaN slugInt = parseInt slug
-            project = findProject slugInt
+    # no slug was given, but an id was
+    else if !isNaN(slugInt = parseInt slug)
+        project = findProject slugInt
+    # only category provided
+    else if slug in categoryNames
+        el.categoryAnchors.eq(categoryNames.indexOf slug).click()
 
     if project != undefined
         onceCategoryIsSet = ->
-            if project.indexInCategory != null
+            if project.indexInCategory != undefined
                 el.previews.eq(project.indexInCategory).click()
 
         if currentCategory != project.category
@@ -107,9 +108,7 @@ openFromUrl = ->
 changeWindowAddress = ->
 
     if siteData
-
-        newHref = siteData.hrefPrefix + '/' + \
-                  currentCategoryName
+        newHref = siteData.hrefPrefix + '/' + currentCategoryName
         if $('.open').length > 0
             newHref += '/' + projectData.slug
         if newHref != location.href

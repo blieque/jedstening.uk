@@ -35,7 +35,6 @@ categoryAnchorClick = (event, fadeTime) ->
 addNewPreviews = (category, categoryName) ->
 
     byCategory[category].forEach (project) ->
-
         newPreview = el.templatePreview.clone true
 
         paddedId = if project.id < 10 then '0' else ''
@@ -67,34 +66,30 @@ removePreview = (index, fadeTime, {previewCount}) ->
 showPreview = (index, fadeTime) ->
     el.previews.eq(index).fadeIn fadeTime
 
-intervalPreviewAction = do ->
+intervalPreviewAction = (fn, count, fadeTime, data) ->
 
-    defaultfadeTime = 600
+    transitionTotalTime = 600
+    if typeof fadeTime == 'number'
+        transitionTotalTime = fadeTime
+    fadeTime = transitionTotalTime / 2
 
-    (fn, count, fadeTime, data) ->
+    if count > 0
 
-        transitionTotalTime = defaultfadeTime
-        if typeof fadeTime == 'number'
-            transitionTotalTime = fadeTime
-        fadeTime = transitionTotalTime / 2
+        # call the function for the first time before any delay
+        i = 0
+        fn i, fadeTime, data
 
-        if count > 0
-
-            # call the function for the first time before any delay
-            i = 0
-            fn i, fadeTime, data
-
-            # iterate through the remaining previews and get rid of them
-            if count > 1
-                intervalfadeTime = fadeTime / (count - 1)
-                intervalId = setInterval ->
-                    i++
-                    fn i, fadeTime, data
-                    if i > count - 2 then clearInterval intervalId
-                , intervalfadeTime
-                return transitionTotalTime
-            else
-                return fadeTime
+        # iterate through the remaining previews and get rid of them
+        if count > 1
+            intervalfadeTime = fadeTime / (count - 1)
+            intervalId = setInterval ->
+                i++
+                fn i, fadeTime, data
+                if i > count - 2 then clearInterval intervalId
+            , intervalfadeTime
+            return transitionTotalTime
+        else
+            return fadeTime
 
 switchToCategory = (category, categoryName, fadeTime) ->
 
@@ -109,7 +104,7 @@ switchToCategory = (category, categoryName, fadeTime) ->
     # fade-in the new previews, one by one
     setTimeout ->
         # replace previews jquery object to hold the new previews
-        el.previews = $ el.previews.selector
+        el.previews = $ 'section > a'
         delay = intervalPreviewAction showPreview, el.previews.length, fadeTime
         changeWindowAddress()
     , delay
