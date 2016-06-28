@@ -44,7 +44,7 @@
         "title": "Grace Network",
         "basicInfo": "Logo design; digital and print use",
         "description": [""],
-        "galleryCount": 5,
+        "galleryCount": 2,
         "category": 1
     },
     {
@@ -70,5 +70,85 @@
         "description": ["Having photographed an old radio mast station and railway track, I created a set of three collograph prints. Each collograph measures 352 mm × 292 mm."],
         "galleryCount": 6,
         "category": 0
+    },
+    {
+        "id": 10,
+        "title": "Forest Film Festival",
+        "basicInfo": "Paper, paint, digital.",
+        "description": ["These posters were created as a part of my series of fictional film festivals. The process was a mixture of texture rubbing, scanning and digital editing on Photoshop."],
+        "galleryCount": 3,
+        "category": 0
+    },
+    {
+        "id": 11,
+        "title": "Stroud Colour Film Festival",
+        "basicInfo": "Paper, paint, digital.",
+        "description": ["I created another set of posters as part of my fictional film festival project, taking a more minimal approach to before."],
+        "galleryCount": 4,
+        "category": 0
+    },
+    {
+        "id": 12,
+        "title": "Stroud Film Festival",
+        "basicInfo": "Paper, paint, digital.",
+        "description": ["This was the final piece of my film festival project. It includes a promotional poster, flyer, and t-shirt for a fictional festival in the town of Stroud."],
+        "galleryCount": 3,
+        "category": 0
+    },
+    {
+        "id": 13,
+        "title": "Drop Shop",
+        "basicInfo": "Logo design; digital and print use",
+        "description": ["I was employed to help set up a new business in the Stroud District. I was responsible for the branding and general design. The concept behind The Drop Shop is customers drop off items which are then sold for them. They then receive the revenue minus a small donation to the Stroud District Furniture Bank."],
+        "galleryCount": 2,
+        "category": 1
+    },
+    {
+        "id": 14,
+        "title": "Greetings Card Illustration",
+        "basicInfo": "Digital",
+        "description": ["When working as a graphic designer it seems illogical to pay for generic and expensive shop bought cards. So I often end up doing personalised illustrations for friends and family."],
+        "galleryCount": 1,
+        "category": 1
+    },
+    {
+        "id": 15,
+        "title": "Ink Circles",
+        "basicInfo": "Paper, pen, ink, digital",
+        "description": ["These multimedia pieces are the result of a study of mine focusing on the use of lines in art. They were created purely as an experiment into the combination of inks, biro pen, and gel pen."],
+        "galleryCount": 5,
+        "category": 0
+    },
+    {
+        "id": 16,
+        "title": "Space Hopping Adventures",
+        "basicInfo": "Digital",
+        "description": ["This was another fictional project based around the concept of a retro pixel game. I created the concept art for the gameplay, main menu, pause menu and a Google Play mock up. The game is based on a character space hopping through various would while avoiding enemies and gaining power ups."],
+        "galleryCount": 9,
+        "category": 1
+    },
+    {
+        "id": 17,
+        "title": "Manzana",
+        "basicInfo": "Silk-screen printing, painting, digital illustration, calligraphy, half-tone reproduction, digital",
+        "description": ["This was a fictional project I worked on as part of my Graphic Communication course. I was briefed to create a set of promotional posters for a fruit cocktail named <em>Manzana</em>. The final products were the results of a great number of techniques."],
+        "galleryCount": 6,
+        "category": 1
+    },
+    {
+        "id": 18,
+        "title": "Musician Crowd",
+        "basicInfo": "Logo design; digital and print use",
+        "description": ["Musician Crowd is a website on which artists can communicate and organise events in their local area. My role was to create the initial branding for the project. For the logo I liked the idea of sound levels on a stereo and used them to represent three human figures, following the saying \"three's a crowd\". I also arranged the three parts into the rough shape of a letter <em>M</em>, and selected a lively colour scheme that reflected the exciting and varied world of music. I also chose colours that I believed could represent a diverse range of music."],
+        "galleryCount": 4,
+        "category": 1
+    },
+    {
+        "id": 19,
+        "title": "Success Poster",
+        "basicInfo": "Digital",
+        "description": ["Commissioned by my graphics lecturer, this was a rather aggressive motivational poster designed for the studio wall."],
+        "galleryCount": 1,
+        "category": 1
     }
 ]
