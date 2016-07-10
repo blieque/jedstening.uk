@@ -1,5 +1,46 @@
 [
     {
+        "id": 12,
+        "title": "Stroud Film Festival",
+        "basicInfo": "Paper, paint, digital.",
+        "description": ["This was the final piece of my film festival project. It includes a promotional poster, flyer, and t-shirt for a fictional festival in the town of Stroud."],
+        "galleryCount": 3,
+        "category": 0
+    },
+    {
+        "id": 11,
+        "title": "Stroud Colour Film Festival",
+        "basicInfo": "Paper, paint, digital.",
+        "description": ["I created another set of posters as part of my fictional film festival project, taking a more minimal approach to before."],
+        "galleryCount": 4,
+        "category": 0
+    },
+    {
+        "id": 15,
+        "title": "Ink Circles",
+        "basicInfo": "Paper, pen, ink, digital",
+        "description": ["These multimedia pieces are the result of a study of mine focusing on the use of lines in art. They were created purely as an experiment into the combination of inks, biro pen, and gel pen."],
+        "galleryCount": 5,
+        "category": 0
+    },
+    {
+        "id": 10,
+        "title": "Forest Film Festival",
+        "basicInfo": "Paper, paint, digital.",
+        "description": ["These posters were created as a part of my series of fictional film festivals. The process was a mixture of texture rubbing, scanning and digital editing on Photoshop."],
+        "galleryCount": 3,
+        "category": 0
+    },
+    {
+        "id": 9,
+        "title": "Collograph Trio",
+        "basicInfo": "Pen, pencil, watercolour paint",
+        "description": ["Having photographed an old radio mast station and railway track, I created a set of three collograph prints. Each collograph measures 352 mm × 292 mm."],
+        "galleryCount": 6,
+        "category": 0
+    },
+
+    {
         "id": 13,
         "title": "Drop Shop",
         "basicInfo": "Logo design; digital and print use",
@@ -110,45 +151,5 @@
         "description": ["I developed a logo for a fictional exotic fruit store, and created a screen-printed canvas bag prototype using it."],
         "galleryCount": 4,
         "category": 1
-    },
-    {
-        "id": 9,
-        "title": "Collograph Trio",
-        "basicInfo": "Pen, pencil, watercolour paint",
-        "description": ["Having photographed an old radio mast station and railway track, I created a set of three collograph prints. Each collograph measures 352 mm × 292 mm."],
-        "galleryCount": 6,
-        "category": 0
-    },
-    {
-        "id": 10,
-        "title": "Forest Film Festival",
-        "basicInfo": "Paper, paint, digital.",
-        "description": ["These posters were created as a part of my series of fictional film festivals. The process was a mixture of texture rubbing, scanning and digital editing on Photoshop."],
-        "galleryCount": 3,
-        "category": 0
-    },
-    {
-        "id": 11,
-        "title": "Stroud Colour Film Festival",
-        "basicInfo": "Paper, paint, digital.",
-        "description": ["I created another set of posters as part of my fictional film festival project, taking a more minimal approach to before."],
-        "galleryCount": 4,
-        "category": 0
-    },
-    {
-        "id": 12,
-        "title": "Stroud Film Festival",
-        "basicInfo": "Paper, paint, digital.",
-        "description": ["This was the final piece of my film festival project. It includes a promotional poster, flyer, and t-shirt for a fictional festival in the town of Stroud."],
-        "galleryCount": 3,
-        "category": 0
-    },
-    {
-        "id": 15,
-        "title": "Ink Circles",
-        "basicInfo": "Paper, pen, ink, digital",
-        "description": ["These multimedia pieces are the result of a study of mine focusing on the use of lines in art. They were created purely as an experiment into the combination of inks, biro pen, and gel pen."],
-        "galleryCount": 5,
-        "category": 0
     }
 ]

@@ -108,9 +108,12 @@ getProjectData = (projectId) ->
        siteData.projects[projectId - 1].id == projectId
         siteData.projects[projectId - 1]
     else
-        siteData.projects.forEach (project) ->
-            if project.id == projectId
-                project
+        project = undefined
+        siteData.projects.some (projectLoop) ->
+            if projectLoop.id == projectId
+                project = projectLoop
+                true
+        project
 
 changeGalleryImages = do ->
 
