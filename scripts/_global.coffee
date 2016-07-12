@@ -5,9 +5,6 @@ el = {} # element object
 mobile = undefined
 window.conveyorProps = new ConveyorProps
 
-# site
-siteData = undefined
-
 # gallery
 byCategory = {}
 projectData = {}

@@ -1,20 +1,3 @@
-# kick off async stuff right away
-
-$.ajax
-    url: (pathPrefix + '/data.json').slice 1
-    dataType: 'json'
-
-    success: (data, textStatus, jqXHR) ->
-        siteData = data
-        slugifyTitles()
-        categoriseProjects()
-        openFromUrlWhenReady()
-
-    error: (jqXHR, textStatus, errorThrown) ->
-        alert 'Error occurred while fetching site-data. The website will ' +
-              'most likely not work fully. Try reloading the page in a ' +
-              'few minutes.'
-
 # start poking at the dom, once we have one
 
 $ ->
@@ -77,5 +60,7 @@ $ ->
     conveyorProps.updateWidth()
     toggleGallery 0
     getColumns()
-    openFromUrlWhenReady()
     mobile = new Mobile
+    slugifyTitles()
+    categoriseProjects()
+    openFromUrl()

@@ -64,18 +64,6 @@ findProject = (categoryName, slug) ->
 
     {category, indexInCategory}
 
-openFromUrlWhenReady = do ->
-
-    # This function will only perform its task the second time it is called. The
-    # function requires two different async tasks to be complete in order to
-    # work.
-
-    calledBefore = false
-    ->
-        if calledBefore
-            openFromUrl()
-        calledBefore = true
-
 openFromUrl = ->
 
     # url will not end in a slash, unless no project is specified in it

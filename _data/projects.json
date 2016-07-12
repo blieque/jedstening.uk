@@ -1,38 +1,5 @@
 [
     {
-        "id": 1,
-        "category": 0,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag. It also has fancy Unicode business: ×, \u0394."
-        ],
-        "galleryCount": 3
-    },
-    {
-        "id": 2,
-        "category": 0,
-        "title": "Weekdays That're Deep",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 2
-    },
-    {
-        "id": 3,
-        "category": 1,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 1
-    },
-    {
         "id": 4,
         "category": 0,
         "title": "Deep Weekdays",
@@ -55,6 +22,61 @@
         "galleryCount": 3
     },
     {
+        "id": 3,
+        "category": 1,
+        "title": "Deep Weekdays",
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
+            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
+            "This description can have multiple paragraphs, which is pretty swag."
+        ],
+        "galleryCount": 1
+    },
+    {
+        "id": 1,
+        "category": 0,
+        "title": "Deep Weekdays",
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
+            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
+            "This description can have multiple paragraphs, which is pretty swag. It also has fancy Unicode business: ×, \u0394."
+        ],
+        "galleryCount": 3
+    },
+    {
+        "id": 2,
+        "category": 0,
+        "title": "Weekdays That're Deep",
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
+            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
+            "This description can have multiple paragraphs, which is pretty swag."
+        ],
+        "galleryCount": 2
+    },
+    {
+        "id": 11,
+        "category": 1,
+        "title": "Deep Weekdays",
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
+            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
+            "This description can have multiple paragraphs, which is pretty swag."
+        ],
+        "galleryCount": 3
+    },
+    {
+        "id": 12,
+        "category": 0,
+        "title": "Deep Weekdays",
+        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
+        "description": [
+            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
+            "This description can have multiple paragraphs, which is pretty swag."
+        ],
+        "galleryCount": 3
+    },
+    {
         "id": 6,
         "category": 1,
         "title": "Deep Weekdays",
@@ -64,17 +86,6 @@
             "This description can have multiple paragraphs, which is pretty swag."
         ],
         "galleryCount": 2
-    },
-    {
-        "id": 7,
-        "category": 1,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 3
     },
     {
         "id": 8,
@@ -110,19 +121,8 @@
         "galleryCount": 3
     },
     {
-        "id": 11,
+        "id": 7,
         "category": 1,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 3
-    },
-    {
-        "id": 12,
-        "category": 0,
         "title": "Deep Weekdays",
         "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
         "description": [

@@ -1,7 +1,5 @@
----
----
-
-{
+<script>
+var siteData = {
     "title": "{{ site.title }}",
     "artist": "{{ site.artist }}",
     "email": "{{ site.email }}",
@@ -9,3 +7,4 @@
     "hrefPrefix": "{{ site.address }}{{ site.baseurl }}",
     "projects": {% include_relative _data/projects.json %}
 }
+</script>
