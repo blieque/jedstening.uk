@@ -1,20 +1,3 @@
-# kick off async stuff right away
-
-$.ajax
-    url: (pathPrefix + '/data.json').slice 1
-    dataType: 'json'
-
-    success: (data, textStatus, jqXHR) ->
-        siteData = data
-        slugifyTitles()
-        categoriseProjects()
-        openFromUrlWhenReady()
-
-    error: (jqXHR, textStatus, errorThrown) ->
-        alert 'Error occurred while fetching site-data. The website will ' +
-              'most likely not work fully. Try reloading the page in a ' +
-              'few minutes.'
-
 # start poking at the dom, once we have one
 
 $ ->
@@ -29,6 +12,8 @@ $ ->
     el.hide = $ '#hide'
     el.cssToJs = $ '#css-to-js'
 
+    el.title = $ 'header h1 a'
+
     el.emailAnchor = $ 'header div:last-child > a'
     el.emailOverlay = $ '#email'
     el.emailBox = el.emailOverlay.children '[readonly]'
@@ -36,6 +21,7 @@ $ ->
 
     el.selector = $ '#selector'
     el.categoryAnchors = el.selector.find 'div a'
+    el.selectorContents = el.categoryAnchors.add '#and'
 
     el.previews = $ 'section > a'
 
@@ -59,6 +45,8 @@ $ ->
 
     el.window.on 'resize', getColumns
 
+    el.title.on 'click', titleClick
+
     el.emailAnchor.on 'click', emailClick
     el.emailBox.on 'click', emailContentsClick
     el.emailButton.on 'click', emailContentsClick
@@ -75,7 +63,9 @@ $ ->
     # initialisation
 
     conveyorProps.updateWidth()
-    toggleGallery 0
+    toggleGallery true
     getColumns()
-    openFromUrlWhenReady()
     mobile = new Mobile
+    slugifyTitles()
+    categoriseProjects()
+    openFromUrl()

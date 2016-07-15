@@ -1,6 +1,6 @@
 # event handlers
 
-previewClick = (event, toggleTime) ->
+previewClick = (event, instant) ->
 
     if event.ctrlKey
         return
@@ -37,7 +37,9 @@ previewClick = (event, toggleTime) ->
         changeGalleryProject projectId
 
     # animate the gallery open or closed
-    toggleGallery toggleTime
+    toggleGallery instant
+    if not instant
+        changeWindowAddress()
 
 thumbnailClick = (event) ->
 
@@ -191,7 +193,6 @@ changeGalleryProject = (projectId) ->
 
     changeGalleryImages()
     changeGalleryText()
-    changeWindowAddress()
 
     # slide back to the first image unless we're reopening the same project
     if projectId != lastOpenedProject
@@ -199,13 +200,12 @@ changeGalleryProject = (projectId) ->
 
     lastOpenedProject = projectId
 
-toggleGallery = (time) ->
+toggleGallery = (instant) ->
 
     elPreviewOpen = $ '.open'
     galleryIsOpening = elPreviewOpen.length > 0
 
-    if time == undefined
-        time = 400
+    time = if instant then 0 else 400
 
     if galleryIsOpening
         # open the gallery
@@ -214,10 +214,14 @@ toggleGallery = (time) ->
     else
         # close the gallery
         # setTimeout is daft
-        timeoutFunction = if time > 0 then setTimeout else (f) -> f()
-        timeoutFunction ->
-            el.gallery.slideUp time, changeWindowAddress
-        , 200
+        # timeoutFunction = if instant then (f) -> f() else setTimeout
+        # timeoutFunction ->
+        #     el.gallery.slideUp time
+        # , 200
+        delay = if instant then 0 else 200
+        setTimeout ->
+            el.gallery.slideUp time
+        , delay
 
     galleryIsOpen = !galleryIsOpen
 

@@ -1,5 +1,3 @@
-baseUrl = location.origin + location.pathname.replace /[a-z0-9-]*$/, ''
-
 slugify = (name) ->
 
     # This function is intended to almost implement the behaviour of the Jekyll
@@ -64,18 +62,6 @@ findProject = (categoryName, slug) ->
 
     {category, indexInCategory}
 
-openFromUrlWhenReady = do ->
-
-    # This function will only perform its task the second time it is called. The
-    # function requires two different async tasks to be complete in order to
-    # work.
-
-    calledBefore = false
-    ->
-        if calledBefore
-            openFromUrl()
-        calledBefore = true
-
 openFromUrl = ->
 
     # url will not end in a slash, unless no project is specified in it
@@ -92,24 +78,24 @@ openFromUrl = ->
         project = findProject slugInt
     # only category provided
     else if slug in categoryNames
-        el.categoryAnchors.eq(categoryNames.indexOf slug).click()
+        el.categoryAnchors.eq(categoryNames.indexOf slug).trigger 'click', true
 
     if project != undefined
         onceCategoryIsSet = ->
             if project.indexInCategory != undefined
-                el.previews.eq(project.indexInCategory).click()
+                el.previews.eq(project.indexInCategory).trigger 'click', true
 
         if currentCategory != project.category
-            el.categoryAnchors.eq(project.category).trigger 'click', [0]
+            el.categoryAnchors.eq(project.category).trigger 'click', true
             setTimeout onceCategoryIsSet, 0
         else
             onceCategoryIsSet()
 
 changeWindowAddress = ->
 
-    if siteData
-        newHref = siteData.hrefPrefix + '/' + currentCategoryName
-        if $('.open').length > 0
-            newHref += '/' + projectData.slug
-        if newHref != location.href
-            history.replaceState {}, '', newHref
+    newHref = siteData.hrefPrefix + '/' + currentCategoryName
+    if $('.open').length > 0
+        newHref += '/' + projectData.slug
+    if newHref != location.pathname
+        console.log location.pathname + ' -> ' + newHref
+        history.replaceState {}, '', newHref
