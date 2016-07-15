@@ -55,7 +55,7 @@ class Mobile
 
                 if deltaSquared.x > deltaSquared.y
                     dragging = true
-                    el.conveyor.addClass 'nt'
+                    el.conveyor.addClass 'no-transition'
                 else
                     conveyorTouchend()
 
@@ -79,7 +79,7 @@ class Mobile
         if dragging
 
             dragging = false
-            el.conveyor.removeClass 'nt'
+            el.conveyor.removeClass 'no-transition'
 
             conveyorProps.roundRightVal()
 

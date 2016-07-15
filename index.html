@@ -11,10 +11,11 @@ layout: main
 <div id="hide">
     <span id="css-to-js"></span>
     <img alt="Full size project image">
-    <a><img alt="Link to full size image"></a>
+    <a><canvas width="1" height="1"></canvas><img alt="Link to full size image"></a>
     <a> {% comment %} id, href {% endcomment %}
         {% assign loader_class = 'mini' %}
         {% include loader.html %}
+        <canvas width="16" height="10"></canvas>
         <img> {% comment %} src, alt {% endcomment %}
         <div>
             <div><div><h2>{% comment %} title {% endcomment %}</h2><span></span><p>{% comment %} basicInfo {% endcomment %}</p></div></div>

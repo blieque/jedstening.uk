@@ -7,27 +7,53 @@ categoriseProjects = ->
 
         byCategory[project.category].push project
 
-categoryAnchorClick = (event, fadeTime) ->
+categoryAnchorClick = (event, instant) ->
 
     event.preventDefault()
 
     clickedAnchor = $ this
     categoryName = clickedAnchor.attr 'href'
     category = el.categoryAnchors.index clickedAnchor
-    currentCategory
 
     if currentCategoryName == ''
+        if instant
+            el.selectorContents.addClass 'no-transition'
         el.selector.addClass 'selected'
-        el.body.addClass 'no-scroll' # prevents ugly scroll-bars appearing
-        setTimeout ->
-            el.body.removeClass 'no-scroll'
-        , 1000
+        if instant
+            setTimeout ->
+                el.selectorContents.removeClass 'no-transition'
+            , 0
+        else
+            el.body.addClass 'no-scroll' # prevents ugly scroll-bars appearing
+            setTimeout ->
+                el.body.removeClass 'no-scroll'
+            , 1000
+
     else
         el.categoryAnchors.eq(currentCategory).removeClass 'selected'
     clickedAnchor.addClass 'selected'
 
     if categoryName != currentCategoryName
-        switchToCategory category, categoryName, fadeTime
+        # switch to new category
+
+        # close the gallery before anything
+        $('.open').click()
+
+        # fade the current previews out and remove them from the dom, one by one
+        fadeTime = if instant then 0 else 400
+        delay = intervalPreviewAction removePreview, el.previews.length, fadeTime,
+            previewCount: el.previews.length
+        # add the new previews, keeping them invisible
+        addNewPreviews(category, categoryName)
+        # fade-in the new previews, one by one
+        setTimeout ->
+            # replace previews jquery object to hold the new previews
+            el.previews = $ 'section > a'
+            delay = intervalPreviewAction showPreview, el.previews.length, fadeTime
+        , delay
+
+        if not instant
+            changeWindowAddress()
 
     currentCategoryName = categoryName
     currentCategory = category
@@ -90,21 +116,3 @@ intervalPreviewAction = (fn, count, fadeTime, data) ->
             return transitionTotalTime
         else
             return fadeTime
-
-switchToCategory = (category, categoryName, fadeTime) ->
-
-    # close the gallery before anything
-    $('.open').click()
-
-    # fade the current previews out and remove them from the dom, one by one
-    delay = intervalPreviewAction removePreview, el.previews.length, fadeTime,
-        previewCount: el.previews.length
-    # add the new previews, keeping them invisible
-    addNewPreviews(category, categoryName)
-    # fade-in the new previews, one by one
-    setTimeout ->
-        # replace previews jquery object to hold the new previews
-        el.previews = $ 'section > a'
-        delay = intervalPreviewAction showPreview, el.previews.length, fadeTime
-        changeWindowAddress()
-    , delay
