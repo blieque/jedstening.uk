@@ -7,6 +7,7 @@ section > a
     color: $colour-white
     border: none
     vertical-align: bottom
+    overflow: hidden
 
     // preview image hover styles
     &:hover, &.open
@@ -69,7 +70,9 @@ section > a
 
     // preview images
     img
-        display: block
+        position: absolute
+        top: 0
+        left: 0
         width: 100%
 
     // all the text effect <div>s

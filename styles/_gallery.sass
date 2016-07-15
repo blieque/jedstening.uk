@@ -138,27 +138,26 @@ canvas
             position: relative
             width: calc(25% - #{$unit * 2})
 
-            &:before, &:after
+            &:before
                 content: ''
                 display: block
-
-            &:before
                 position: absolute
                 top: 0
                 right: 0
                 bottom: 0
                 left: 0
+                z-index: 1
                 @include prefix(webkit moz, transition, all ease .2s)
-
-            &:after
-                clear: both
 
             &.current:before
                 background: $colour-accent-tint
 
             img
-                vertical-align: bottom
+                position: absolute
+                top: 0
+                left: 0
                 width: 100%
+                vertical-align: bottom
 
     h2
         margin-top: $unit * 2
