@@ -97,5 +97,4 @@ changeWindowAddress = ->
     if $('.open').length > 0
         newHref += '/' + projectData.slug
     if newHref != location.pathname
-        console.log location.pathname + ' -> ' + newHref
         history.replaceState {}, '', newHref
