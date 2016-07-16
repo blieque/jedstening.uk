@@ -68,9 +68,11 @@ addNewPreviews = (category, categoryName) ->
         imgSrc = siteData.hrefPrefix + '/images/preview/' + paddedId + '.jpg'
         $.ajax
             url: imgSrc
-
             success: ->
-                newPreview.children('img').attr 'src', imgSrc
+
+                newPreview.children('img')
+                    .attr 'src', imgSrc
+                    .css visibility: 'visible'
                 newPreview.children('.loader').remove()
 
         newPreview.attr
@@ -79,7 +81,7 @@ addNewPreviews = (category, categoryName) ->
 
         newPreview.children('img').attr 'alt', project.title
         newPreview.find('h2').text project.title
-        newPreview.find('p').text project.basicInfo
+        newPreview.find('p').html project.basicInfo
 
         newPreview.appendTo el.section
         newPreview.fadeOut 0
