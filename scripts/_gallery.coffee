@@ -185,7 +185,7 @@ changeGalleryText = () ->
         removeOrAdd()
 
     for i in [0...projectData.description.length]
-        el.article.children('p').eq(i).text projectData.description[i]
+        el.article.children('p').eq(i).html projectData.description[i]
 
 changeGalleryProject = (projectId) ->
 

@@ -62,6 +62,8 @@ $ ->
 
     # initialisation
 
+    el.templatePreview.find('img').css visibility: 'hidden'
+
     conveyorProps.updateWidth()
     toggleGallery true
     getColumns()
