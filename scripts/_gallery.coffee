@@ -11,7 +11,7 @@ previewClick = (event, instant) ->
     projectIsOpen = elPreview.hasClass 'open'
 
     # remove the 'open' class from the last clicked preview
-    $ '.open'
+    elPreviewOpen = $ '.open'
         .removeClass 'open'
         .addClass 'delay-transition'
 
@@ -36,8 +36,17 @@ previewClick = (event, instant) ->
         projectId = parseInt elPreview.attr('id').match(/[0-9]+/)[0]
         changeGalleryProject projectId
 
-    # animate the gallery open or closed
-    toggleGallery instant
+        # open gallery and scroll to it
+        if not galleryIsOpen
+            toggleGallery instant, ->
+                scrollToGallery instant
+        else
+            scrollToGallery instant
+    # user has clicked the open project's preview
+    else
+        # close the gallery
+        toggleGallery instant
+
     if not instant
         changeWindowAddress()
 
@@ -76,13 +85,12 @@ getColumns = ->
        columnsInt != columns
         columns = columnsInt
         positionGalleryElement()
-        if galleryIsOpen
-            scrollToGallery 0
+    if galleryIsOpen
+        scrollToGallery true
 
-scrollToGallery = (time) ->
+scrollToGallery = (instant) ->
 
-    if time == undefined
-        time = 400
+    time = if instant then 0 else 400
 
     # scroll to the gallery
     gapAboveGallery = (el.window.height() - el.gallery.height()) / 2
@@ -200,28 +208,19 @@ changeGalleryProject = (projectId) ->
 
     lastOpenedProject = projectId
 
-toggleGallery = (instant) ->
-
-    elPreviewOpen = $ '.open'
-    galleryIsOpening = elPreviewOpen.length > 0
+toggleGallery = (instant, after) ->
 
     time = if instant then 0 else 400
 
-    if galleryIsOpening
-        # open the gallery
-        el.gallery.slideDown time, ->
-            scrollToGallery time
-    else
+    if galleryIsOpen
         # close the gallery
-        # setTimeout is daft
-        # timeoutFunction = if instant then (f) -> f() else setTimeout
-        # timeoutFunction ->
-        #     el.gallery.slideUp time
-        # , 200
         delay = if instant then 0 else 200
         setTimeout ->
-            el.gallery.slideUp time
+            el.gallery.slideUp time, after
         , delay
+    else
+        # open the gallery
+        el.gallery.slideDown time, after
 
     galleryIsOpen = !galleryIsOpen
 
