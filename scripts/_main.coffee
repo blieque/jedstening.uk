@@ -23,7 +23,7 @@ $ ->
     el.categoryAnchors = el.selector.find 'div a'
     el.selectorContents = el.categoryAnchors.add '#and'
 
-    el.previews = $ 'section > a'
+    el.previews = [] # will contain preview anchors when they exist
 
     el.gallery = $ '#gallery'
     el.imgNavs = $ '.img-nav'

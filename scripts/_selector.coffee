@@ -48,7 +48,7 @@ categoryAnchorClick = (event, instant) ->
         # fade-in the new previews, one by one
         setTimeout ->
             # replace previews jquery object to hold the new previews
-            el.previews = $ 'section > a'
+            el.previews = el.section.children().not(el.gallery)
             delay = intervalPreviewAction showPreview, el.previews.length, fadeTime
         , delay
 
