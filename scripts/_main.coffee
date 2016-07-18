@@ -16,14 +16,12 @@ $ ->
 
     el.emailAnchor = $ 'header div:last-child > a'
     el.emailOverlay = $ '#email'
-    el.emailBox = el.emailOverlay.children '[readonly]'
-    el.emailButton = el.emailOverlay.children '[type="submit"]'
+    el.emailBox = el.emailOverlay.find '[readonly]'
+    el.emailButton = el.emailOverlay.find '[type="submit"]'
 
     el.selector = $ '#selector'
     el.categoryAnchors = el.selector.find 'div a'
     el.selectorContents = el.categoryAnchors.add '#and'
-
-    el.previews = [] # will contain preview anchors when they exist
 
     el.gallery = $ '#gallery'
     el.imgNavs = $ '.img-nav'
@@ -37,6 +35,8 @@ $ ->
     el.nav = $ '#content > nav'
     el.galleryLoader = $ '.loader.gallery'
 
+    el.previews = el.section.children().not(el.gallery)
+
     el.templateImage = el.hide.children 'img'
     el.templateThumbnail = el.hide.children('a').eq 0
     el.templatePreview = el.hide.children('a').eq 1
@@ -44,6 +44,7 @@ $ ->
     # events and bindings
 
     el.window.on 'resize', getColumns
+    el.window.on 'popstate', simulateBack
 
     el.title.on 'click', titleClick
 
@@ -63,6 +64,7 @@ $ ->
     # initialisation
 
     el.templatePreview.find('img').css visibility: 'hidden'
+    history.pushState null, null, location.href
 
     conveyorProps.updateWidth()
     toggleGallery true

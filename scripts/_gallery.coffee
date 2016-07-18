@@ -40,8 +40,8 @@ previewClick = (event, instant) ->
         if not galleryIsOpen
             toggleGallery instant, ->
                 scrollToGallery instant
-        else
-            scrollToGallery instant
+        # else
+            # scrollToGallery instant
     # user has clicked the open project's preview
     else
         # close the gallery

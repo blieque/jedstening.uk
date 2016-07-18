@@ -98,3 +98,14 @@ changeWindowAddress = ->
         newHref += '/' + projectData.slug
     if newHref != location.pathname
         history.replaceState {}, '', newHref
+
+simulateBack = ->
+
+    if galleryIsOpen
+        $('.open').trigger 'click'
+        history.pushState null, null, location.href
+    else if currentCategory != undefined
+        el.title.trigger 'click'
+        history.pushState null, null, location.href
+    else
+        history.back()
