@@ -4,7 +4,7 @@ titleClick = (event) ->
 
     el.body.animate
         scrollTop: 0
-    , 400
+    , 1000
     el.body.addClass 'no-scroll'
     $('.selected').removeClass 'selected'
 
@@ -14,9 +14,6 @@ titleClick = (event) ->
 
     setTimeout ->
         $('.open').trigger 'click', true
-        # $('.open').removeClass 'open'
-        # if galleryIsOpen
-        #     toggleGallery true
         el.previews.remove()
         el.body.removeClass 'no-scroll'
     , 1000
