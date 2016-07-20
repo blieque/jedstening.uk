@@ -36,6 +36,7 @@ slugifyTitles = ->
         project.slug = newSlug
 
 findProject = (categoryName, slug) ->
+    # accepts (string categoryName, string slug) or (number projectId)
 
     category = undefined
     indexInCategory = undefined
@@ -78,34 +79,69 @@ openFromUrl = ->
         project = findProject slugInt
     # only category provided
     else if slug in categoryNames
-        el.categoryAnchors.eq(categoryNames.indexOf slug).trigger 'click', true
+        el.categoryAnchors.eq(categoryNames.indexOf slug)
+            .trigger 'click', instant: true
 
     if project != undefined
         onceCategoryIsSet = ->
             if project.indexInCategory != undefined
-                el.previews.eq(project.indexInCategory).trigger 'click', true
+                el.previews.eq(project.indexInCategory)
+                    .trigger 'click', instant: true
 
         if currentCategory != project.category
-            el.categoryAnchors.eq(project.category).trigger 'click', true
+            el.categoryAnchors.eq(project.category)
+                .trigger 'click', instant: true
             setTimeout onceCategoryIsSet, 0
         else
             onceCategoryIsSet()
 
-changeWindowAddress = ->
+changeWindowAddress = do ->
 
-    newHref = siteData.hrefPrefix + '/' + currentCategoryName
-    if $('.open').length > 0
-        newHref += '/' + projectData.slug
-    if newHref != location.pathname
-        history.replaceState {}, '', newHref
+    firstCall = true
 
-simulateBack = ->
+    (ref) ->
 
-    if galleryIsOpen
-        $('.open').trigger 'click'
-        history.pushState null, null, location.href
-    else if currentCategory != undefined
-        el.title.trigger 'click'
-        history.pushState null, null, location.href
+        # coffeescript canne destruct undefined variables
+        if ref == undefined then ref = {}
+        {preventHistoryPush} = ref
+
+        projectId = parseInt $('.open').attr 'data-project-id'
+        newHref = siteData.hrefPrefix + '/'
+        title = ''
+        if currentCategoryName != ''
+            newHref += currentCategoryName
+            if galleryIsOpen
+                newHref += '/' + projectData.slug
+                projectData = getProjectData projectId
+                title += projectData.title + ' \u2013 '
+            title += currentCategoryName[0].toUpperCase() +
+                currentCategoryName.slice(1) + ' \u2013 '
+        title += siteData.title
+
+        if firstCall
+            firstCall = false
+            history.replaceState {currentCategory, projectId}, title, newHref
+        else if newHref != location.pathname and not preventHistoryPush
+            history.pushState
+                category: currentCategory
+                id: projectId
+            , title, newHref
+
+handleHistory = (event) ->
+
+    # the event is inside another event or some shit, becuase javascript
+    {category, id} = event.originalEvent.state
+
+    # if we were in a category in this history state
+    argObject = preventHistoryPush: true
+    if category != undefined
+        if isNaN id
+            $('.open').trigger 'click', argObject
+            el.categoryAnchors.eq(category).trigger 'click', argObject
+        else
+            # overwrite category just to be sure
+            {category, indexInCategory} = findProject id
+            el.categoryAnchors.eq(category).trigger 'click', argObject
+            el.previews.eq(indexInCategory).trigger 'click', argObject
     else
-        history.back()
+        el.title.trigger 'click', argObject

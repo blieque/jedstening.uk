@@ -9,8 +9,7 @@ window.conveyorProps = new ConveyorProps
 byCategory = {}
 projectData = {}
 columns = 4
-projectElementIndex = undefined
-lastOpenedProject = undefined
+previewElementIndex = undefined
 galleryIsOpen = true # kinda not true
 
 # email address overlay

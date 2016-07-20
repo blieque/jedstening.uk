@@ -5,12 +5,19 @@ keyboardKeydown = ->
         prevent = true
         switch event.which
             # left arrow key
-            when 37 then el.imgPrev.click()
+            when 37
+                el.imgPrev.click()
             # right arrow key
-            when 39 then el.imgNext.click()
+            when 39
+                el.imgNext.click()
             # escape
-            when 27 then $('.open').click()
-            else prevent = false
+            when 27
+                if galleryIsOpen
+                    $('.open').trigger 'click'
+                else if currentCategoryName != ''
+                    el.title.trigger 'click'
+            else
+                prevent = false
 
         if prevent
             event.preventDefault()
