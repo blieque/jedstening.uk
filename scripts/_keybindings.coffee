@@ -1,4 +1,4 @@
-keyboardKeydown = ->
+keyboardKeydown = (event) ->
     if not (event.altKey or event.ctrlKey or event.shiftKey or \
             event.metaKey)
 
