@@ -7,7 +7,11 @@ categoriseProjects = ->
 
         byCategory[project.category].push project
 
-categoryAnchorClick = (event, instant) ->
+categoryAnchorClick = (event, ref) ->
+
+    # coffeescript canne destruct undefined variables
+    if ref == undefined then ref = {}
+    {instant, preventHistoryPush} = ref
 
     event.preventDefault()
 
@@ -28,7 +32,6 @@ categoryAnchorClick = (event, instant) ->
             setTimeout ->
                 el.body.removeClass 'no-scroll'
             , 1000
-
     else
         el.categoryAnchors.eq(currentCategory).removeClass 'selected'
     clickedAnchor.addClass 'selected'
@@ -52,11 +55,11 @@ categoryAnchorClick = (event, instant) ->
             delay = intervalPreviewAction showPreview, el.previews.length, fadeTime
         , delay
 
-        if not instant
-            changeWindowAddress()
+        currentCategoryName = categoryName
+        currentCategory = category
 
-    currentCategoryName = categoryName
-    currentCategory = category
+        if not instant
+            changeWindowAddress {preventHistoryPush}
 
 addNewPreviews = (category, categoryName) ->
 
@@ -76,7 +79,7 @@ addNewPreviews = (category, categoryName) ->
                 newPreview.children('.loader').remove()
 
         newPreview.attr
-            id: 'project-' + project.id
+            "data-project-id": project.id
             href: siteData.hrefPrefix + '/' + categoryName + '/' + project.slug
 
         newPreview.children('img').attr 'alt', project.title
