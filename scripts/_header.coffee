@@ -1,4 +1,7 @@
-titleClick = (event) ->
+titleClick = (event, ref) ->
+
+    if ref == undefined then ref = {}
+    # {preventHistoryPush} = ref # there's not much point destructuring
 
     event.preventDefault()
 
@@ -10,10 +13,13 @@ titleClick = (event) ->
 
     currentCategoryName = ''
     currentCategory = undefined
-    changeWindowAddress()
+    # changeWindowAddress {preventHistoryPush}
+    changeWindowAddress ref
 
     setTimeout ->
-        $('.open').trigger 'click', true
+        $('.open').trigger 'click',
+            instant: true
+            preventUrlUpdate: true
         el.previews.remove()
         el.body.removeClass 'no-scroll'
     , 1000

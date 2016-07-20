@@ -44,7 +44,7 @@ $ ->
     # events and bindings
 
     el.window.on 'resize', getColumns
-    el.window.on 'popstate', simulateBack
+    el.window.on 'popstate', handleHistory
 
     el.title.on 'click', titleClick
 
@@ -64,12 +64,14 @@ $ ->
     # initialisation
 
     el.templatePreview.find('img').css visibility: 'hidden'
-    history.pushState null, null, location.href
 
     conveyorProps.updateWidth()
     toggleGallery true
     getColumns()
+
     mobile = new Mobile
     slugifyTitles()
     categoriseProjects()
     openFromUrl()
+    if currentCategory == undefined
+        changeWindowAddress()

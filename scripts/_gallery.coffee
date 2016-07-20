@@ -1,6 +1,10 @@
 # event handlers
 
-previewClick = (event, instant) ->
+previewClick = (event, ref) ->
+
+    # coffeescript canne destruct undefined variables
+    if ref == undefined then ref = {}
+    {instant, preventHistoryPush, preventUrlUpdate} = ref
 
     if event.ctrlKey
         return
@@ -8,10 +12,10 @@ previewClick = (event, instant) ->
     event.preventDefault()
 
     elPreview = $ this
-    projectIsOpen = elPreview.hasClass 'open'
+    previewIsOpen = elPreview.hasClass 'open'
 
     # remove the 'open' class from the last clicked preview
-    elPreviewOpen = $ '.open'
+    el.openPreview = $ '.open'
         .removeClass 'open'
         .addClass 'delay-transition'
 
@@ -22,33 +26,38 @@ previewClick = (event, instant) ->
     , 600
 
     # user has clicked the preview for a project that is not already open
-    if !projectIsOpen
+    if !previewIsOpen
 
         # change appearance of preview
         elPreview.addClass 'open'
 
         # locate preview and move gallery into place in the dom
         elementIndex = el.previews.index elPreview
-        projectElementIndex = elementIndex
+        previewElementIndex = elementIndex
         positionGalleryElement elementIndex
 
         # change images and text of the project
-        projectId = parseInt elPreview.attr('id').match(/[0-9]+/)[0]
+        projectId = parseInt elPreview.attr 'data-project-id'
         changeGalleryProject projectId
 
         # open gallery and scroll to it
-        if not galleryIsOpen
+        if galleryIsOpen
+            scrollToGallery instant
+        else
             toggleGallery instant, ->
-                scrollToGallery instant
-        # else
-            # scrollToGallery instant
+                # I have no idea why this delay is required, and I hate it
+                time = if instant then 50 else 0
+                setTimeout ->
+                    scrollToGallery instant
+                , time
+
     # user has clicked the open project's preview
     else
         # close the gallery
         toggleGallery instant
 
     if not instant
-        changeWindowAddress()
+        changeWindowAddress {preventHistoryPush}
 
 thumbnailClick = (event) ->
 
@@ -114,16 +123,12 @@ positionGalleryElement = (elementIndex) ->
 getProjectData = (projectId) ->
 
     # find the selected project's data object
-    if typeof siteData.projects[projectId - 1] != 'undefined' and \
-       siteData.projects[projectId - 1].id == projectId
-        siteData.projects[projectId - 1]
-    else
-        project = undefined
-        siteData.projects.some (projectLoop) ->
-            if projectLoop.id == projectId
-                project = projectLoop
-                true
-        project
+    project = undefined
+    siteData.projects.some (projectLoop) ->
+        if projectLoop.id == projectId
+            project = projectLoop
+            true
+    project
 
 changeGalleryImages = do ->
 
@@ -195,18 +200,22 @@ changeGalleryText = () ->
     for i in [0...projectData.description.length]
         el.article.children('p').eq(i).html projectData.description[i]
 
-changeGalleryProject = (projectId) ->
+changeGalleryProject = do ->
 
-    projectData = getProjectData projectId
+    lastOpenedProject = undefined
 
-    changeGalleryImages()
-    changeGalleryText()
+    (projectId) ->
 
-    # slide back to the first image unless we're reopening the same project
-    if projectId != lastOpenedProject
-        slideToImage 0
+        projectData = getProjectData projectId
 
-    lastOpenedProject = projectId
+        changeGalleryImages()
+        changeGalleryText()
+
+        # slide back to the first image unless we're reopening the same project
+        if projectId != lastOpenedProject
+            slideToImage 0
+
+        lastOpenedProject = projectId
 
 toggleGallery = (instant, after) ->
 
@@ -251,14 +260,14 @@ slideToImage = (imageIndex) ->
     if imageIndex == 0
         el.imgPrev.addClass 'proj-nav'
         # if also the first project
-        if projectElementIndex == 0
+        if previewElementIndex == 0
             el.imgPrev.addClass 'unavailable'
 
     # if we're sliding to the last image
     if imageIndex == galleryMaxIndex
         el.imgNext.addClass 'proj-nav'
         # if also the last project
-        if projectElementIndex == el.previews.length - 1
+        if previewElementIndex == el.previews.length - 1
             el.imgNext.addClass 'unavailable'
 
     # if we're sliding to either the first or last image
