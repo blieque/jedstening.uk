@@ -1,189 +1,155 @@
 [
     {
-        "id": 4,
-        "category": 0,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 4
-    },
-    {
-        "id": 5,
-        "category": 0,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I <em>explored my emotions during different</em> times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 3
-    },
-    {
-        "id": 3,
-        "category": 1,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 1
-    },
-    {
-        "id": 1,
-        "category": 0,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag. It also has fancy Unicode business: ×, \u0394."
-        ],
-        "galleryCount": 3
-    },
-    {
-        "id": 2,
-        "category": 0,
-        "title": "Weekdays That're Deep",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 2
+        "id": 12,
+        "title": "Stroud Film Festival",
+        "basicInfo": "Paper, paint, digital.",
+        "description": ["This was the final piece of my film festival project. It includes a promotional poster, flyer, and t-shirt for a fictional festival in the town of Stroud."],
+        "galleryCount": 3,
+        "category": 0
     },
     {
         "id": 11,
-        "category": 1,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 3
-    },
-    {
-        "id": 12,
-        "category": 0,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 3
-    },
-    {
-        "id": 6,
-        "category": 1,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 2
-    },
-    {
-        "id": 8,
-        "category": 1,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 1
-    },
-    {
-        "id": 9,
-        "category": 1,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 3
-    },
-    {
-        "id": 10,
-        "category": 0,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 3
-    },
-    {
-        "id": 7,
-        "category": 1,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 3
-    },
-    {
-        "id": 13,
-        "category": 0,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 1
-    },
-    {
-        "id": 14,
-        "category": 1,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 1
+        "title": "Stroud Colour Film Festival",
+        "basicInfo": "Paper, paint, digital.",
+        "description": ["I created another set of posters as part of my fictional film festival project, taking a more minimal approach to before."],
+        "galleryCount": 4,
+        "category": 0
     },
     {
         "id": 15,
-        "category": 0,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 2
+        "title": "Ink Circles",
+        "basicInfo": "Paper, pen, ink, digital",
+        "description": ["These multimedia pieces are the result of a study of mine focusing on the use of lines in art. They were created purely as an experiment into the combination of inks, biro pen, and gel pen."],
+        "galleryCount": 5,
+        "category": 0
+    },
+    {
+        "id": 10,
+        "title": "Forest Film Festival",
+        "basicInfo": "Paper, paint, digital.",
+        "description": ["These posters were created as a part of my series of fictional film festivals. The process was a mixture of texture rubbing, scanning and digital editing on Photoshop."],
+        "galleryCount": 3,
+        "category": 0
+    },
+    {
+        "id": 9,
+        "title": "Collograph Trio",
+        "basicInfo": "Pen, pencil, watercolour paint",
+        "description": ["Having photographed an old radio mast station and railway track, I created a set of three collograph prints. Each collograph measures 352 mm × 292 mm."],
+        "galleryCount": 6,
+        "category": 0
+    },
+
+    {
+        "id": 13,
+        "title": "Drop Shop",
+        "basicInfo": "Logo design; digital and print use",
+        "description": ["I was employed to help set up a new business in the Stroud District. I was responsible for the branding and general design. The concept behind The Drop Shop is customers drop off items which are then sold for them. They then receive the revenue minus a small donation to the Stroud District Furniture Bank."],
+        "galleryCount": 2,
+        "category": 1
     },
     {
         "id": 16,
-        "category": 0,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 3
+        "title": "Space Hopping Adventures",
+        "basicInfo": "Digital",
+        "description": ["This was another fictional project based around the concept of a retro pixel game. I created the concept art for the gameplay, main menu, pause menu and a Google Play mock up. The game is based on a character space hopping through various would while avoiding enemies and gaining power ups."],
+        "galleryCount": 9,
+        "category": 1
     },
     {
         "id": 17,
-        "category": 0,
-        "title": "Deep Weekdays",
-        "basicInfo": "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page.",
-        "description": [
-            "In this project, I explored my emotions during different times of the week, and let my soul pour out onto the page. Notice that this description is a little longer, and it could be several paragraphs potentially.",
-            "This description can have multiple paragraphs, which is pretty swag."
-        ],
-        "galleryCount": 2
+        "title": "Manzana",
+        "basicInfo": "Silk-screen printing, painting, digital illustration, calligraphy, half-tone reproduction, digital",
+        "description": ["This was a fictional project I worked on as part of my Graphic Communication course. I was briefed to create a set of promotional posters for a fruit cocktail named <em>Manzana</em>. The final products were the results of a great number of techniques."],
+        "galleryCount": 6,
+        "category": 1
+    },
+    {
+        "id": 18,
+        "title": "Musician Crowd",
+        "basicInfo": "Logo design; digital and print use",
+        "description": ["Musician Crowd is a website on which artists can communicate and organise events in their local area. My role was to create the initial branding for the project. For the logo I liked the idea of sound levels on a stereo and used them to represent three human figures, following the saying \"three's a crowd\". I also arranged the three parts into the rough shape of a letter <em>M</em>, and selected a lively colour scheme that reflected the exciting and varied world of music. I also chose colours that I believed could represent a diverse range of music."],
+        "galleryCount": 4,
+        "category": 1
+    },
+    {
+        "id": 19,
+        "title": "Success Poster",
+        "basicInfo": "Digital",
+        "description": ["Commissioned by my graphics lecturer, this was a rather aggressive motivational poster designed for the studio wall."],
+        "galleryCount": 1,
+        "category": 1
+    },
+    {
+        "id": 6,
+        "title": "Grace Network",
+        "basicInfo": "Logo design; digital and print use",
+        "description": ["The Grace Network is a Christian company with the aim of improving the lives of people in the Stroud District. It achieves this by managing small organisations such as the Food Bank and Kick Off Stroud."],
+        "galleryCount": 2,
+        "category": 1
+    },
+    {
+        "id": 4,
+        "title": "Future Film Festival",
+        "basicInfo": "Poster design",
+        "description": ["Shown are three versions of a poster that I designed, forming part of a series promoting fictional film festivals. Illustrator CC primarily was used during the design process."],
+        "galleryCount": 3,
+        "category": 1
+    },
+    {
+        "id": 8,
+        "title": "Kick Off Stroud",
+        "basicInfo": "Logo design; digital and print use",
+        "description": ["Kick Off Stroud is a local community interest company with the vision of providing sports education to primary-school children in the Stroud district. I was commissioned to build a new brand for the company, including a logo, colour scheme, and styling."],
+        "galleryCount": 2,
+        "category": 1
+    },
+    {
+        "id": 14,
+        "title": "Greetings Card Illustration",
+        "basicInfo": "Digital",
+        "description": ["When working as a graphic designer it seems illogical to pay for generic and expensive shop bought cards. So I often end up doing personalised illustrations for friends and family."],
+        "galleryCount": 1,
+        "category": 1
+    },
+    {
+        "id": 7,
+        "title": "Glebe Alive",
+        "basicInfo": "Logo design; digital and print use",
+        "description": ["I was asked to design the logo for a community outreach program operated by Minchinhampton Baptist Church. The program focuses on encouraging community in the Glebe housing estate by organising and promoting public social and sporting events. Both Illustrator CC and Photoshop CC were essential tools in the process."],
+        "galleryCount": 4,
+        "category": 1
+    },
+    {
+        "id": 2,
+        "title": "Griffinwood",
+        "basicInfo": "Logo, poster, and business card design; digital use",
+        "description": ["This is the logo designed for Griffinwood, a company specialising in traditional woodwork and heavy timber frame buildings."],
+        "galleryCount": 6,
+        "category": 1
+    },
+    {
+        "id": 3,
+        "title": "TGI Fridays",
+        "basicInfo": "Logo and poster design; digital use; campaign branding",
+        "description": ["A local community outreach program that provides sports and games for low-income families seeked new branding material. I created a t-shirt prototype and promotional poster."],
+        "galleryCount": 2,
+        "category": 1
+    },
+    {
+        "id": 5,
+        "title": "Corn on the Cob",
+        "basicInfo": "Illustration",
+        "description": ["I decided to practice some new techniques in illustration, and used a cob of corn as the subject, and this was the result."],
+        "galleryCount": 3,
+        "category": 1
+    },
+    {
+        "id": 1,
+        "title": "The Kiwi Shop",
+        "basicInfo": "Logo design; digital use; fabric printing",
+        "description": ["I developed a logo for a fictional exotic fruit store, and created a screen-printed canvas bag prototype using it."],
+        "galleryCount": 4,
+        "category": 1
     }
 ]
