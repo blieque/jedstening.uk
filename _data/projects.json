@@ -2,7 +2,7 @@
     {
         "id": 12,
         "title": "Stroud Film Festival",
-        "basicInfo": "Paper, paint, digital.",
+        "basicInfo": "Paper, paint, digital",
         "description": ["This was the final piece of my film festival project. It includes a promotional poster, flyer, and t-shirt for a fictional festival in the town of Stroud."],
         "galleryCount": 3,
         "category": 0
@@ -10,7 +10,7 @@
     {
         "id": 11,
         "title": "Stroud Colour Film Festival",
-        "basicInfo": "Paper, paint, digital.",
+        "basicInfo": "Paper, paint, digital",
         "description": ["I created another set of posters as part of my fictional film festival project, taking a more minimal approach to before."],
         "galleryCount": 4,
         "category": 0
@@ -26,7 +26,7 @@
     {
         "id": 10,
         "title": "Forest Film Festival",
-        "basicInfo": "Paper, paint, digital.",
+        "basicInfo": "Paper, paint, digital",
         "description": ["These posters were created as a part of my series of fictional film festivals. The process was a mixture of texture rubbing, scanning and digital editing on Photoshop."],
         "galleryCount": 3,
         "category": 0
@@ -36,6 +36,14 @@
         "title": "Collograph Trio",
         "basicInfo": "Pen, pencil, watercolour paint",
         "description": ["Having photographed an old radio mast station and railway track, I created a set of three collograph prints. Each collograph measures 352 mm × 292 mm."],
+        "galleryCount": 6,
+        "category": 0
+    },
+    {
+        "id": 20,
+        "title": "Set A Fire",
+        "basicInfo": "297 mm × 420 mm charcoal and black pen on paper",
+        "description": ["This sketch was created as part of an open art workshop at the New Wine festival 2016. It's inspired by the song <em>Set A Fire</em> by Jesus Culture and the style is somewhat influenced by traditional tattoo design."],
         "galleryCount": 6,
         "category": 0
     },
