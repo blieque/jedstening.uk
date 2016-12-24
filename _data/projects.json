@@ -1,5 +1,21 @@
 [
     {
+        "id": 23,
+        "title": "Warped World",
+        "basicInfo": "Paper, pen, ink, digital, printed",
+        "description": ["A set of two 297 mm × 420 mm prints based around the idea of human-caused climate change and how we're stretching the world's resources beyond their limit. I used a combination of pen illustration and digital manipulation. The project was inspired by the documentary <em>Before the Flood</em>."],
+        "galleryCount": 4,
+        "category": 0
+    },
+    {
+        "id": 24,
+        "title": "Hubble",
+        "basicInfo": "Digital, printed",
+        "description": ["I was given a college assigment to make a zine showing a small range of illustrations. I chose to base mine on the travels of the Hubble space telescope and the photos it takes. The final product was a folded zine made up of four 105 mm × 148 mm panels."],
+        "galleryCount": 5,
+        "category": 0
+    },
+    {
         "id": 12,
         "title": "Stroud Film Festival",
         "basicInfo": "Paper, paint, digital",
@@ -48,6 +64,23 @@
         "category": 0
     },
 
+
+    {
+        "id": 21,
+        "title": "Braun",
+        "basicInfo": "Poster design",
+        "description": ["I was given a college assignment for a poster advertising a retro product but using modern design tools. I created a set of three posters marketing a 1971 Braun electric razor. Inspired by the work of Saul Bass and Jason Munn I came up with a minimalist design using Adobe Illustrator."],
+        "galleryCount": 5,
+        "category": 1
+    },
+    {
+        "id": 22,
+        "title": "Heathy Bodies",
+        "basicInfo": "Poster design, illustration",
+        "description": ["As well as running sports clubs the Kick Off Stoud coaches teach healthy living lessons in primary schools. Part of the syllabus is healthy bodies where the children learn about anatomy and how the body works. I designed a set of worksheets/visual aids for these lessons."],
+        "galleryCount": 5,
+        "category": 1
+    },
     {
         "id": 13,
         "title": "Drop Shop",
@@ -148,7 +181,7 @@
         "id": 5,
         "title": "Corn on the Cob",
         "basicInfo": "Illustration",
-        "description": [" used a cob of corn as a subject while practicing some new digital illustration techniques. This was the result."],
+        "description": ["I used a cob of corn as a subject while practicing some new digital illustration techniques. This was the result."],
         "galleryCount": 3,
         "category": 1
     },
