@@ -1,10 +1,10 @@
 [
     {
-        "id": 26,
-        "title": "Naples Urban Design Festival",
-        "basicInfo": "Digital, screen printed",
-        "description": ["A project in response to a trip to Naples, based on a fictional city festival. Old Town Naples has many block buildings arranged in a square grid with small streets in between. This gives an isometric-like view when one looks up at them. This was where I found inspiration for the isometric logo and its variations.", "I also produced an isometric illustration of a street corner. I used this accompanied by two more shape-based illustrations to make a set of posters for the festival.", "I also produced staff badges and a set of screen printed posters."],
-        "galleryCount": 8,
+        "id": 27,
+        "title": "Glitched Type",
+        "basicInfo": "Digital",
+        "description": ["An experimental set of posters based on the process of warping images on a photocopier."],
+        "galleryCount": 4,
         "category": 0
     },
     {
@@ -72,7 +72,14 @@
         "category": 0
     },
 
-
+    {
+        "id": 26,
+        "title": "Naples Urban Design Festival",
+        "basicInfo": "Digital, screen printed",
+        "description": ["A project in response to a trip to Naples, based on a fictional city festival. Old Town Naples has many block buildings arranged in a square grid with small streets in between. This gives an isometric-like view when one looks up at them. This was where I found inspiration for the isometric logo and its variations.", "I also produced an isometric illustration of a street corner. I used this accompanied by two more shape-based illustrations to make a set of posters for the festival.", "I also produced staff badges and a set of screen printed posters."],
+        "galleryCount": 8,
+        "category": 1
+    },
     {
         "id": 21,
         "title": "Braun",
