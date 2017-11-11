@@ -1,13 +1,5 @@
 [
     {
-        "id": 28,
-        "title": "Brexit Passport Design",
-        "basicInfo": "Digital, printed, animation",
-        "description": ["This was my final major project for my level 3 foundation diploma. In mind of Brexit I decided to design a new independent passport for the UK. I wanted to represent British culture, geography and history. However, I also wanted my design to be modern, clean and somewhat minimal. Inspiration was taken from Swiss style design, Studio Neue and Quim Marin, amongst other influences."],
-        "galleryCount": 10,
-        "category": 0
-    },
-    {
         "id": 27,
         "title": "Glitched Type",
         "basicInfo": "Digital",
@@ -80,6 +72,14 @@
         "category": 0
     },
 
+    {
+        "id": 28,
+        "title": "Brexit Passport Design",
+        "basicInfo": "Digital, printed, animation",
+        "description": ["This was my final major project for my level 3 foundation diploma. In mind of Brexit I decided to design a new independent passport for the UK. I wanted to represent British culture, geography and history. However, I also wanted my design to be modern, clean and somewhat minimal. Inspiration was taken from Swiss style design, Studio Neue and Quim Marin, amongst other influences."],
+        "galleryCount": 10,
+        "category": 1
+    },
     {
         "id": 26,
         "title": "Naples Urban Design Festival",
