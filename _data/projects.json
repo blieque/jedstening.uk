@@ -1,5 +1,21 @@
 [
     {
+        "id": 31,
+        "title": "Isometric Ideas",
+        "basicInfo": "Digital",
+        "description": ["A series of digital doodles based around the idea of isometric cuboid shapes."],
+        "galleryCount": 5,
+        "category": 0
+    },
+    {
+        "id": 32,
+        "title": "Glen Orchy",
+        "basicInfo": "Acrylic on canvas, 297 mm × 420 mm",
+        "description": ["02.08.2017"],
+        "galleryCount": 3,
+        "category": 0
+    },
+    {
         "id": 27,
         "title": "Glitched Type",
         "basicInfo": "Digital",
@@ -73,6 +89,22 @@
     },
 
     {
+        "id": 29,
+        "title": "stening.co Posters",
+        "basicInfo": "297 mm × 420mm digital prints",
+        "description": ["15.03.2018"],
+        "galleryCount": 4,
+        "category": 1
+    },
+    {
+        "id": 30,
+        "title": "Lodgeside",
+        "basicInfo": "Logo design",
+        "description": ["Logo concepts for a doctors surgery in Bristol."],
+        "galleryCount": 2,
+        "category": 1
+    },
+    {
         "id": 28,
         "title": "Brexit Passport Design",
         "basicInfo": "Digital, printed, animation",
@@ -93,7 +125,7 @@
         "title": "Braun",
         "basicInfo": "Poster design",
         "description": ["I was given a college assignment for a poster advertising a retro product but using modern design tools. I created a set of three posters marketing a 1971 Braun electric razor. Inspired by the work of Saul Bass and Jason Munn I came up with a minimalist design using Adobe Illustrator."],
-        "galleryCount": 5,
+        "galleryCount": 6,
         "category": 1
     },
     {
