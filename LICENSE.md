@@ -340,7 +340,7 @@ Public License instead of this License.
 
 # Images
 
-All images (PNG, JPEG) other than those found in the `images/icon` directory are copyright &copy; 2016 Jed Stening, unless otherwise noted.
+All images (PNG, JPEG) other than those found in the `images/icon` directory are copyright &copy; 2016–2018 Jed Stening, unless otherwise noted.
 
 All images (PNG) found in the `images/icon` directory are licensed under the terms of the Creative Commons [BY-SA license](https://creativecommons.org/licenses/by-sa/4.0/legalcode), reproduced below.
 
