@@ -4,11 +4,11 @@ artist: Jed Stening
 profession: Art & Design
 email: jed@stening.co
 description: The digital portfolio of Jed Stening, a graphic designer and artist from the UK.
-address: "https://omni.dev"
-baseurl: "/stening.co"
+address: "https://stening.co"
+baseurl: ""
 
 # build settings
-destination: /srv/hosts/dev.omni/stening.co/
+destination: /srv/hosts/co.stening/www
 exclude: ["Gemfile", "Gemfile.lock", "README.md", "LICENSE.md", "type/README.md"]
 gems: ["jekyll-coffeescript"]
 

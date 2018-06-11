@@ -1,5 +1,29 @@
 [
     {
+        "id": 31,
+        "title": "Isometric Ideas",
+        "basicInfo": "Digital",
+        "description": ["A series of digital doodles based around the idea of isometric cuboid shapes."],
+        "galleryCount": 5,
+        "category": 0
+    },
+    {
+        "id": 32,
+        "title": "Glen Orchy",
+        "basicInfo": "Acrylic on canvas, 297 mm × 420 mm",
+        "description": ["02.08.2017"],
+        "galleryCount": 3,
+        "category": 0
+    },
+    {
+        "id": 27,
+        "title": "Glitched Type",
+        "basicInfo": "Digital",
+        "description": ["An experimental set of posters based on the process of warping images on a photocopier."],
+        "galleryCount": 4,
+        "category": 0
+    },
+    {
         "id": 23,
         "title": "Warped World",
         "basicInfo": "Paper, pen, ink, digital, printed",
@@ -64,20 +88,51 @@
         "category": 0
     },
 
-
+    {
+        "id": 29,
+        "title": "stening.co Posters",
+        "basicInfo": "297 mm × 420mm digital prints",
+        "description": ["15.03.2018"],
+        "galleryCount": 4,
+        "category": 1
+    },
+    {
+        "id": 30,
+        "title": "Lodgeside",
+        "basicInfo": "Logo design",
+        "description": ["Logo concepts for a doctors surgery in Bristol."],
+        "galleryCount": 2,
+        "category": 1
+    },
+    {
+        "id": 28,
+        "title": "Brexit Passport Design",
+        "basicInfo": "Digital, printed, animation",
+        "description": ["This was my final major project for my level 3 foundation diploma. In mind of Brexit I decided to design a new independent passport for the UK. I wanted to represent British culture, geography and history. However, I also wanted my design to be modern, clean and somewhat minimal. Inspiration was taken from Swiss style design, Studio Neue and Quim Marin, amongst other influences."],
+        "galleryCount": 10,
+        "category": 1
+    },
+    {
+        "id": 26,
+        "title": "Naples Urban Design Festival",
+        "basicInfo": "Digital, screen printed",
+        "description": ["A project in response to a trip to Naples, based on a fictional city festival. Old Town Naples has many block buildings arranged in a square grid with small streets in between. This gives an isometric-like view when one looks up at them. This was where I found inspiration for the isometric logo and its variations.", "I also produced an isometric illustration of a street corner. I used this accompanied by two more shape-based illustrations to make a set of posters for the festival.", "I also produced staff badges and a set of screen printed posters."],
+        "galleryCount": 8,
+        "category": 1
+    },
     {
         "id": 21,
         "title": "Braun",
         "basicInfo": "Poster design",
         "description": ["I was given a college assignment for a poster advertising a retro product but using modern design tools. I created a set of three posters marketing a 1971 Braun electric razor. Inspired by the work of Saul Bass and Jason Munn I came up with a minimalist design using Adobe Illustrator."],
-        "galleryCount": 5,
+        "galleryCount": 6,
         "category": 1
     },
     {
         "id": 22,
-        "title": "Heathy Bodies",
+        "title": "Healthy Bodies",
         "basicInfo": "Poster design, illustration",
-        "description": ["As well as running sports clubs the Kick Off Stoud coaches teach healthy living lessons in primary schools. Part of the syllabus is healthy bodies where the children learn about anatomy and how the body works. I designed a set of worksheets/visual aids for these lessons."],
+        "description": ["As well as running sports clubs, the Kick Off Stroud coaches teach healthy living lessons in primary schools. Part of the syllabus is healthy bodies, in which the children learn about anatomy and how the body works. I designed a set of worksheets and visual aids for these lessons."],
         "galleryCount": 5,
         "category": 1
     },
@@ -95,6 +150,14 @@
         "basicInfo": "Digital",
         "description": ["This was another fictional project based around the concept of a retro pixel game. I created the concept art for the gameplay, main menu, pause menu and a Google Play mock up. The game is based on a character space hopping through various would while avoiding enemies and gaining power ups."],
         "galleryCount": 9,
+        "category": 1
+    },
+    {
+        "id": 25,
+        "title": "Five Valleys Christian Partnership",
+        "basicInfo": "Logo design; digital and print use",
+        "description": ["This is a logo remake for a local church. They were looking to update it for their website and social media. The five-branched tree represents the five valleys in the surrounding area. It also reflects the growing church family."],
+        "galleryCount": 3,
         "category": 1
     },
     {
