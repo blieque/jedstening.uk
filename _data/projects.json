@@ -1,5 +1,21 @@
 [
     {
+        "id": 35,
+        "title": "Geometric Triptych",
+        "basicInfo": "Arylic on canvas board",
+        "description": ["3 × 210 mm × 197 mm", "04.08.2018"],
+        "galleryCount": 1,
+        "category": 0
+    },
+    {
+        "id": 34,
+        "title": "Tree Blossom",
+        "basicInfo": "Arylic on canvas board",
+        "description": ["297 mm × 420 mm", "02.08.2018"],
+        "galleryCount": 1,
+        "category": 0
+    },
+    {
         "id": 31,
         "title": "Isometric Ideas",
         "basicInfo": "Digital",
@@ -10,8 +26,8 @@
     {
         "id": 32,
         "title": "Glen Orchy",
-        "basicInfo": "Acrylic on canvas, 297 mm × 420 mm",
-        "description": ["02.08.2017"],
+        "basicInfo": "Acrylic on canvas",
+        "description": ["297 mm × 420 mm", "02.08.2017"],
         "galleryCount": 3,
         "category": 0
     },
@@ -82,17 +98,25 @@
     {
         "id": 20,
         "title": "Set A Fire",
-        "basicInfo": "297 mm × 420 mm charcoal and black pen on paper",
-        "description": ["This sketch was created as part of an open art workshop at the New Wine festival 2016. It's inspired by the song <em>Set A Fire</em> by Jesus Culture and the style is somewhat influenced by traditional tattoo design."],
+        "basicInfo": "Charcoal, black pen on paper",
+        "description": ["This sketch was created as part of an open art workshop at the New Wine festival 2016. It's inspired by the song <em>Set A Fire</em> by Jesus Culture and the style is somewhat influenced by traditional tattoo design.", "297 mm × 420 mm"],
         "galleryCount": 2,
         "category": 0
     },
 
     {
+        "id": 33,
+        "title": "The Grove",
+        "basicInfo": "Logo design",
+        "description": ["A new logo design for a Glamping business based in Cromer, Norfolk."],
+        "galleryCount": 6,
+        "category": 1
+    },
+    {
         "id": 29,
         "title": "stening.co Posters",
-        "basicInfo": "297 mm × 420mm digital prints",
-        "description": ["15.03.2018"],
+        "basicInfo": "Digital print",
+        "description": ["297 mm × 420mm", "15.03.2018"],
         "galleryCount": 4,
         "category": 1
     },
@@ -108,7 +132,7 @@
         "id": 28,
         "title": "Brexit Passport Design",
         "basicInfo": "Digital, printed, animation",
-        "description": ["This was my final major project for my level 3 foundation diploma. In mind of Brexit I decided to design a new independent passport for the UK. I wanted to represent British culture, geography and history. However, I also wanted my design to be modern, clean and somewhat minimal. Inspiration was taken from Swiss style design, Studio Neue and Quim Marin, amongst other influences."],
+        "description": ["This was my final major project for my level 3 foundation diploma. In mind of Brexit I decided to design a new independent passport for the UK. I wanted to represent British culture, geography and history. However, I also wanted my design to be modern, clean and somewhat minimal. Inspiration was taken from Swiss design, Studio Neue and Quim Marin, amongst other influences."],
         "galleryCount": 10,
         "category": 1
     },
