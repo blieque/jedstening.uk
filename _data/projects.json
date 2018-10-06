@@ -1,5 +1,13 @@
 [
     {
+        "id": 36,
+        "title": "Sketchbook 01",
+        "basicInfo": "Ink and acrylic",
+        "description": ["A selection of A5 sketchbook studies in ink pen and acrylic paint, based on the female portrait as well as the human hand."],
+        "galleryCount": 7,
+        "category": 0
+    },
+    {
         "id": 35,
         "title": "Geometric Triptych",
         "basicInfo": "Arylic on canvas board",
@@ -172,7 +180,7 @@
         "id": 16,
         "title": "Space Hopping Adventures",
         "basicInfo": "Digital",
-        "description": ["This was another fictional project based around the concept of a retro pixel game. I created the concept art for the gameplay, main menu, pause menu and a Google Play mock up. The game is based on a character space hopping through various would while avoiding enemies and gaining power ups."],
+        "description": ["This was another fictional project based around the concept of a retro pixel game. I created the concept art for the gameplay, main menu, pause menu and a Google Play mock up. The game is based on a character space hopping through various worlds while avoiding enemies and gaining power ups."],
         "galleryCount": 9,
         "category": 1
     },
