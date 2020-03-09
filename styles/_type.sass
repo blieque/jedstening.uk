@@ -1,14 +1,17 @@
 // argent cf from local fonts
 @font-face
     font-family: 'Argent CF'
-    // lies!
     font-weight: 300
-    src: url('../type/argent-cf-light.eot?') format('eot'), url('../type/argent-cf-light.woff') format('woff'), url('../type/argent-cf-light.ttf') format('truetype')
+    src:
+        url('../fonts/argent-cf-light.woff2') format('woff2'),
+        url('../fonts/argent-cf-light.woff') format('woff2')
 @font-face
     font-family: 'Argent CF'
     font-weight: 700
-    src: url('../type/argent-cf-bold.eot?') format('eot'), url('../type/argent-cf-bold.woff') format('woff'), url('../type/argent-cf-bold.ttf') format('truetype')
+    src:
+        url('../fonts/argent-cf-bold.woff2') format('woff2'),
+        url('../fonts/argent-cf-bold.woff') format('woff2')
 
 // make usage easier
-$font-source-sans: "source sans pro",helvetica neue,sans-serif
-$font-argent: "argent cf",georgia,serif
+$font-source-sans: "Source Sans Pro",system-ui,-apple-system,BlinkMacSystemFont,'Helvetica Neue','Helvetica','Segoe UI',sans-serif
+$font-argent: "Argent CF",Georgia,serif

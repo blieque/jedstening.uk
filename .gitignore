@@ -1,6 +1,4 @@
 _site/
 dist/
 .sass-cache
-type/*
-!type/README.md
 scripts/jquery.min.js

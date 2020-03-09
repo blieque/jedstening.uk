@@ -1,6 +1,10 @@
-# Source Code
+# License
 
-All source code (Markdown, HTML, Liquid, SASS, CoffeeScript, YAML, JSON, Ruby) is distributed under the terms of the GNU GPL Version 2, reproduced below.
+All source code (Markdown, HTML, Liquid, SASS, CoffeeScript, YAML, JSON, Ruby)
+is distributed under the terms of the GNU GPL Version 2, reproduced below.
+
+The Argent CF font files (`fonts/*.woff`, `fonts/*.woff2`) are the intellectual
+property of Connary Fagen (https://connary.com/), and are used under license.
 
 ## GNU General Public License
 
