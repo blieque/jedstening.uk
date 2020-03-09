@@ -1,24 +1,155 @@
----
-layout: main
----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Jed Stening — Graphic Design</title>
 
-{% include selector.html %}
+    <!-- Browser theming and icon -->
+    <meta name="theme-color" content="#fff">
+    <link rel="mask-icon" href="/images/icon/scalable.svg" color="#ff8a00">
+    <link rel="apple-touch-icon" href="/images/icon/192.png" sizes="192x192">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/images/icon/scalable.svg" sizes="any">
 
-<section>
-    {% include gallery.html %}
-</section>
+    <style>
+    @font-face {
+      font-family: 'Argent CF';
+      font-weight: 700;
+      src:
+        url('./fonts/argent-cf-bold.woff2') format('woff2'),
+        url('./fonts/argent-cf-bold.woff') format('woff2');
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-weight: 400;
+      src:
+        url('./fonts/inter-regular.woff2') format('woff2'),
+        url('./fonts/inter-regular.woff') format('woff2');
+    }
 
-<div id="hide">
-    <span id="css-to-js"></span>
-    <img alt="Full size project image">
-    <a><canvas width="1" height="1"></canvas><img alt="Link to full size image"></a>
-    <a> {% comment %} id, href {% endcomment %}
-        {% assign loader_class = 'mini' %}
-        {% include loader.html %}
-        <canvas width="16" height="10"></canvas>
-        <img> {% comment %} src, alt {% endcomment %}
-        <div>
-            <div><div><h2>{% comment %} title {% endcomment %}</h2><span></span><p>{% comment %} basicInfo {% endcomment %}</p></div></div>
-        </div>
-    </a>
-</div>
+    * {
+      letter-spacing: calc(0.02rem - 0.025em);
+    }
+
+    :root {
+      font-size: calc(3vw + 0.5rem);
+    }
+
+    html {
+      font-family:
+        'Inter',
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        'Helvetica Neue',
+        'Helvetica',
+        'Segoe UI',
+        sans-serif;
+      line-height: 1.6;
+    }
+
+    body {
+      --page-padding: 2rem;
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: calc(var(--page-padding) * 0.5) var(--page-padding);
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    section {
+      margin-bottom: 1rem;
+    }
+
+    h1,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      margin-bottom: calc(0.6rem + 0.2em);
+      --ratio: 0.12;
+      font-size: calc(calc(100vw * var(--ratio)) - calc(calc(var(--page-padding) * 2) * var(--ratio)));
+      font-family:
+        'Argent CF',
+        Georgia,
+        serif;
+      line-height: 1;
+    }
+
+    h1::before {
+      content: '';
+      display: block;
+      margin-top: -0.15em;
+    }
+
+    h1::after {
+      content: '';
+      display: block;
+      margin-bottom: -0.22em;
+    }
+
+    p::before {
+      content: '';
+      display: block;
+      margin-top: -0.4em;
+    }
+
+    p::after {
+      content: '';
+      display: block;
+      margin-bottom: -0.42em;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 0;
+      list-style: none;
+      font-size: 0.7em;
+    }
+
+    p,
+    ul {
+      margin-top: 1em;
+    }
+
+    li::before {
+      content: '— ';
+    }
+
+    a {
+      color: hsl(236, 100%, 58%);
+    }
+
+    a:focus {
+      outline: 0.15em dotted;
+    }
+
+    @media (max-width: 23rem) {
+      :root {
+        font-size: 1.2rem;
+      }
+
+      body {
+        --page-padding: 1rem;
+      }
+
+      h1 {
+        font-size: 1.85rem;
+      }
+    }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h1>Jed Stening</h1>
+      <p>Graphic Design</p>
+      <ul>
+        <li><a href="https://ello.co/jedstening">View my work on Ello</a></li>
+        <li><a href="mailto:jed@stening.co">Get in touch</a></li>
+      </ul>
+    </section>
+  </body>
+</html>
