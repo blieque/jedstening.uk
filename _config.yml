@@ -8,6 +8,7 @@ address: "https://stening.co"
 baseurl: ""
 
 # Build settings
+repository: blieque/stening.co
 destination: ./dist
 exclude: ["Gemfile", "Gemfile.lock", "README.md", "LICENSE.md", "type/README.md"]
 plugins: ["jekyll-coffeescript"]
